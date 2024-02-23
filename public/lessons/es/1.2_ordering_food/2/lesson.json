@@ -1,0 +1,119 @@
+{
+  "title": "Ordering Breakfast at a Cafe",
+  "type": "conversation",
+  "introduction": [
+    "This lesson revolves around a dialogue in which an individual orders breakfast at a café, covering common phrases used when ordering food and drinks."
+  ],
+  "story": [
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Buenos días, ¿me puede dar el menú de desayuno, por favor?",
+      "translation": "Good morning, can you give me the breakfast menu, please?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Por supuesto, aquí tiene. ¿Desea algo para beber?",
+      "translation": "Of course, here you go. Would you like something to drink?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Sí, quisiera un café con leche y un vaso de agua, gracias.",
+      "translation": "Yes, I would like a coffee with milk and a glass of water, thank you."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Muy bien, ¿y qué le gustaría de comer?",
+      "translation": "Very well, and what would you like to eat?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Estoy entre el pan con tomate y el desayuno americano. ¿Cuál me recomienda?",
+      "translation": "I'm torn between the bread with tomato and the American breakfast. Which do you recommend?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Ambos son muy buenos, pero el desayuno americano es el más popular.",
+      "translation": "Both are very good, but the American breakfast is the most popular."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Entonces tomaré el desayuno americano, por favor.",
+      "translation": "Then I'll have the American breakfast, please."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Excelente elección. ¿Cómo desea sus huevos?",
+      "translation": "Excellent choice. How would you like your eggs?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Revueltos, por favor. Y también, ¿podría traerme un poco de mermelada para el pan?",
+      "translation": "Scrambled, please. And also, could you bring me some jam for the bread?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Por supuesto, enseguida le traigo su desayuno.",
+      "translation": "Of course, I'll bring your breakfast right away."
+    }
+  ],
+  "tests": [
+    {
+      "prompt": "breakfast menu",
+      "answer": "menú de desayuno",
+      "wordBank": [
+        "menú",
+        "de",
+        "desayuno"
+      ]
+    },
+    {
+      "prompt": "coffee with milk",
+      "answer": "café con leche",
+      "wordBank": [
+        "café",
+        "con",
+        "leche"
+      ]
+    },
+    {
+      "prompt": "American breakfast",
+      "answer": "desayuno americano",
+      "wordBank": [
+        "desayuno",
+        "americano"
+      ]
+    },
+    {
+      "prompt": "¿Cómo desea sus huevos?",
+      "answer": "How would you like your eggs?",
+      "wordBank": [
+        "How",
+        "would",
+        "you",
+        "like",
+        "your",
+        "eggs"
+      ]
+    },
+    {
+      "prompt": "a bit of jam",
+      "answer": "un poco de mermelada",
+      "wordBank": [
+        "un",
+        "poco",
+        "de",
+        "mermelada"
+      ]
+    }
+  ]
+}

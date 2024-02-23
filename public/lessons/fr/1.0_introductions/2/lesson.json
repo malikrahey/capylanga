@@ -1,0 +1,124 @@
+{
+  "title": "Introducing Oneself",
+  "type": "conversation",
+  "introduction": [
+    "This lesson covers a conversation where someone introduces himself to a local in French."
+  ],
+  "story": [
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Bonjour, je m'appelle Thomas. Je suis touriste ici.",
+      "translation": "Hello, my name is Thomas. I am a tourist here."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Enchanté, Thomas! Je m'appelle Marie. D'où venez-vous?",
+      "translation": "Pleased to meet you, Thomas! My name is Marie. Where are you from?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Je viens des États-Unis. Et vous, vous êtes d'ici?",
+      "translation": "I come from the United States. And you, are you from here?"
+    },
+    {
+      "type": "explanation",
+      "message": "'D'où venez-vous?' means 'Where do you come from?'. It's a common question when meeting someone new."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Oui, je suis née ici. Qu'est-ce qui vous amène dans notre ville?",
+      "translation": "Yes, I was born here. What brings you to our city?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Je suis ici pour découvrir la culture et la cuisine françaises.",
+      "translation": "I am here to discover the French culture and cuisine."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "C'est fantastique! Il y a beaucoup de choses à voir et à faire ici. Avez-vous besoin de recommandations?",
+      "translation": "That's fantastic! There are many things to see and do here. Do you need any recommendations?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Oui, ce serait génial. Je cherche un bon restaurant français.",
+      "translation": "Yes, that would be great. I am looking for a good French restaurant."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Je vous recommande le restaurant La Belle Époque. Il est à dix minutes d'ici à pied.",
+      "translation": "I recommend the restaurant La Belle Époque. It is ten minutes from here on foot."
+    }
+  ],
+  "tests": [
+    {
+      "prompt": "My name is Thomas.",
+      "answer": "Je m'appelle Thomas.",
+      "wordBank": [
+        "Je",
+        "m'appelle",
+        "Thomas",
+        "Bonjour",
+        "touriste",
+        "Marie"
+      ]
+    },
+    {
+      "prompt": "Where are you from?",
+      "answer": "D'où venez-vous?",
+      "wordBank": [
+        "D'où",
+        "venez-vous",
+        "Enchanté",
+        "Thomas",
+        "Paris",
+        "ville"
+      ]
+    },
+    {
+      "prompt": "I was born here.",
+      "answer": "Je suis née ici.",
+      "wordBank": [
+        "Je",
+        "suis",
+        "née",
+        "ici",
+        "vous",
+        "culture"
+      ]
+    },
+    {
+      "prompt": "Discovering culture.",
+      "answer": "Découvrir la culture.",
+      "wordBank": [
+        "Découvrir",
+        "la",
+        "culture",
+        "cuisine",
+        "restaurant",
+        "françaises"
+      ]
+    },
+    {
+      "prompt": "Looking for a restaurant.",
+      "answer": "Cherche un restaurant.",
+      "wordBank": [
+        "Cherche",
+        "un",
+        "restaurant",
+        "bon",
+        "La",
+        "Belle",
+        "Époque"
+      ]
+    }
+  ]  
+}

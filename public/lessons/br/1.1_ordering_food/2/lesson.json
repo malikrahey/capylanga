@@ -1,0 +1,103 @@
+{
+  "title": "Ordering Food at a Café",
+  "type": "conversation",
+  "introduction": [
+    "This lesson covers a conversation in a café, where a man orders food and drink in Brazilian Portuguese."
+  ],
+  "story": [
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Bom dia, eu gostaria de pedir um café e um pão de queijo, por favor.",
+      "translation": "Good morning, I would like to order a coffee and a cheese bread, please."
+    },
+    {
+      "type": "explanation",
+      "message": "'Pão de queijo' is a popular Brazilian snack, literally translating to 'cheese bread.'"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Claro, algo mais?",
+      "translation": "Sure, anything else?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Sim, uma água sem gás, por favor.",
+      "translation": "Yes, a still water, please."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Perfeito. Vai querer algo doce para acompanhar?",
+      "translation": "Perfect. Would you like something sweet to go with it?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Não, obrigado. Isso é tudo.",
+      "translation": "No, thank you. That's all."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Ótimo, o total é R$12,50. Por aqui, por favor.",
+      "translation": "Great, the total is R$12.50. This way, please."
+    }
+  ],
+  "tests": [
+    {
+      "prompt": "I would like to order.",
+      "answer": "Eu gostaria de pedir",
+      "wordBank": [
+        "Eu",
+        "gostaria",
+        "de",
+        "pedir",
+        "comprar",
+        "ver"
+      ]
+    },
+    {
+      "prompt": "A coffee and a cheese bread.",
+      "answer": "um café e um pão de queijo",
+      "wordBank": [
+        "um",
+        "café",
+        "e",
+        "um",
+        "pão",
+        "de",
+        "queijo",
+        "bolo",
+        "chá"
+      ]
+    },
+    {
+      "prompt": "A still water, please.",
+      "answer": "uma água sem gás, por favor",
+      "wordBank": [
+        "uma",
+        "água",
+        "sem",
+        "gás",
+        "por",
+        "favor",
+        "com"
+      ]
+    },
+    {
+      "prompt": "That's all.",
+      "answer": "Isso é tudo",
+      "wordBank": [
+        "Isso",
+        "é",
+        "tudo",
+        "nada",
+        "mais",
+        "menos"
+      ]
+    }
+  ]
+}

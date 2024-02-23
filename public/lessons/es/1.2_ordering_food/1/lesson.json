@@ -1,0 +1,126 @@
+{
+  "title": "Ordering at a Local Café",
+  "type": "conversation",
+  "introduction": [
+    "This lesson simulates a situation where a customer orders food and coffee in a Spanish-speaking café. It introduces relevant vocabulary for menu items, making orders, and interacting with café staff."
+  ],
+  "story": [
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Buenos días, me gustaría pedir un café con leche y un croissant de almendras, por favor.",
+      "translation": "Good morning, I would like to order a coffee with milk and an almond croissant, please."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Claro, ¿desea algo más?",
+      "translation": "Of course, would you like anything else?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Sí, también quisiera un vaso de agua.",
+      "translation": "Yes, I would also like a glass of water."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Perfecto. ¿Para tomar aquí o para llevar?",
+      "translation": "Perfect. For here or to go?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Para aquí, gracias.",
+      "translation": "For here, thank you."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Muy bien, enseguida le traigo su pedido.",
+      "translation": "Very well, I'll bring your order right away."
+    }
+  ],
+  "tests": [
+    {
+      "prompt": "Good morning, I would like to order a coffee with milk and an almond croissant, please.",
+      "answer": "Buenos días, me gustaría pedir un café con leche y un croissant de almendras, por favor.",
+      "wordBank": [
+        "Buenos",
+        "días",
+        "me",
+        "gustaría",
+        "pedir",
+        "un",
+        "café",
+        "con",
+        "leche",
+        "y",
+        "croissant",
+        "de",
+        "almendras",
+        "por",
+        "favor"
+      ]
+    },
+    {
+      "prompt": "Claro, ¿desea algo más?",
+      "answer": "Of course, would you like anything else?",
+      "wordBank": [
+        "Of",
+        "course",
+        "would",
+        "you",
+        "like",
+        "anything",
+        "else",
+        "just",
+        "that"
+      ]
+    },
+    {
+      "prompt": "Yes, I would also like a glass of water.",
+      "answer": "Sí, también quisiera un vaso de agua.",
+      "wordBank": [
+        "Sí",
+        "también",
+        "quisiera",
+        "un",
+        "vaso",
+        "de",
+        "agua",
+        "jugo",
+        "té"
+      ]
+    },
+    {
+      "prompt": "¿Para tomar aquí o para llevar?",
+      "answer": "For here or to go?",
+      "wordBank": [
+        "For",
+        "here",
+        "or",
+        "to",
+        "go",
+        "inside",
+        "outside"
+      ]
+    },
+    {
+      "prompt": "Very well, I'll bring your order right away.",
+      "answer": "Muy bien, enseguida le traigo su pedido.",
+      "wordBank": [
+        "Muy",
+        "bien",
+        "enseguida",
+        "le",
+        "traigo",
+        "su",
+        "pedido",
+        "ahora",
+        "luego"
+      ]
+    }
+  ]
+}

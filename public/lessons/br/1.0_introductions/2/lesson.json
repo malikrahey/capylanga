@@ -1,0 +1,100 @@
+{
+  "title": "Asking if Someone Speaks English and Directions to the Hotel",
+  "type": "conversation",
+  "introduction": [
+    "In this lesson, we'll learn how to ask someone if they speak English and how to ask for directions to the hotel in Brazilian Portuguese."
+  ],
+  "story": [
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Com licença, você fala inglês?",
+      "translation": "Excuse me, do you speak English?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Um pouco, como posso ajudar?",
+      "translation": "A little, how can I help?"
+    },
+    {
+      "type": "explanation",
+      "message": "When asking someone if they speak English, it's polite to start with 'com licença' which means 'excuse me.'"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Você pode me dizer como chegar ao hotel?",
+      "translation": "Can you tell me how to get to the hotel?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Claro, continue reto e vire à esquerda na terceira rua.",
+      "translation": "Sure, go straight and turn left at the third street."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Muito obrigado pela sua ajuda.",
+      "translation": "Thank you very much for your help."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "De nada, tenha uma boa estadia.",
+      "translation": "You're welcome, have a good stay."
+    }
+  ],
+  "tests": [
+    {
+      "prompt": "Do you speak English?",
+      "answer": "Você fala inglês?",
+      "wordBank": [
+        "Você",
+        "fala",
+        "inglês",
+        "português",
+        "espanhol",
+        "alemão"
+      ]
+    },
+    {
+      "prompt": "How to get to the hotel?",
+      "answer": "Como chegar ao hotel?",
+      "wordBank": [
+        "Como",
+        "chegar",
+        "ao",
+        "hotel",
+        "casa",
+        "aeroporto",
+        "praia"
+      ]
+    },
+    {
+      "prompt": "Thank you very much.",
+      "answer": "Muito obrigado.",
+      "wordBank": [
+        "Muito",
+        "obrigado",
+        "obrigada",
+        "pouco",
+        "excelente",
+        "ruim"
+      ]
+    },
+    {
+      "prompt": "You're welcome.",
+      "answer": "De nada.",
+      "wordBank": [
+        "De",
+        "nada",
+        "sim",
+        "não",
+        "talvez",
+        "por favor"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "title": "Discovering Local Activities",
+  "type": "conversation",
+  "introduction": [
+    "In this lesson, we'll cover a conversation between a man and a local about finding activities to do in town."
+  ],
+  "story": [
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Bonjour, je suis nouveau en ville. Qu'est-ce qu'il y a à faire ici?",
+      "translation": "Hello, I am new in town. What is there to do here?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Bonjour! Il y a beaucoup à découvrir. Aimez-vous l'art ou la nature?",
+      "translation": "Hello! There is a lot to discover. Do you like art or nature?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "J'aime beaucoup l'art. Y a-t-il des musées?",
+      "translation": "I really like art. Are there any museums?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Oui, il y a le musée d'art moderne qui est très célèbre.",
+      "translation": "Yes, there is the modern art museum which is very famous."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Et pour la nature?",
+      "translation": "And for nature?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Vous pouvez visiter le parc national. Il y a de belles randonnées à faire.",
+      "translation": "You can visit the national park. There are beautiful hikes to do."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Merci beaucoup pour les informations. Comment puis-je aller au musée d'art moderne?",
+      "translation": "Thank you very much for the information. How can I get to the modern art museum?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Prenez le bus numéro 5, il vous déposera juste en face.",
+      "translation": "Take bus number 5, it will drop you off right in front."
+    }
+  ],
+  "tests": [
+    {
+      "prompt": "What to do here?",
+      "answer": "Qu'est-ce à faire ici?",
+      "wordBank": [
+        "Qu'est-ce",
+        "à",
+        "faire",
+        "ici",
+        "où",
+        "comment"
+      ]
+    },
+    {
+      "prompt": "Like art?",
+      "answer": "Aimez-vous l'art?",
+      "wordBank": [
+        "Aimez-vous",
+        "l'art",
+        "la",
+        "musique",
+        "le",
+        "sport"
+      ]
+    },
+    {
+      "prompt": "Any museums?",
+      "answer": "Des musées?",
+      "wordBank": [
+        "Des",
+        "musées",
+        "bibliothèques",
+        "parcs",
+        "y",
+        "a-t-il"
+      ]
+    },
+    {
+      "prompt": "For nature?",
+      "answer": "Pour la nature?",
+      "wordBank": [
+        "Pour",
+        "la",
+        "nature",
+        "ville",
+        "art",
+        "musée"
+      ]
+    },
+    {
+      "prompt": "To the museum?",
+      "answer": "Au musée?",
+      "wordBank": [
+        "Au",
+        "musée",
+        "parc",
+        "cinéma",
+        "comment",
+        "aller"
+      ]
+    }
+  ]
+}

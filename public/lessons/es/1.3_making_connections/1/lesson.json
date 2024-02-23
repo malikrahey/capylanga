@@ -1,0 +1,116 @@
+{
+  "title": "Asking Someone on a Date",
+  "type": "conversation",
+  "introduction": [
+    "This lesson unfolds a scenario where one individual expresses interest in going out on a date with another. It encompasses expressions of interest, making invitations, and responding politely."
+  ],
+  "story": [
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Hola, ¿tienes planes para este fin de semana?",
+      "translation": "Hi, do you have plans for this weekend?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "No, aún no tengo planes. ¿Por qué?",
+      "translation": "No, I don't have plans yet. Why?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Me preguntaba si te gustaría ir a cenar conmigo.",
+      "translation": "I was wondering if you would like to have dinner with me."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Eso suena genial. Me encantaría.",
+      "translation": "That sounds great. I would love to."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "¿Qué te parece si nos encontramos a las ocho en el restaurante La Estrella?",
+      "translation": "How about we meet at eight at La Estrella restaurant?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Perfecto, nos vemos el sábado entonces.",
+      "translation": "Perfect, see you on Saturday then."
+    }
+  ],
+  "tests": [
+    {
+      "prompt": "do you have plans for this weekend?",
+      "answer": "¿tienes planes para este fin de semana?",
+      "wordBank": [
+        "tienes",
+        "planes",
+        "para",
+        "este",
+        "fin",
+        "de",
+        "semana"
+      ]
+    },
+    {
+      "prompt": "I don't have plans yet.",
+      "answer": "No, aún no tengo planes.",
+      "wordBank": [
+        "No",
+        "aún",
+        "no",
+        "tengo",
+        "planes"
+      ]
+    },
+    {
+      "prompt": "would like to have dinner",
+      "answer": "te gustaría ir a cenar",
+      "wordBank": [
+        "te",
+        "gustaría",
+        "ir",
+        "a",
+        "cenar"
+      ]
+    },
+    {
+      "prompt": "That sounds great.",
+      "answer": "Eso suena genial.",
+      "wordBank": [
+        "Eso",
+        "suena",
+        "genial"
+      ]
+    },
+    {
+      "prompt": "How about we meet at eight",
+      "answer": "¿Qué te parece si nos encontramos a las ocho",
+      "wordBank": [
+        "Qué",
+        "te",
+        "parece",
+        "si",
+        "nos",
+        "encontramos",
+        "a",
+        "las",
+        "ocho"
+      ]
+    },
+    {
+      "prompt": "see you on Saturday",
+      "answer": "nos vemos el sábado",
+      "wordBank": [
+        "nos",
+        "vemos",
+        "el",
+        "sábado"
+      ]
+    }
+  ]
+}

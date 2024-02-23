@@ -1,0 +1,122 @@
+{
+  "title": "Checking Into a Hotel",
+  "type": "conversation",
+  "introduction": [
+    "In this lesson, we will learn how to check into a hotel in French."
+  ],
+  "story": [
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Bonjour, j'ai une réservation au nom de Smith.",
+      "translation": "Hello, I have a reservation under the name Smith."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Bien sûr, Monsieur Smith. Avez-vous votre passeport?",
+      "translation": "Of course, Mr. Smith. Do you have your passport?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Oui, voici mon passeport.",
+      "translation": "Yes, here is my passport."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Merci. Voici votre clé. Vous êtes dans la chambre 205.",
+      "translation": "Thank you. Here is your key. You are in room 205."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "À quelle heure est le petit déjeuner?",
+      "translation": "What time is breakfast?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Le petit déjeuner est servi de 7h à 10h.",
+      "translation": "Breakfast is served from 7 AM to 10 AM."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Parfait, merci beaucoup.",
+      "translation": "Perfect, thank you very much."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "De rien, Monsieur. Si vous avez besoin de quelque chose, appelez la réception.",
+      "translation": "You're welcome, Sir. If you need anything, call the reception."
+    }
+  ],
+  "tests": [
+    {
+      "prompt": "I have a reservation.",
+      "answer": "J'ai une réservation.",
+      "wordBank": [
+        "J'ai",
+        "une",
+        "réservation",
+        "chambre",
+        "clé",
+        "nom"
+      ]
+    },
+    {
+      "prompt": "Do you have your passport?",
+      "answer": "Avez-vous votre passeport?",
+      "wordBank": [
+        "Avez-vous",
+        "votre",
+        "passeport",
+        "billet",
+        "carte",
+        "valise"
+      ]
+    },
+    {
+      "prompt": "Here is your key.",
+      "answer": "Voici votre clé.",
+      "wordBank": [
+        "Voici",
+        "votre",
+        "clé",
+        "porte",
+        "fenêtre",
+        "sac"
+      ]
+    },
+    {
+      "prompt": "What time is breakfast?",
+      "answer": "À quelle heure est le petit déjeuner?",
+      "wordBank": [
+        "À",
+        "quelle",
+        "heure",
+        "est",
+        "le",
+        "petit",
+        "déjeuner",
+        "dîner",
+        "souper"
+      ]
+    },
+    {
+      "prompt": "You're welcome, Sir.",
+      "answer": "De rien, Monsieur.",
+      "wordBank": [
+        "De",
+        "rien",
+        "Monsieur",
+        "Madame",
+        "Merci",
+        "S'il"
+      ]
+    }
+  ]
+}

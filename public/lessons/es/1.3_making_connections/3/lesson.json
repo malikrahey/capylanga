@@ -1,0 +1,112 @@
+{
+  "title": "Studies and Career Aspirations",
+  "type": "conversation",
+  "introduction": [
+    "This dialogue explores a conversation between two individuals discussing academic interests and future career goals."
+  ],
+  "story": [
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "¿Qué estudias actualmente?",
+      "translation": "What are you studying currently?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Estudio ingeniería informática. Siempre me han fascinado las computadoras.",
+      "translation": "I'm studying computer engineering. I've always been fascinated by computers."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Eso suena interesante. ¿Qué te gustaría hacer después de graduarte?",
+      "translation": "That sounds interesting. What would you like to do after you graduate?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Me gustaría trabajar en el desarrollo de software o en la ciberseguridad.",
+      "translation": "I would like to work in software development or cybersecurity."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Parece que tienes todo planeado. ¿Hay alguna empresa en particular en la que desees trabajar?",
+      "translation": "It seems like you have everything planned out. Is there a particular company you wish to work for?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Sí, me encantaría trabajar para Google o Microsoft. Son mis empresas soñadas.",
+      "translation": "Yes, I would love to work for Google or Microsoft. They are my dream companies."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Son metas ambiciosas, pero con tu dedicación, seguro que lo lograrás.",
+      "translation": "Those are ambitious goals, but with your dedication, I'm sure you'll achieve them."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Gracias por tu apoyo. ¿Y tú? ¿Qué planes tienes para el futuro?",
+      "translation": "Thank you for your support. And you? What plans do you have for the future?"
+    }
+  ],
+  "tests": [
+    {
+      "prompt": "What are you studying?",
+      "answer": "¿Qué estudias actualmente?",
+      "wordBank": [
+        "Qué",
+        "estudias",
+        "actualmente"
+      ]
+    },
+    {
+      "prompt": "I'm studying computer engineering.",
+      "answer": "Estudio ingeniería informática.",
+      "wordBank": [
+        "Estudio",
+        "ingeniería",
+        "informática"
+      ]
+    },
+    {
+      "prompt": "What would you like to do?",
+      "answer": "¿Qué te gustaría hacer?",
+      "wordBank": [
+        "Qué",
+        "te",
+        "gustaría",
+        "hacer"
+      ]
+    },
+    {
+      "prompt": "software development",
+      "answer": "desarrollo de software",
+      "wordBank": [
+        "desarrollo",
+        "de",
+        "software"
+      ]
+    },
+    {
+      "prompt": "dream companies",
+      "answer": "empresas soñadas",
+      "wordBank": [
+        "empresas",
+        "soñadas"
+      ]
+    },
+    {
+      "prompt": "ambitious goals",
+      "answer": "metas ambiciosas",
+      "wordBank": [
+        "metas",
+        "ambiciosas"
+      ]
+    }
+  ]
+}

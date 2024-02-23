@@ -1,0 +1,116 @@
+{
+  "title": "Ordering Drinks at a Bar",
+  "type": "conversation",
+  "introduction": [
+    "This lesson follows a dialogue between a customer and a bartender, focusing on ordering different types of drinks and asking about bar specials."
+  ],
+  "story": [
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Buenas noches, ¿qué cervezas tienen?",
+      "translation": "Good evening, what beers do you have?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Tenemos cervezas locales e importadas. ¿Prefieres alguna?",
+      "translation": "We have local and imported beers. Do you have a preference?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Me gustaría una cerveza local, por favor.",
+      "translation": "I'd like a local beer, please."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "¿Alguna marca en particular?",
+      "translation": "Any particular brand?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "¿Cuál me recomiendas?",
+      "translation": "Which one do you recommend?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "La cerveza 'Estrella Montaña' es muy popular aquí.",
+      "translation": "'Estrella Montaña' beer is very popular here."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Perfecto, tomaré una de esas. ¿Tienen también vinos?",
+      "translation": "Perfect, I'll have one of those. Do you also have wines?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Sí, tenemos una selección de vinos blancos y tintos. ¿Te interesa alguno?",
+      "translation": "Yes, we have a selection of white and red wines. Are you interested in any?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Una copa de vino tinto, por favor. ¿Qué snacks recomiendas?",
+      "translation": "A glass of red wine, please. What snacks do you recommend?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Las aceitunas y el queso manchego van muy bien con el vino tinto.",
+      "translation": "Olives and Manchego cheese go very well with red wine."
+    }
+  ],
+  "tests": [
+    {
+      "prompt": "what beers",
+      "answer": "qué cervezas",
+      "wordBank": [
+        "qué",
+        "cervezas"
+      ]
+    },
+    {
+      "prompt": "a local beer",
+      "answer": "una cerveza local",
+      "wordBank": [
+        "una",
+        "cerveza",
+        "local"
+      ]
+    },
+    {
+      "prompt": "Which one do you recommend?",
+      "answer": "¿Cuál me recomiendas?",
+      "wordBank": [
+        "Cuál",
+        "me",
+        "recomiendas"
+      ]
+    },
+    {
+      "prompt": "Estrella Montaña",
+      "answer": "Estrella Montaña",
+      "wordBank": [
+        "Estrella",
+        "Montaña"
+      ]
+    },
+    {
+      "prompt": "glass of red wine",
+      "answer": "una copa de vino tinto",
+      "wordBank": [
+        "una",
+        "copa",
+        "de",
+        "vino",
+        "tinto"
+      ]
+    }
+  ]
+}

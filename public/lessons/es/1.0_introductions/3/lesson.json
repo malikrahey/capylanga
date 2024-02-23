@@ -1,0 +1,105 @@
+{
+  "title": "First Meeting",
+  "type": "conversation",
+  "introduction": [
+    "This lesson covers a dialogue between two individuals who are meeting for the first time. The conversation includes basic greetings and introductory phrases."
+  ],
+  "story": [
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Hola, ¿cómo te llamas?",
+      "translation": "Hi, what's your name?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Hola, soy Ana. ¿Y tú?",
+      "translation": "Hi, I'm Ana. And you?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Me llamo Carlos. Es un placer conocerte.",
+      "translation": "My name is Carlos. It's a pleasure to meet you."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Igualmente, Carlos. ¿De dónde eres?",
+      "translation": "Likewise, Carlos. Where are you from?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Soy de Madrid. ¿Y tú?",
+      "translation": "I'm from Madrid. And you?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Soy de Barcelona. ¿Qué te trae por aquí?",
+      "translation": "I'm from Barcelona. What brings you here?"
+    }
+  ],
+  "tests": [
+    {
+      "prompt": "Hi, what's your name?",
+      "answer": "Hola, ¿cómo te llamas?",
+      "wordBank": [
+        "Hola",
+        "cómo",
+        "te",
+        "llamas"
+      ]
+    },
+    {
+      "prompt": "Hi, I'm Ana.",
+      "answer": "Hola, soy Ana.",
+      "wordBank": [
+        "Hola",
+        "soy",
+        "Ana"
+      ]
+    },
+    {
+      "prompt": "It's a pleasure to meet you.",
+      "answer": "Es un placer conocerte.",
+      "wordBank": [
+        "Es",
+        "un",
+        "placer",
+        "conocerte"
+      ]
+    },
+    {
+      "prompt": "Where are you from?",
+      "answer": "¿De dónde eres?",
+      "wordBank": [
+        "De",
+        "dónde",
+        "eres"
+      ]
+    },
+    {
+      "prompt": "I'm from Madrid.",
+      "answer": "Soy de Madrid.",
+      "wordBank": [
+        "Soy",
+        "de",
+        "Madrid"
+      ]
+    },
+    {
+      "prompt": "What brings you here?",
+      "answer": "¿Qué te trae por aquí?",
+      "wordBank": [
+        "Qué",
+        "te",
+        "trae",
+        "por",
+        "aquí"
+      ]
+    }
+  ]
+}

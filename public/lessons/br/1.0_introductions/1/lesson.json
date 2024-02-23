@@ -1,0 +1,97 @@
+{
+  "title": "Introducing Oneself",
+  "type": "conversation",
+  "introduction": [
+    "In this lesson, we'll cover how to introduce yourself and have a short conversation in Brazilian Portuguese."
+  ],
+  "story": [
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Olá, meu nome é Carlos. Como você se chama?",
+      "translation": "Hello, my name is Carlos. What's your name?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Prazer, Carlos. Eu me chamo Ana.",
+      "translation": "Nice to meet you, Carlos. My name is Ana."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "De onde você é, Ana?",
+      "translation": "Where are you from, Ana?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Sou de São Paulo. E você?",
+      "translation": "I'm from São Paulo. And you?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Eu sou do Rio de Janeiro.",
+      "translation": "I am from Rio de Janeiro."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Que legal! Eu sempre quis visitar o Rio.",
+      "translation": "That's cool! I've always wanted to visit Rio."
+    }
+  ],
+  "tests": [
+    {
+      "prompt": "What's your name?",
+      "answer": "Como você se chama?",
+      "wordBank": [
+        "Como",
+        "você",
+        "se",
+        "chama",
+        "ele",
+        "ela"
+      ]
+    },
+    {
+      "prompt": "My name is Ana.",
+      "answer": "Eu me chamo Ana.",
+      "wordBank": [
+        "Eu",
+        "me",
+        "chamo",
+        "Ana",
+        "Carlos",
+        "João"
+      ]
+    },
+    {
+      "prompt": "Where are you from?",
+      "answer": "De onde você é?",
+      "wordBank": [
+        "De",
+        "onde",
+        "você",
+        "é",
+        "ela",
+        "nós"
+      ]
+    },
+    {
+      "prompt": "I am from Rio de Janeiro.",
+      "answer": "Eu sou do Rio de Janeiro.",
+      "wordBank": [
+        "Eu",
+        "sou",
+        "do",
+        "Rio",
+        "de",
+        "Janeiro",
+        "Paulo",
+        "Bahia"
+      ]
+    }
+  ]
+}

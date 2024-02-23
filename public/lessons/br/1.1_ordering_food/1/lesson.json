@@ -1,0 +1,95 @@
+{
+  "title": "Ordering Food at a Restaurant",
+  "type": "conversation",
+  "introduction": [
+    "In this lesson, we'll cover a simple exchange about ordering food at a restaurant in Brazilian Portuguese."
+  ],
+  "story": [
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Boa noite, eu gostaria de ver o cardápio, por favor.",
+      "translation": "Good evening, I would like to see the menu, please."
+    },
+    {
+      "type": "explanation",
+      "message": "'Gostaria de' is a polite way of expressing a desire or preference in Portuguese, similar to 'would like to' in English."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Claro, aqui está o cardápio.",
+      "translation": "Of course, here is the menu."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Eu vou querer a feijoada, por favor.",
+      "translation": "I will have the feijoada, please."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Excelente escolha! E para beber?",
+      "translation": "Excellent choice! And to drink?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Uma água mineral, por favor.",
+      "translation": "A mineral water, please."
+    }
+  ],
+  "tests": [
+    {
+      "prompt": "I would like to see the menu.",
+      "answer": "Eu gostaria de ver o cardápio.",
+      "wordBank": [
+        "Eu",
+        "gostaria",
+        "de",
+        "ver",
+        "o",
+        "cardápio",
+        "restaurante",
+        "prato"
+      ]
+    },
+    {
+      "prompt": "I will have the feijoada.",
+      "answer": "Eu vou querer a feijoada.",
+      "wordBank": [
+        "Eu",
+        "vou",
+        "querer",
+        "a",
+        "feijoada",
+        "salada",
+        "pizza"
+      ]
+    },
+    {
+      "prompt": "A mineral water.",
+      "answer": "Uma água mineral.",
+      "wordBank": [
+        "Uma",
+        "água",
+        "mineral",
+        "suco",
+        "refrigerante",
+        "vinho"
+      ]
+    },
+    {
+      "prompt": "Excellent choice!",
+      "answer": "Excelente escolha!",
+      "wordBank": [
+        "Excelente",
+        "escolha",
+        "péssima",
+        "comida",
+        "bebida"
+      ]
+    }
+  ]
+}

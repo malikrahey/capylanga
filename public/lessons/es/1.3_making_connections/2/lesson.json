@@ -1,0 +1,104 @@
+{
+  "title": "Talking About Family",
+  "type": "conversation",
+  "introduction": [
+    "This lesson involves a dialogue where one individual inquires about the other's family. It includes common questions and responses related to family members."
+  ],
+  "story": [
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Cuéntame sobre tu familia.",
+      "translation": "Tell me about your family."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Bueno, tengo dos hermanos y una hermana.",
+      "translation": "Well, I have two brothers and one sister."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "¿Eres el mayor o el menor?",
+      "translation": "Are you the oldest or the youngest?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Soy el menor de todos.",
+      "translation": "I'm the youngest of all."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "¿Y tus padres? ¿Qué hacen?",
+      "translation": "And your parents? What do they do?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Mi padre es médico y mi madre es profesora.",
+      "translation": "My father is a doctor and my mother is a teacher."
+    }
+  ],
+  "tests": [
+    {
+      "prompt": "Tell me about your family.",
+      "answer": "Cuéntame sobre tu familia.",
+      "wordBank": [
+        "Cuéntame",
+        "sobre",
+        "tu",
+        "familia"
+      ]
+    },
+    {
+      "prompt": "I have two brothers",
+      "answer": "tengo dos hermanos",
+      "wordBank": [
+        "tengo",
+        "dos",
+        "hermanos"
+      ]
+    },
+    {
+      "prompt": "Are you the oldest",
+      "answer": "¿Eres el mayor",
+      "wordBank": [
+        "Eres",
+        "el",
+        "mayor"
+      ]
+    },
+    {
+      "prompt": "I'm the youngest",
+      "answer": "Soy el menor",
+      "wordBank": [
+        "Soy",
+        "el",
+        "menor"
+      ]
+    },
+    {
+      "prompt": "My father is a doctor",
+      "answer": "Mi padre es médico",
+      "wordBank": [
+        "Mi",
+        "padre",
+        "es",
+        "médico"
+      ]
+    },
+    {
+      "prompt": "My mother is a teacher.",
+      "answer": "Mi madre es profesora.",
+      "wordBank": [
+        "Mi",
+        "madre",
+        "es",
+        "profesora"
+      ]
+    }
+  ]
+}

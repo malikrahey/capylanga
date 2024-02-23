@@ -1,0 +1,134 @@
+{
+  "title": "Asking for Directions to the Train Station",
+  "type": "conversation",
+  "introduction": [
+    "This lesson focuses on a scenario where a traveler seeks assistance from a local to find the train station in a Spanish-speaking city, using key phrases and vocabulary for directions."
+  ],
+  "story": [
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Disculpa, ¿me puedes decir cómo llegar a la estación de tren?",
+      "translation": "Excuse me, can you tell me how to get to the train station?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Claro, sigue recto por esta calle dos cuadras, luego toma la primera a la derecha y continúa caminando. La estación estará a tu izquierda.",
+      "translation": "Sure, go straight down this street for two blocks, then take the first right and keep walking. The station will be on your left."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "¿Es muy lejos de aquí?",
+      "translation": "Is it far from here?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "No, está a unos diez minutos caminando.",
+      "translation": "No, it's about a ten-minute walk."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Perfecto, muchas gracias por tu ayuda.",
+      "translation": "Perfect, thank you so much for your help."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "De nada, que tengas un buen día.",
+      "translation": "You're welcome, have a good day."
+    }
+  ],
+  "tests": [
+    {
+      "prompt": "Excuse me, can you tell me how to get to the train station?",
+      "answer": "Disculpa, ¿me puedes decir cómo llegar a la estación de tren?",
+      "wordBank": [
+        "Disculpa",
+        "me",
+        "puedes",
+        "decir",
+        "cómo",
+        "llegar",
+        "a",
+        "la",
+        "estación",
+        "de",
+        "tren",
+        "autobús",
+        "metro"
+      ]
+    },
+    {
+      "prompt": "Sure, go straight down this street for two blocks, then take the first right and keep walking.",
+      "answer": "Claro, sigue recto por esta calle dos cuadras, luego toma la primera a la derecha y continúa caminando.",
+      "wordBank": [
+        "Claro",
+        "sigue",
+        "recto",
+        "por",
+        "esta",
+        "calle",
+        "dos",
+        "cuadras",
+        "luego",
+        "toma",
+        "la",
+        "primera",
+        "a",
+        "la",
+        "derecha",
+        "y",
+        "continúa",
+        "caminando",
+        "izquierda"
+      ]
+    },
+    {
+      "prompt": "Is it far from here?",
+      "answer": "¿Es muy lejos de aquí?",
+      "wordBank": [
+        "Es",
+        "muy",
+        "lejos",
+        "de",
+        "aquí",
+        "cerca",
+        "allá"
+      ]
+    },
+    {
+      "prompt": "No, it's about a ten-minute walk.",
+      "answer": "No, está a unos diez minutos caminando.",
+      "wordBank": [
+        "No",
+        "está",
+        "a",
+        "unos",
+        "diez",
+        "minutos",
+        "caminando",
+        "corriendo",
+        "manejando"
+      ]
+    },
+    {
+      "prompt": "You're welcome, have a good day.",
+      "answer": "De nada, que tengas un buen día.",
+      "wordBank": [
+        "De",
+        "nada",
+        "que",
+        "tengas",
+        "un",
+        "buen",
+        "día",
+        "tarde",
+        "noche"
+      ]
+    }
+  ]
+}

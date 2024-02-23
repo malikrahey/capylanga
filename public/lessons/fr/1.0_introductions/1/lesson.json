@@ -1,0 +1,101 @@
+{
+  "title": "Language and Introductions",
+  "type": "conversation",
+  "introduction": [
+    "In this lesson, we'll cover a conversation between a man asking a local if they speak English, followed by self-introductions."
+  ],
+  "story": [
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Bonjour, parlez-vous anglais?",
+      "translation": "Hello, do you speak English?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Un peu, oui. Comment puis-je vous aider?",
+      "translation": "A little, yes. How can I help you?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Je m'appelle John. Je suis américain.",
+      "translation": "My name is John. I am American."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Enchanté, John. Je m'appelle Lucie.",
+      "translation": "Pleased to meet you, John. My name is Lucie."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Enchanté, Lucie. C'est ma première fois en France.",
+      "translation": "Pleased to meet you, Lucie. It's my first time in France."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Bienvenue en France! J'espère que vous apprécierez votre séjour.",
+      "translation": "Welcome to France! I hope you will enjoy your stay."
+    }
+  ],
+  "tests": [
+    {
+      "prompt": "Speak English?",
+      "answer": "Parlez-vous anglais?",
+      "wordBank": [
+        "Parlez-vous",
+        "anglais",
+        "Bonjour",
+        "Lucie",
+        "John"
+      ]
+    },
+    {
+      "prompt": "A little?",
+      "answer": "Un peu, oui.",
+      "wordBank": [
+        "Un",
+        "peu",
+        "oui",
+        "Non",
+        "Beaucoup"
+      ]
+    },
+    {
+      "prompt": "My name?",
+      "answer": "Je m'appelle John.",
+      "wordBank": [
+        "Je",
+        "m'appelle",
+        "John",
+        "Lucie",
+        "Thomas"
+      ]
+    },
+    {
+      "prompt": "Pleased?",
+      "answer": "Enchanté.",
+      "wordBank": [
+        "Enchanté",
+        "Bonjour",
+        "Merci",
+        "Triste"
+      ]
+    },
+    {
+      "prompt": "Welcome?",
+      "answer": "Bienvenue en France!",
+      "wordBank": [
+        "Bienvenue",
+        "en",
+        "France",
+        "Paris",
+        "Adieu"
+      ]
+    }
+  ]
+}

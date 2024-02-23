@@ -1,0 +1,88 @@
+{
+  "title": "Asking for Directions",
+  "type": "conversation",
+  "introduction": [
+    "In this lesson, we'll cover a simple exchange about asking for and giving directions in French."
+  ],
+  "story": [
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Excusez-moi, pouvez-vous me dire comment aller à la gare, s'il vous plaît?",
+      "translation": "Excuse me, can you tell me how to get to the train station, please?"
+    },
+    {
+      "type": "explanation",
+      "message": "'Pouvez-vous' is a polite way of asking for help. It is the formal form of 'Can you' in French."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Bien sûr, continuez tout droit, puis prenez la deuxième rue à gauche.",
+      "translation": "Of course, go straight ahead, then take the second street on the left."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Est-ce que c'est loin?",
+      "translation": "Is it far?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Non, c'est à environ dix minutes à pied.",
+      "translation": "No, it's about ten minutes by foot."
+    }
+  ],
+  "tests": [
+    {
+      "prompt": "How to get to the station?",
+      "answer": "Comment aller à la gare?",
+      "wordBank": [
+        "Comment",
+        "aller",
+        "à",
+        "la",
+        "gare",
+        "train",
+        "bus"
+      ]
+    },
+    {
+      "prompt": "Go straight, then left.",
+      "answer": "Tout droit, puis à gauche.",
+      "wordBank": [
+        "Tout",
+        "droit",
+        "puis",
+        "à",
+        "gauche",
+        "droite",
+        "première"
+      ]
+    },
+    {
+      "prompt": "Is it far?",
+      "answer": "C'est loin?",
+      "wordBank": [
+        "C'est",
+        "loin",
+        "près",
+        "ici",
+        "là"
+      ]
+    },
+    {
+      "prompt": "Ten minutes by foot?",
+      "answer": "Dix minutes à pied?",
+      "wordBank": [
+        "Dix",
+        "minutes",
+        "à",
+        "pied",
+        "voiture",
+        "cinq"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "title": "Grocery Shopping Request",
+  "type": "conversation",
+  "introduction": [
+    "This lesson involves a conversation where someone asks a friend to pick up several items from the grocery store, emphasizing the use of numbers and quantities."
+  ],
+  "story": [
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Hola, ¿puedes comprar algunas cosas para mí en la tienda? Necesito tres manzanas, dos litros de leche y un paquete de arroz.",
+      "translation": "Hi, can you buy some things for me at the store? I need three apples, two liters of milk, and one package of rice."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Claro, ¿alguna marca en particular para la leche o el arroz?",
+      "translation": "Sure, any particular brand for the milk or rice?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Para la leche, prefiero la marca 'Lácteos del Campo', y para el arroz, cualquier marca está bien.",
+      "translation": "For the milk, I prefer the 'Lácteos del Campo' brand, and for the rice, any brand is fine."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Entendido. ¿Necesitas algo más?",
+      "translation": "Understood. Do you need anything else?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Sí, por favor, añade cinco plátanos y un kilo de tomates.",
+      "translation": "Yes, please add five bananas and one kilo of tomatoes."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Perfecto, ¿te lo llevo a casa o lo dejo en tu oficina?",
+      "translation": "Perfect, should I bring it to your home or leave it at your office?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Por favor, tráelo a mi casa. Gracias por la ayuda.",
+      "translation": "Please bring it to my house. Thanks for the help."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "De nada, lo haré enseguida.",
+      "translation": "You're welcome, I'll do it right away."
+    }
+  ],
+  "tests": [
+    {
+      "prompt": "three apples",
+      "answer": "tres manzanas",
+      "wordBank": [
+        "tres",
+        "manzanas",
+        "cuatro",
+        "naranjas"
+      ]
+    },
+    {
+      "prompt": "dos litros de leche",
+      "answer": "two liters of milk",
+      "wordBank": [
+        "two",
+        "liters",
+        "of",
+        "milk",
+        "juice"
+      ]
+    },
+    {
+      "prompt": "one package of rice",
+      "answer": "un paquete de arroz",
+      "wordBank": [
+        "un",
+        "paquete",
+        "de",
+        "arroz",
+        "pasta"
+      ]
+    },
+    {
+      "prompt": "cinco plátanos",
+      "answer": "five bananas",
+      "wordBank": [
+        "five",
+        "bananas",
+        "six",
+        "apples"
+      ]
+    },
+    {
+      "prompt": "one kilo of tomatoes",
+      "answer": "un kilo de tomates",
+      "wordBank": [
+        "un",
+        "kilo",
+        "de",
+        "tomates",
+        "papas"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "title": "Asking About Languages",
+  "type": "conversation",
+  "introduction": [
+    "In this lesson, we'll cover a simple exchange about language skills, focusing on asking and answering about speaking English."
+  ],
+  "story": [
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Hola, ¿hablas inglés?",
+      "translation": "Hello, do you speak English?"
+    },
+    {
+      "type": "explanation",
+      "message": "Notice the inverted question mark '¿' at the beginning of questions in Spanish. 'Hablas' is the 'tú' form of the verb 'hablar', meaning 'to speak'."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Sí, hablo un poco.",
+      "translation": "Yes, I speak a little."
+    },
+    {
+      "type": "explanation",
+      "message": "'Hablo' is the first person present tense of 'hablar', meaning 'I speak'."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "¿De dónde eres?",
+      "translation": "Where are you from?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Soy de España. ¿Y tú?",
+      "translation": "I'm from Spain. And you?"
+    },
+    {
+      "type": "explanation",
+      "message": "'Soy' is from the verb 'ser', meaning 'I am'. It is used here to indicate origin."
+    }
+  ],
+  "tests": [
+    {
+      "prompt": "Hello, do you speak English?",
+      "answer": "Hola, ¿hablas inglés?",
+      "wordBank": [
+        "Hola",
+        "¿Hablas",
+        "inglés?",
+        "Sí",
+        "un",
+        "poco",
+        "¿De",
+        "dónde",
+        "eres?"
+      ]
+    },
+    {
+      "prompt": "Sí, hablo un poco.",
+      "answer": "Yes, I speak a little.",
+      "wordBank": [
+        "Yes",
+        "I speak",
+        "a little",
+        "Where",
+        "are you",
+        "from?",
+        "I'm",
+        "from",
+        "Spain"
+      ]
+    },
+    {
+      "prompt": "Where are you from?",
+      "answer": "¿De dónde eres?",
+      "wordBank": [
+        "¿De",
+        "dónde",
+        "eres?",
+        "Soy",
+        "de",
+        "España",
+        "Sí",
+        "hablo",
+        "un",
+        "poco"
+      ]
+    },
+    {
+      "prompt": "I'm from Spain. And you?",
+      "answer": "Soy de España. ¿Y tú?",
+      "wordBank": [
+        "Soy",
+        "de",
+        "España",
+        "¿Y",
+        "tú?",
+        "Hola",
+        "¿Hablas",
+        "inglés?"
+      ]
+    }
+  ]
+}

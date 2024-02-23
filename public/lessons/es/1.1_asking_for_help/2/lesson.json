@@ -1,0 +1,155 @@
+{
+  "title": "Discovering Local Activities",
+  "type": "conversation",
+  "introduction": [
+    "Engage in a conversation where a visitor asks a local about available activities around town. This dialogue introduces vocabulary for inquiring about leisure options and understanding suggestions."
+  ],
+  "story": [
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Hola, estoy buscando algo interesante que hacer en la ciudad. ¿Tienes alguna recomendación?",
+      "translation": "Hi, I'm looking for something interesting to do in town. Do you have any recommendations?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Claro, ¿qué te interesa más? ¿Arte, deporte, comida?",
+      "translation": "Sure, what are you more interested in? Art, sports, food?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Me gusta el arte y la cultura. ¿Hay alguna exposición o museo que debería visitar?",
+      "translation": "I like art and culture. Is there an exhibition or museum I should visit?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Definitivamente deberías visitar el Museo de Arte Contemporáneo. También hay una exposición de fotografía en el centro cultural esta semana.",
+      "translation": "You should definitely visit the Museum of Contemporary Art. There's also a photography exhibition at the cultural center this week."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Eso suena perfecto. ¿Cómo puedo llegar al centro cultural?",
+      "translation": "That sounds perfect. How can I get to the cultural center?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Es fácil, está a solo diez minutos a pie desde aquí. Solo sigue esta calle hasta el parque y gira a la izquierda.",
+      "translation": "It's easy, it's just a ten-minute walk from here. Just follow this street to the park and turn left."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Genial, gracias por la información. ¿Hay algún café cerca de allí donde pueda tomar algo después?",
+      "translation": "Great, thanks for the information. Is there a café nearby where I can grab something afterwards?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Sí, justo al lado del centro cultural hay un café muy acogedor llamado 'Café del Arte'. Tienen excelentes pasteles.",
+      "translation": "Yes, right next to the cultural center there's a very cozy café called 'Café del Arte'. They have excellent pastries."
+    }
+  ],
+  "tests": [
+    {
+      "prompt": "Hi, I'm looking for something interesting to do in town. Do you have any recommendations?",
+      "answer": "Hola, estoy buscando algo interesante que hacer en la ciudad. ¿Tienes alguna recomendación?",
+      "wordBank": [
+        "Hola",
+        "estoy",
+        "buscando",
+        "algo",
+        "interesante",
+        "que",
+        "hacer",
+        "en",
+        "la",
+        "ciudad",
+        "Tienes",
+        "alguna",
+        "recomendación",
+        "actividades",
+        "eventos"
+      ]
+    },
+    {
+      "prompt": "You should definitely visit the Museum of Contemporary Art.",
+      "answer": "Definitivamente deberías visitar el Museo de Arte Contemporáneo.",
+      "wordBank": [
+        "Definitivamente",
+        "deberías",
+        "visitar",
+        "el",
+        "Museo",
+        "de",
+        "Arte",
+        "Contemporáneo",
+        "Histórico",
+        "Nacional"
+      ]
+    },
+    {
+      "prompt": "How can I get to the cultural center?",
+      "answer": "¿Cómo puedo llegar al centro cultural?",
+      "wordBank": [
+        "Cómo",
+        "puedo",
+        "llegar",
+        "al",
+        "centro",
+        "cultural",
+        "museo",
+        "parque",
+        "café"
+      ]
+    },
+    {
+      "prompt": "Is there a café nearby where I can grab something afterwards?",
+      "answer": "¿Hay algún café cerca de allí donde pueda tomar algo después?",
+      "wordBank": [
+        "Hay",
+        "algún",
+        "café",
+        "cerca",
+        "de",
+        "allí",
+        "donde",
+        "pueda",
+        "tomar",
+        "algo",
+        "después",
+        "antes",
+        "durante"
+      ]
+    },
+    {
+      "prompt": "Right next to the cultural center there's a very cozy café called 'Café del Arte'.",
+      "answer": "Sí, justo al lado del centro cultural hay un café muy acogedor llamado 'Café del Arte'.",
+      "wordBank": [
+        "Sí",
+        "justo",
+        "al",
+        "lado",
+        "del",
+        "centro",
+        "cultural",
+        "hay",
+        "un",
+        "café",
+        "muy",
+        "acogedor",
+        "llamado",
+        "'Café",
+        "del",
+        "Arte'",
+        "Librería",
+        "del",
+        "Pueblo"
+      ]
+    }
+  ]
+}

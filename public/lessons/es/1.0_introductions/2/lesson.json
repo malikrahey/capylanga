@@ -1,0 +1,112 @@
+{
+  "title": "A Casual Meeting",
+  "type": "conversation",
+  "introduction": [
+    "This lesson presents a casual interaction between two individuals meeting for the first time. They greet each other, exchange pleasantries about their well-being, and share brief plans for their day."
+  ],
+  "story": [
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Hola, ¿cómo estás?",
+      "translation": "Hi, how are you?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Bien, gracias. ¿Y tú?",
+      "translation": "Good, thanks. And you?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "También estoy bien. ¿Qué planes tienes para hoy?",
+      "translation": "I'm also good. What plans do you have for today?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Voy a trabajar hasta el mediodía y luego iré al gimnasio. ¿Y tú?",
+      "translation": "I'm going to work until noon and then I'll go to the gym. What about you?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Yo tengo clases toda la tarde, pero después planeo ver una película.",
+      "translation": "I have classes all afternoon, but afterwards, I plan to watch a movie."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Suena como un buen plan. Disfruta tu día.",
+      "translation": "Sounds like a good plan. Enjoy your day."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Igualmente. ¡Hasta luego!",
+      "translation": "You too. See you later!"
+    }
+  ],
+  "tests": [
+    {
+      "prompt": "Hi, how are you?",
+      "answer": "Hola, ¿cómo estás?",
+      "wordBank": [
+        "Hola",
+        "cómo",
+        "estás",
+        "bien",
+        "mal",
+        "más",
+        "o",
+        "menos"
+      ]
+    },
+    {
+      "prompt": "Bien, gracias. ¿Y tú?",
+      "answer": "Good, thanks. And you?",
+      "wordBank": [
+        "Good",
+        "thanks",
+        "And",
+        "you",
+        "bad",
+        "so"
+      ]
+    },
+    {
+      "prompt": "I'm going to work until noon and then I'll go to the gym.",
+      "answer": "Voy a trabajar hasta el mediodía y luego iré al gimnasio.",
+      "wordBank": [
+        "Voy",
+        "a",
+        "trabajar",
+        "hasta",
+        "el",
+        "mediodía",
+        "luego",
+        "iré",
+        "al",
+        "gimnasio",
+        "casa",
+        "oficina"
+      ]
+    },
+    {
+      "prompt": "¿Qué planes tienes para hoy?",
+      "answer": "What plans do you have for today?",
+      "wordBank": [
+        "What",
+        "plans",
+        "do",
+        "you",
+        "have",
+        "for",
+        "today",
+        "tomorrow",
+        "evening"
+      ]
+    }
+  ]
+}
