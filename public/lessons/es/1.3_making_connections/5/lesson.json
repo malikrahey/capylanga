@@ -1,0 +1,113 @@
+{
+  "title": "Getting to Know Each Other",
+  "type": "conversation",
+  "introduction": [
+    "This lesson delves into a dialogue between two individuals who are getting to know each other, covering topics such as hobbies, work, and personal interests."
+  ],
+  "story": [
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Así que, ¿en qué trabajas?",
+      "translation": "So, what do you do for work?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Soy diseñador gráfico. He trabajado en publicidad durante los últimos cinco años.",
+      "translation": "I'm a graphic designer. I've been working in advertising for the last five years."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Eso suena interesante. ¿Qué te llevó a esa carrera?",
+      "translation": "That sounds interesting. What led you to that career?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Siempre he sido creativo y me encanta el arte. El diseño gráfico fue una manera de combinar ambos.",
+      "translation": "I've always been creative and I love art. Graphic design was a way to combine both."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Increíble. ¿Y qué haces en tu tiempo libre?",
+      "translation": "Incredible. And what do you do in your free time?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Me gusta mucho la música y tocar la guitarra. También disfruto del senderismo.",
+      "translation": "I really like music and playing the guitar. I also enjoy hiking."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Parece que tenemos intereses similares. También disfruto de la música y el aire libre.",
+      "translation": "It seems we have similar interests. I also enjoy music and the outdoors."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Eso es genial. Deberíamos planear una salida algún día.",
+      "translation": "That's great. We should plan an outing one day."
+    }
+  ],
+  "tests": [
+    {
+      "prompt": "what do you do",
+      "answer": "en qué trabajas",
+      "wordBank": [
+        "en",
+        "qué",
+        "trabajas",
+        "vives",
+        "estudias"
+      ]
+    },
+    {
+      "prompt": "graphic designer",
+      "answer": "diseñador gráfico",
+      "wordBank": [
+        "diseñador",
+        "gráfico",
+        "artista",
+        "pintor"
+      ]
+    },
+    {
+      "prompt": "in your free time",
+      "answer": "en tu tiempo libre",
+      "wordBank": [
+        "en",
+        "tu",
+        "tiempo",
+        "libre",
+        "ocupado"
+      ]
+    },
+    {
+      "prompt": "playing the guitar",
+      "answer": "tocar la guitarra",
+      "wordBank": [
+        "tocar",
+        "la",
+        "guitarra",
+        "piano",
+        "batería"
+      ]
+    },
+    {
+      "prompt": "we have similar interests",
+      "answer": "tenemos intereses similares",
+      "wordBank": [
+        "tenemos",
+        "intereses",
+        "similares",
+        "diferentes",
+        "comunes"
+      ]
+    }
+  ]
+}

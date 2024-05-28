@@ -1,0 +1,114 @@
+{
+  "title": "Deciding Weekend Plans",
+  "type": "conversation",
+  "introduction": [
+    "This lesson explores a dialogue between two friends as they discuss and decide on their plans for the upcoming weekend."
+  ],
+  "story": [
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "¿Tienes algún plan para este fin de semana?",
+      "translation": "Do you have any plans for this weekend?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Aún no he decidido. ¿Tienes alguna idea?",
+      "translation": "I haven't decided yet. Do you have any ideas?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Podríamos ir de excursión a las montañas. Hace tiempo que no nos escapamos a la naturaleza.",
+      "translation": "We could go hiking in the mountains. It’s been a while since we got away to nature."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Me encanta la idea. ¿Sabes de algún buen lugar?",
+      "translation": "I love the idea. Do you know of any good places?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Hay un parque nacional que no está muy lejos. Tiene varios senderos de diferentes niveles.",
+      "translation": "There’s a national park not too far away. It has several trails of different levels."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Suena perfecto. Deberíamos preparar un picnic también.",
+      "translation": "Sounds perfect. We should prepare a picnic as well."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Buena idea. Yo puedo llevar sandwiches y agua. ¿Puedes traer algo de fruta y snacks?",
+      "translation": "Good idea. I can bring sandwiches and water. Can you bring some fruit and snacks?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Claro, eso no es problema. Será un fin de semana genial.",
+      "translation": "Sure, that’s no problem. It’s going to be a great weekend."
+    }
+  ],
+  "tests": [
+    {
+      "prompt": "any plans",
+      "answer": "algún plan",
+      "wordBank": [
+        "algún",
+        "plan",
+        "idea",
+        "actividad",
+        "lugar"
+      ]
+    },
+    {
+      "prompt": "go hiking",
+      "answer": "ir de excursión",
+      "wordBank": [
+        "ir",
+        "de",
+        "excursión",
+        "paseo",
+        "viaje"
+      ]
+    },
+    {
+      "prompt": "national park",
+      "answer": "parque nacional",
+      "wordBank": [
+        "parque",
+        "nacional",
+        "ciudad",
+        "bosque",
+        "playa"
+      ]
+    },
+    {
+      "prompt": "prepare a picnic",
+      "answer": "preparar un picnic",
+      "wordBank": [
+        "preparar",
+        "un",
+        "picnic",
+        "almuerzo",
+        "cena"
+      ]
+    },
+    {
+      "prompt": "sandwiches and water",
+      "answer": "sandwiches y agua",
+      "wordBank": [
+        "sandwiches",
+        "y",
+        "agua",
+        "jugos",
+        "gaseosas"
+      ]
+    }
+  ]
+}

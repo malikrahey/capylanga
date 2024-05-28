@@ -1,0 +1,114 @@
+{
+  "title": "Discussing Plans for the Next Week",
+  "type": "conversation",
+  "introduction": [
+    "This lesson focuses on a dialogue between two friends discussing their schedules and plans for the following week."
+  ],
+  "story": [
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "¿Qué planes tienes para la próxima semana?",
+      "translation": "What plans do you have for next week?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Voy a visitar a mi familia en otra ciudad. ¿Y tú?",
+      "translation": "I'm going to visit my family in another city. And you?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Tengo que trabajar, pero el fin de semana iré a la playa.",
+      "translation": "I have to work, but I'm going to the beach on the weekend."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Qué bien, ¿vas a ir con amigos?",
+      "translation": "That's nice, are you going with friends?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Sí, hemos planeado un viaje de grupo.",
+      "translation": "Yes, we've planned a group trip."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Suena divertido. ¿Qué actividades tienen planeadas?",
+      "translation": "Sounds fun. What activities have you planned?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Vamos a hacer surf y quizás algo de senderismo.",
+      "translation": "We're going to surf and maybe do some hiking."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Me encantaría hacer algo así. ¡Disfrútalo mucho!",
+      "translation": "I would love to do something like that. Enjoy it a lot!"
+    }
+  ],
+  "tests": [
+    {
+      "prompt": "next week",
+      "answer": "la próxima semana",
+      "wordBank": [
+        "la",
+        "próxima",
+        "semana",
+        "mes",
+        "año"
+      ]
+    },
+    {
+      "prompt": "to visit my family",
+      "answer": "visitar a mi familia",
+      "wordBank": [
+        "visitar",
+        "a",
+        "mi",
+        "familia",
+        "amigos"
+      ]
+    },
+    {
+      "prompt": "to the beach",
+      "answer": "a la playa",
+      "wordBank": [
+        "a",
+        "la",
+        "playa",
+        "montaña",
+        "ciudad"
+      ]
+    },
+    {
+      "prompt": "group trip",
+      "answer": "viaje de grupo",
+      "wordBank": [
+        "viaje",
+        "de",
+        "grupo",
+        "solo",
+        "pareja"
+      ]
+    },
+    {
+      "prompt": "surf and hiking",
+      "answer": "hacer surf y senderismo",
+      "wordBank": [
+        "hacer",
+        "surf",
+        "y",
+        "senderismo",
+        "natación"
+      ]
+    }
+  ]
+}

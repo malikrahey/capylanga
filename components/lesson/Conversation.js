@@ -1,7 +1,9 @@
 import { View, Text, TouchableOpacity, ScrollView, FlatList } from 'react-native'
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { MaterialIcons } from '@expo/vector-icons';
 import { Checkbox, ProgressBar } from 'react-native-paper';
+import * as Speech from 'expo-speech';
+import useLanguage from '../../hooks/useLanguage';
 
 const ExplanationBubble = ({message}) => {
 
@@ -15,12 +17,24 @@ const ExplanationBubble = ({message}) => {
 
 const ConversationBubble = ({showTranslations, speaker, message, translation}) => {
 
-  const bg = speaker === 'speaker1' ? 'bg-blue-200' : 'bg-red-200';
+  const color = speaker === 'speaker1' ? 'blue-200' : 'red-200';
   const justify = speaker === 'speaker1' ? 'self-start' : 'self-end';
   const face = speaker === 'speaker1' ? 'face' : 'face-2';
+  const border = speaker === 'speaker1' ? 'border-blue-600' : 'border-red-600';
+  const {selectedLanguage} = useLanguage();
+  const voiceIndex = speaker === 'speaker1' ? 0 :2 
 
+  useEffect(() => {
+
+    Speech.speak(message, {
+      language: selectedLanguage,
+      _voiceIndex: voiceIndex
+    })
+  }, [])
+  
+  
   return (
-    <View className={`${bg} ${justify} rounded-lg m-1 p-4 w-[70%]`}>
+    <View className={`bg-${color} ${justify} rounded-lg m-1 p-4 w-[70%] ${border} border-2`}>
       <MaterialIcons name={`${face}`} size={24} color="black" />
       <Text className='text-lg font-semibold'>{message}</Text>
       {showTranslations && (
@@ -37,6 +51,7 @@ const Conversation = ({lesson, advanceStage}) => {
 
   const handleNext = () => {
     const nextStep = currentStep + 1;
+    Speech.stop()
     if (nextStep >= lesson.length) {
       advanceStage();
       return;

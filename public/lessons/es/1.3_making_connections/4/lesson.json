@@ -1,0 +1,113 @@
+{
+  "title": "Date Night",
+  "type": "conversation",
+  "introduction": [
+    "This lesson covers a dialogue between two individuals on a date, discussing their interests, preferences, and getting to know each other better."
+  ],
+  "story": [
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Este lugar es muy bonito, ¿cómo lo encontraste?",
+      "translation": "This place is very nice, how did you find it?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Lo vi en una reseña online. Dijeron que la comida aquí es excelente.",
+      "translation": "I saw it in an online review. They said the food here is excellent."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Me encanta probar nueva comida. ¿Qué platos recomiendas?",
+      "translation": "I love trying new food. What dishes do you recommend?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "El salmón al horno y la ensalada César son muy populares.",
+      "translation": "The baked salmon and Caesar salad are very popular."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Suena delicioso. Además, me encanta el ambiente aquí.",
+      "translation": "Sounds delicious. Also, I love the atmosphere here."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Sí, es perfecto para una noche especial. ¿Qué te gusta hacer en tu tiempo libre?",
+      "translation": "Yes, it's perfect for a special night. What do you like to do in your free time?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Me gusta leer y caminar por la playa. ¿Y tú?",
+      "translation": "I like to read and walk on the beach. And you?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Soy fanático del cine y de la fotografía.",
+      "translation": "I'm a fan of movies and photography."
+    }
+  ],
+  "tests": [
+    {
+      "prompt": "how did you find it?",
+      "answer": "¿cómo lo encontraste?",
+      "wordBank": [
+        "cómo",
+        "lo",
+        "encontraste",
+        "viste",
+        "buscaste"
+      ]
+    },
+    {
+      "prompt": "new food",
+      "answer": "nueva comida",
+      "wordBank": [
+        "nueva",
+        "comida",
+        "bebida",
+        "receta"
+      ]
+    },
+    {
+      "prompt": "baked salmon",
+      "answer": "salmón al horno",
+      "wordBank": [
+        "salmón",
+        "al",
+        "horno",
+        "frito",
+        "crudo"
+      ]
+    },
+    {
+      "prompt": "in your free time",
+      "answer": "en tu tiempo libre",
+      "wordBank": [
+        "en",
+        "tu",
+        "tiempo",
+        "libre",
+        "ocupado"
+      ]
+    },
+    {
+      "prompt": "I like to read",
+      "answer": "Me gusta leer",
+      "wordBank": [
+        "Me",
+        "gusta",
+        "leer",
+        "escribir",
+        "dibujar"
+      ]
+    }
+  ]
+}

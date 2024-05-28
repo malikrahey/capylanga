@@ -1,0 +1,114 @@
+{
+  "title": "Planning a Beach Vacation",
+  "type": "conversation",
+  "introduction": [
+    "Engage in a dialogue where two friends discuss and plan their upcoming beach vacation, covering topics such as accommodations, activities, and preparations."
+  ],
+  "story": [
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Estoy emocionado por nuestro viaje a la playa. ¿Ya reservaste el hotel?",
+      "translation": "I'm excited about our trip to the beach. Have you booked the hotel yet?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Sí, reservé una cabaña cerca del mar. Tiene una vista increíble.",
+      "translation": "Yes, I booked a cabin near the sea. It has an amazing view."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Perfecto, ¿qué actividades podemos hacer allí?",
+      "translation": "Perfect, what activities can we do there?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Podemos hacer surf, tomar clases de buceo o simplemente relajarnos en la playa.",
+      "translation": "We can surf, take diving lessons, or just relax on the beach."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Me encantaría probar el buceo. ¿Necesitamos llevar algo especial?",
+      "translation": "I would love to try diving. Do we need to bring anything special?"
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Solo necesitas traje de baño y protector solar. El equipo de buceo lo proporciona la escuela.",
+      "translation": "You just need a swimsuit and sunscreen. The diving school provides the equipment."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker1",
+      "message": "Genial, también deberíamos probar la comida local. He oído que es deliciosa.",
+      "translation": "Great, we should also try the local food. I've heard it's delicious."
+    },
+    {
+      "type": "dialogue",
+      "speaker": "speaker2",
+      "message": "Definitivamente. Hay varios restaurantes de mariscos que quiero visitar.",
+      "translation": "Definitely. There are several seafood restaurants I want to visit."
+    }
+  ],
+  "tests": [
+    {
+      "prompt": "booked the hotel",
+      "answer": "reservaste el hotel",
+      "wordBank": [
+        "reservaste",
+        "el",
+        "hotel",
+        "cabaña",
+        "habitación"
+      ]
+    },
+    {
+      "prompt": "near the sea",
+      "answer": "cerca del mar",
+      "wordBank": [
+        "cerca",
+        "del",
+        "mar",
+        "playa",
+        "puerto"
+      ]
+    },
+    {
+      "prompt": "can surf",
+      "answer": "Podemos hacer surf",
+      "wordBank": [
+        "Podemos",
+        "hacer",
+        "surf",
+        "nadar",
+        "pescar"
+      ]
+    },
+    {
+      "prompt": "try diving",
+      "answer": "probar el buceo",
+      "wordBank": [
+        "probar",
+        "el",
+        "buceo",
+        "vuelo",
+        "salto"
+      ]
+    },
+    {
+      "prompt": "local food",
+      "answer": "la comida local",
+      "wordBank": [
+        "la",
+        "comida",
+        "local",
+        "internacional",
+        "rápida"
+      ]
+    }
+  ]
+}

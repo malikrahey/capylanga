@@ -6,6 +6,7 @@ import { SparklesIcon } from "react-native-heroicons/solid";
 import StoreTab from './home/StoreTab';
 import { FontAwesome, SimpleLineIcons } from '@expo/vector-icons';
 import useLanguage from '../hooks/useLanguage';
+import FarmTab from './home/FarmTab';
 
 
 
@@ -28,9 +29,6 @@ const HomeScreen = ({navigation}) => {
           let iconName;
 
           if (route.name === 'Lessons') {
-            // iconName = focused
-            //   ? 'book-open'
-            //   : 'ios-information-circle-outline';
             iconName = 'book-open'
           } else if (route.name === 'Store') {
             return <FontAwesome name="shopping-bag" size={size} color={color} />
@@ -44,6 +42,7 @@ const HomeScreen = ({navigation}) => {
       })}> 
       <Tab.Screen name="Lessons" component={LessonsTab} key={selectedLanguage}/>
       <Tab.Screen name="Store" component={StoreTab} />
+      <Tab.Screen name="Farm" component={FarmTab} />
     </Tab.Navigator>
     </>
   )
