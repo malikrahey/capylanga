@@ -6,7 +6,7 @@ import { SparklesIcon } from "react-native-heroicons/solid";
 import StoreTab from './home/StoreTab';
 import { FontAwesome, SimpleLineIcons } from '@expo/vector-icons';
 import useLanguage from '../hooks/useLanguage';
-import FarmTab from './home/FarmTab';
+//import FarmTab from './home/FarmTab';
 
 
 
@@ -42,7 +42,6 @@ const HomeScreen = ({navigation}) => {
       })}> 
       <Tab.Screen name="Lessons" component={LessonsTab} key={selectedLanguage}/>
       <Tab.Screen name="Store" component={StoreTab} />
-      <Tab.Screen name="Farm" component={FarmTab} />
     </Tab.Navigator>
     </>
   )

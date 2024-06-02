@@ -21,6 +21,7 @@ const LessonsTab = ({navigation}) => {
   const [lessons, setLessons] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [selectedBadge, setSelectedBadge] = useState(null);
   const menu = <SideMenuContent />
 
   useLayoutEffect(() => {
@@ -79,10 +80,14 @@ const LessonsTab = ({navigation}) => {
             }}>  
               <Text className='text-2xl font-bold m-2'>Module 1: Essentials</Text>
             
-              {lessons.map(lesson => lesson !== undefined ? (
+              {lessons.map((lesson, index) => lesson !== undefined ? (
                 
-                <View key={lesson.rootPath} className="items-center my-4"> 
-                  <LessonSelectBadge  {...lesson}/>
+                <View key={lesson.rootPath} className={`items-center my-4 ${selectedBadge === index ? 'mb-40' : ''}`}> 
+                  <LessonSelectBadge  
+                    {...lesson}
+                    onSelect={() => setSelectedBadge(index)}
+                    onDeselect={() => setSelectedBadge(null)}
+                  />
                 </View> 
               ) : null)}
             </ScrollView>
