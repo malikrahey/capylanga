@@ -11,7 +11,7 @@ import Header from '../../components/home/Header';
 import styles from '../../styles';
 import SideMenuContent from '../../components/home/SideMenuContent';
 import SideMenu from 'react-native-side-menu-updated';
-import * as lessonContent from '../../public/lessons/lessonContent.json'
+import * as lessonContent from '../../public/lessonContent.json'
 import { LanguageContext } from '../../providers/LanguageProvider';
 
 const LessonsTab = ({navigation}) => {
@@ -33,15 +33,10 @@ const LessonsTab = ({navigation}) => {
     })
   }, [])
 
-  console.log('rerender')
-  console.log(selectedLanguage)
-
   useEffect(() => {
     setLoading(true);
     try {
-      console.log('Use effect running > ', selectedLanguage);
       const manifest = lessonContent[selectedLanguage]['manifest'];
-      console.log(JSON.stringify(manifest));
       setLessons(manifest.lessonModules);
     } catch (error) {
       console.error('Error in useEffect:', error);

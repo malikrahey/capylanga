@@ -17,7 +17,7 @@ const ExplanationBubble = ({message}) => {
 
 const ConversationBubble = ({showTranslations, speaker, message, translation}) => {
 
-  const color = speaker === 'speaker1' ? 'blue-200' : 'red-200';
+  const color = speaker === 'speaker1' ? 'bg-blue-200' : 'bg-red-300';
   const justify = speaker === 'speaker1' ? 'self-start' : 'self-end';
   const face = speaker === 'speaker1' ? 'face' : 'face-2';
   const border = speaker === 'speaker1' ? 'border-blue-600' : 'border-red-600';
@@ -34,7 +34,7 @@ const ConversationBubble = ({showTranslations, speaker, message, translation}) =
   
   
   return (
-    <View className={`bg-${color} ${justify} rounded-lg m-1 p-4 w-[70%] ${border} border-2`}>
+    <View className={`${justify} ${color} rounded-lg m-1 p-4 w-[70%] ${border} border-2`}>
       <MaterialIcons name={`${face}`} size={24} color="black" />
       <Text className='text-lg font-semibold'>{message}</Text>
       {showTranslations && (

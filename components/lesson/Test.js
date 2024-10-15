@@ -2,6 +2,7 @@ import { Animated, View, Text, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Button, ProgressBar } from 'react-native-paper';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const WordBank = ({words, addSelectedWord, animatedValues}) => {
 
@@ -17,13 +18,13 @@ const WordBank = ({words, addSelectedWord, animatedValues}) => {
 
   useEffect(() => {
     setDisplayWords(shuffleArray(words));
-  }, [words])
+  }, [words]);
 
   return (
-    <View className='flex-row space-x-4 flex-wrap w-[60%] justify-center'>
+    <View className='flex-row flex-wrap justify-center'>
       {displayWords.map((word, index) => (
         <TouchableOpacity
-        className='bg-white p-1 rounded-lg shadow-md'
+        className='bg-white p-2 rounded-lg shadow-md m-2'
         key={word}
         onPress={() => addSelectedWord(word, index)}
         onLayout={(event) => {
@@ -32,7 +33,7 @@ const WordBank = ({words, addSelectedWord, animatedValues}) => {
           animatedValues[word].setValue({ x, y });
         }}
       >
-          <Text className='text-lg'>{word}</Text>  
+          <Text className='text-lg text-gray-800'>{word}</Text>  
         </TouchableOpacity>
       ))}
     </View>
@@ -42,16 +43,16 @@ const WordBank = ({words, addSelectedWord, animatedValues}) => {
 const Answer = ({selectedWords, removeSelectedWord, animatedValues}) => {
 
   return (
-    <View className='flex-row flex-wrap items-center'>
+    <View className='flex-row flex-wrap items-center justify-center'>
       {selectedWords.map((word, index) => (
         <Animated.View
-          key={word}
+          key={index}
           style={{
             transform: animatedValues[word].getTranslateTransform(),
           }}
         >
           <TouchableOpacity className='items-center' onPress={() => removeSelectedWord(index)}>   
-            <Text className='font-bold text-lg' > {word} </Text>
+            <Text className='font-bold text-lg text-gray-800' > {word} </Text>
           </TouchableOpacity>
         </Animated.View>
       ))}
@@ -93,7 +94,30 @@ const Test = ({test}) => {
     const newWords = [...selectedWords]
     newWords.splice(index, 1);
     setSelectedWords(newWords);
-  }
+  };
+
+  const addToTrainingBank= async () => {
+    try {
+      const trainingBank = await AsyncStorage.getItem('trainingBank');
+      if (!trainingBank) {
+          await AsyncStorage.setItem('trainingBank', JSON.stringify([test[step]]));
+        } else {
+
+          const parsedTrainingBank = JSON.parse(trainingBank);
+          parsedTrainingBank.forEach((item) => {
+            if (item.prompt === test[step].prompt) {
+              return;
+            }
+          });
+
+          parsedTrainingBank.push(test[step]);
+          await AsyncStorage.setItem('trainingBank', JSON.stringify(parsedTrainingBank));
+      }
+    }
+    catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleSubmit = () => {
     console.log(checkAnswer(selectedWords, test[step].answer))
@@ -116,6 +140,8 @@ const Test = ({test}) => {
 
 
   const handleNext = () => {
+    
+    addToTrainingBank();
     if (step >= test.length-1) {
       navigation.navigate("Home")
       return;
@@ -128,40 +154,43 @@ const Test = ({test}) => {
   
 
   return (
-    <View>
+    <View className='h-screen bg-gray-100'>
       <ProgressBar progress={step/test.length} />
-      <View className='items-center justify-evenly h-screen'>
-
+      <View className='flex-1 justify-center items-center p-4'>
       
-      <Text className="text-lg">{test[step].prompt}</Text>
+      <Text className="text-lg text-gray-800 mb-8">{test[step].prompt}</Text>
 
       <Answer selectedWords={selectedWords} removeSelectedWord={removeSelectedWord} animatedValues={animatedValues} />
 
+      <View className='h-16'></View>
+
       <WordBank words={test[step].wordBank} addSelectedWord={addSelectedWord} animatedValues={animatedValues}/>
 
+      <View className='h-16'></View>
+
       {!isCorrect && !isWrong && (
-        <TouchableOpacity className='bg-purple-300 p-4 px-16 mb-8 rounded-2xl items-center' onPress={handleSubmit}>
-          <Text className='text-xl'>Submit</Text>
+        <TouchableOpacity className='bg-purple-600 py-4 px-16 mb-8 rounded-full items-center' onPress={handleSubmit}>
+          <Text className='text-xl text-white font-bold'>Submit</Text>
         </TouchableOpacity>
       )}
       
 
       {isCorrect && (
-        <View className='bg-green-300 p-4 justify-center px-10 rounded-xl shadow-xl'>
-          <Text className='text-2xl text-center'>Correct</Text>
-          <Button onPress={handleNext}>
-            <Text className='text-lg'>Next</Text>
-          </Button>
+        <View className='bg-green-600 py-4 px-10 rounded-full shadow-xl'>
+          <Text className='text-2xl text-white text-center font-bold'>Correct</Text>
+          <TouchableOpacity className='bg-green-800 py-2 px-4 rounded-full items-center' onPress={handleNext}>
+            <Text className='text-lg text-white font-bold'>Next</Text>
+          </TouchableOpacity>
         </View>
       )}
 
       {isWrong && (
-        <View className='bg-red-300 p-4 justify-center rounded-xl'>
-          <Text className='text-2xl text-center'>Incorrect</Text>
-          <Text className='text-lg'>Answer: {test[step].answer}</Text>
-          <Button onPress={handleNext}>
-            <Text className='text-lg'>Next</Text>
-          </Button>
+        <View className='bg-red-600 py-4 px-10 rounded-full'>
+          <Text className='text-2xl text-white text-center font-bold'>Incorrect</Text>
+          <Text className='text-lg text-white'>Answer: {test[step].answer}</Text>
+          <TouchableOpacity className='bg-red-800 py-2 px-4 rounded-full items-center' onPress={handleNext}>
+            <Text className='text-lg text-white font-bold'>Next</Text>
+          </TouchableOpacity>
       </View>
       )}
     </View>

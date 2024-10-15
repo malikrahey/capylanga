@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, NativeModules } from 'react-native';
 import React, { createRef, useState } from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import * as lessonContent from '../../public/lessons/lessonContent.json';
+import * as lessonContent from '../../public/lessonContent.json';
 import useLanguage from '../../hooks/useLanguage';
 
 const LessonSelectBadge = ({ rootPath, onSelect, onDeselect }) => {
