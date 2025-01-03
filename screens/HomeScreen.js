@@ -9,6 +9,8 @@ import useLanguage from '../hooks/useLanguage';
 import FarmTab from './home/FarmTab';
 import ConversationsTab from './home/ConversationsTab';
 import TrainingTab from './home/TrainingTab';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 const HomeScreen = ({navigation}) => {
 
@@ -34,8 +36,11 @@ const HomeScreen = ({navigation}) => {
             return <FontAwesome name="shopping-bag" size={size} color={color} />
           } else if (route.name === 'Conversations') {
             return <SimpleLineIcons name="bubble" color={color} size={size} />;
+          } else if (route.name === 'Farm') {
+            return <MaterialIcons name="house" size={24} color="black" />;
+          } else if (route.name === 'Training') {
+            return <MaterialIcons name="on-device-training" size={24} color="black" />;
           }
-
           // You can return any component that you like here!
           return <SimpleLineIcons name="book-open" color={color} size={size} />;
         },
@@ -45,7 +50,7 @@ const HomeScreen = ({navigation}) => {
       <Tab.Screen name="Lessons" component={LessonsTab} key={selectedLanguage}/>
       <Tab.Screen name="Store" component={StoreTab} />
       <Tab.Screen name="Farm" component={FarmTab} />
-      <Tab.Screen name="Conversations" component={ConversationsTab} />
+      {/* <Tab.Screen name="Conversations" component={ConversationsTab} /> */}
       <Tab.Screen name="Training" component={TrainingTab} />
     </Tab.Navigator>
     </>

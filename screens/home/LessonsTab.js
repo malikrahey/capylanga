@@ -69,15 +69,15 @@ const LessonsTab = ({navigation}) => {
           
             <Header setIsMenuOpen={setIsMenuOpen} />
 
-            <ScrollView className='w-full' contentContainerStyle={{
+            <ScrollView className='w-full p-4' contentContainerStyle={{
               alignContent: 'center',
               justifyContent: 'center'
             }}>  
-              <Text className='text-2xl font-bold m-2'>Module 1: Essentials</Text>
+              <Text className='text-2xl font-bold'>Module 1: Essentials</Text>
             
               {lessons.map((lesson, index) => lesson !== undefined ? (
                 
-                <View key={lesson.rootPath} className={`items-center my-4 ${selectedBadge === index ? 'mb-40' : ''}`}> 
+                <View key={lesson.rootPath} className={`items-center my-4 ${selectedBadge === index ? '' : ''}`}> 
                   <LessonSelectBadge  
                     {...lesson}
                     onSelect={() => setSelectedBadge(index)}

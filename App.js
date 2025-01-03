@@ -21,7 +21,7 @@ export default function App() {
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Lesson" component={LessonScreen} />
           <Stack.Screen name="AIConversation" component={AIConversationScreen} />
-          <Stack.Screen name="Training" component={TrainingScreen} />
+          <Stack.Screen name="TrainingScreen" component={TrainingScreen} />
         </Stack.Navigator>
       </LanguageProvider>
     </NavigationContainer>

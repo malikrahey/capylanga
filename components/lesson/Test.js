@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Button, ProgressBar } from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import RaisedButton from '../ui/RaisedButton';
 
 const WordBank = ({words, addSelectedWord, animatedValues}) => {
 
@@ -24,7 +25,7 @@ const WordBank = ({words, addSelectedWord, animatedValues}) => {
     <View className='flex-row flex-wrap justify-center'>
       {displayWords.map((word, index) => (
         <TouchableOpacity
-        className='bg-white p-2 rounded-lg shadow-md m-2'
+        className='bg-white p-2 rounded-lg shadow-md m-2 border border-b-4 '
         key={word}
         onPress={() => addSelectedWord(word, index)}
         onLayout={(event) => {
@@ -60,7 +61,7 @@ const Answer = ({selectedWords, removeSelectedWord, animatedValues}) => {
   )
 }
 
-const Test = ({test}) => {
+const Test = ({test, isTraining = false}) => {
 
   const [step, setStep] = useState(0);
   const [answer, setAnswer] = useState('');
@@ -97,6 +98,8 @@ const Test = ({test}) => {
   };
 
   const addToTrainingBank= async () => {
+    if (isTraining) return;
+
     try {
       const trainingBank = await AsyncStorage.getItem('trainingBank');
       if (!trainingBank) {
@@ -126,12 +129,12 @@ const Test = ({test}) => {
   const checkAnswer = (selectedWordList, answer) => {
     // Combine the array into a single string separated by spaces
     const combined = selectedWordList.join(' ');
-    console.log(combined)
+    const cleanCombined = combined.replace(/[^a-z\u00E0-\u00FF\s]/gi, '');
     // Remove all punctuation and symbols other than letters and accented characters
     const cleanStr = answer.replace(/[^a-z\u00E0-\u00FF\s]/gi, '');
     console.log(cleanStr)
     // Compare the combined string to the cleaned string
-    if (combined === cleanStr) {
+    if (cleanCombined === cleanStr) {
       setIsCorrect(true);
     } else {
       setIsWrong(true);
@@ -169,9 +172,9 @@ const Test = ({test}) => {
       <View className='h-16'></View>
 
       {!isCorrect && !isWrong && (
-        <TouchableOpacity className='bg-purple-600 py-4 px-16 mb-8 rounded-full items-center' onPress={handleSubmit}>
-          <Text className='text-xl text-white font-bold'>Submit</Text>
-        </TouchableOpacity>
+        <RaisedButton onPress={handleSubmit} variant="continue" buttonStyles="flex w-32 h-12 items-center">
+          <Text className='m-auto justify-center text-xl font-bold'>Submit</Text>
+        </RaisedButton>
       )}
       
 

@@ -6,6 +6,7 @@ import useLanguage from '../hooks/useLanguage';
 import { Button } from 'react-native-paper';
 import { getLesson } from '../api/lessons';
 import * as lessonContent from "../public/lessonContent.json"
+import RaisedButton from '../components/ui/RaisedButton';
 
 const LessonScreen = ({ route, navigation, lessonPath }) => {
   const { selectedLanguage } = useLanguage();
@@ -49,13 +50,16 @@ const LessonScreen = ({ route, navigation, lessonPath }) => {
   }
 
   return (
-    <View className=''>
+    <View className='p-4'>
       {currentStage === 'introduction' ? (
-        <View>
-          <Text className='text-lg m-2'>{intro}</Text>
-          <Button onPress={() => setCurrentStage('story')}>
+        <View className='flex flex-col h-full p-4 justify-between'>
+          <View className='p-2 bg-white border shadow-md rounded-lg'>
+            <Text className='text-lg m-2'>{intro}</Text>
+          </View>
+          
+          <RaisedButton variant="continue" buttonStyles="p-4" onPress={() => setCurrentStage('story')}>
             <Text>Continue</Text>
-          </Button>
+          </RaisedButton>
         </View>
       ) : currentStage === 'story' ? (
         <View>

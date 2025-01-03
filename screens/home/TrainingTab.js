@@ -3,7 +3,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, { useEffect, useState, useLayoutEffect } from 'react'
 import { ActivityIndicator, Text, View } from 'react-native';
 import { PlayIcon } from 'react-native-heroicons/solid';
-import { Button } from 'react-native-paper';
+import RaisedButton from '../../components/ui/RaisedButton';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 const TrainingTab = ({navigation}) => {
   
@@ -14,9 +15,6 @@ const TrainingTab = ({navigation}) => {
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,
-      tabBarIcon: ({ color, size }) => (
-        <SimpleLineIcons name="book-open" color={color} size={size} />
-      )
     })
   }, []);
 
@@ -27,7 +25,6 @@ const TrainingTab = ({navigation}) => {
         if (trainingBank) {
           setTrainingBank(JSON.parse(trainingBank));
         }
-        console.log("trainingBank", trainingBank);
       } catch (error) {
         console.error(error); 
       } finally {
@@ -52,7 +49,7 @@ const TrainingTab = ({navigation}) => {
       sessionCards.push(card);
     }
 
-    navigation.navigate("Training", {sessionCards});
+    navigation.navigate("TrainingScreen", {sessionCards});
   };
 
   return (
@@ -64,11 +61,12 @@ const TrainingTab = ({navigation}) => {
           {trainingBank.length === 0 ? (
             <Text className='text-2xl font-bold m-2'>No Training Bank, complete some lessons to build you training library</Text>
           ) : (
-            <View>
-              <Button onPress={handleStartTraining}>
-                <PlayIcon size={24} color='black' />
-              </Button>
-              <Text>You have {trainingBank.length} training cards</Text>
+            <View className="flex flex-col p-4">
+              <RaisedButton onPress={handleStartTraining} buttonStyles={"flex flex-col justify-evenly bg-white p-8 mb-4"}>
+                <MaterialCommunityIcons name="weight-lifter" size={48} color="black" />
+                <Text>Start Training</Text>
+              </RaisedButton>
+              <Text className="text-lg">You have {trainingBank.length} training cards</Text>
             </View>
           )}
         </>

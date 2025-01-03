@@ -4,6 +4,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { Checkbox, ProgressBar } from 'react-native-paper';
 import * as Speech from 'expo-speech';
 import useLanguage from '../../hooks/useLanguage';
+import RaisedButton from '../ui/RaisedButton';
 
 const ExplanationBubble = ({message}) => {
 
@@ -85,9 +86,9 @@ const Conversation = ({lesson, advanceStage}) => {
        }}
       >
         {renderedContent}
-        <TouchableOpacity className='items-center mb-5' onPress={handleNext}>
-          <Text className='text-lg'>Continue</Text>
-        </TouchableOpacity>
+        <RaisedButton variant={'continue'} buttonStyles="p-4" onPress={handleNext}>
+          <Text>Next</Text>
+        </RaisedButton>
       </ScrollView>
     </View>
   );

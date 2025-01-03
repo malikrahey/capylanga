@@ -1,14 +1,23 @@
-import React, {useState} from 'react'
+import React, {useLayoutEffect, useState} from 'react'
 import Test from '../components/lesson/Test';
+import { useNavigation } from '@react-navigation/native';
+import { View } from 'react-native';
 
-const TrainingScreen = ({navigation}) => {
-  const {sessionCards} = navigation.getParam('sessionCards');
+const TrainingScreen = ({route}) => {
+  const navigation = useNavigation();
+  const {sessionCards} = route.params;
   const [index, setIndex] = useState(0);
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      title: ''
+  })
+  }, [])
 
 
   return (
     <View>
-      <Test test={sessionCards} />
+      <Test test={sessionCards} isTraining={true} />
     </View>
   )
 }

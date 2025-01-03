@@ -4,6 +4,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import * as lessonContent from '../../public/lessonContent.json';
 import useLanguage from '../../hooks/useLanguage';
+import RaisedButton from '../ui/RaisedButton';
 
 const LessonSelectBadge = ({ rootPath, onSelect, onDeselect }) => {
   const navigation = useNavigation();
@@ -39,36 +40,33 @@ const LessonSelectBadge = ({ rootPath, onSelect, onDeselect }) => {
   }
 
   return (
-    <View className={`relative ${isSelected ? 'my-12' : ''}`} ref={ref}>
-      <TouchableOpacity
-        className={`${isSelected ? 'rounded-full' : 'rounded-full border-b-2'} shadow-xl items-center bg-blue-200 p-5 border-blue-600 border-t-2 border-x-2 `}
-        onPress={handlePress}
-      >
-        <MaterialIcons name={icon} size={42} color='black' />
-      </TouchableOpacity>
-      {isSelected && lessons && (
-  <View
-    className='bg-blue-200 rounded-md shadow-2xl p-4 absolute -left-8 top-24 w-48'
-  >
-    <View
-      className='bg-blue-200 h-3 w-3 absolute -top-2 left-1/2 -translate-x-1/2 rotate-45'
-    />
-    <Text className={`text-lg font-bold ${isSelected ? '' : 'text-blue-200'}`}>{rootPath}</Text>
-    <View className='flex-row space-x-2 p-3'>
-      {lessons.map((lesson) => (
+    <View className="flex items-center" ref={ref}>
+      <View className="flex w-32 justify-center h-32">
         <TouchableOpacity
-          className='items-center border shadow-md rounded-md bg-blue-100'
-          key={`${rootPath} ${lesson}`}
-          onPress={() => handleSelect(lesson)}
+          className="rounded-xl border border-b-4 shadow-xl items-center bg-blue-400 p-4 border-blue-600 "
+          onPress={handlePress}
         >
-          <Text className='text-lg m-2'>{lesson}</Text>
+          <MaterialIcons name={icon} size={42} color="black" />
         </TouchableOpacity>
-      ))}
-    </View>
-  </View>
-)}
+      </View>
+      {isSelected && lessons && (
+        <View
+          className="relative justify-center flex bg-blue-400 rounded-md shadow-2xl p-4 w-48 border border-b-4 border-blue-600"
+        >
+          <View className="bg-blue-400 h-3 w-3 absolute -top-2 left-1/2 -translate-x-1/2 rotate-45 border-2 border-b-0 border-r-0 border-blue-600" />
+          <Text className={`text-lg font-bold ${isSelected ? "" : "text-blue-200"}`}>{rootPath}</Text>
+          <View className="flex-row flex justify-evenly space-x-2 p-3">
+            {lessons.map((lesson) => (
+              <RaisedButton key={`${rootPath} ${lesson}`} onPress={() => handleSelect(lesson)}>
+                <Text className="text-lg m-2">{lesson}</Text>
+              </RaisedButton>
+            ))}
+          </View>
+        </View>
+      )}
     </View>
   );
 };
+
 
 export default LessonSelectBadge;
