@@ -13,6 +13,7 @@ import SideMenuContent from '../../components/home/SideMenuContent';
 import SideMenu from 'react-native-side-menu-updated';
 import * as lessonContent from '../../public/lessonContent.json'
 import { LanguageContext } from '../../providers/LanguageProvider';
+import RaisedButton from '../../components/ui/RaisedButton';
 
 const LessonsTab = ({navigation}) => {
 
@@ -85,6 +86,10 @@ const LessonsTab = ({navigation}) => {
                   />
                 </View> 
               ) : null)}
+
+              <RaisedButton variant={'continue'} buttonStyles="p-4" onPress={() => navigation.navigate('Lesson')}>
+                <Text>Lesson On Demand</Text>
+              </RaisedButton>
             </ScrollView>
           </>
         )}
