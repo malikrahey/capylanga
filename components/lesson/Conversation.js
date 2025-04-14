@@ -9,7 +9,7 @@ import RaisedButton from '../ui/RaisedButton';
 const ExplanationBubble = ({message}) => {
 
   return (
-    <View className={`justify-center bg-purple-300 rounded-lg m-1 p-4 w-[80%]`}>
+    <View className={`justify-center bg-purple-300 rounded-lg m-1 p-4 w-[80%] shadow-md`}>
       <MaterialIcons name="star-rate" size={24} color="black" />
       <Text className='text-lg font-semibold'>{message}</Text>
     </View>
@@ -35,7 +35,7 @@ const ConversationBubble = ({showTranslations, speaker, message, translation}) =
   
   
   return (
-    <View className={`${justify} ${color} rounded-lg m-1 p-4 w-[70%] ${border} border-2`}>
+    <View className={`${justify} ${color} rounded-lg m-1 p-4 w-[70%] ${border} border-2 shadow-md`}>
       <MaterialIcons name={`${face}`} size={24} color="black" />
       <Text className='text-lg font-semibold'>{message}</Text>
       {showTranslations && (
@@ -67,14 +67,14 @@ const Conversation = ({lesson, advanceStage}) => {
   });
 
   return (
-    <View>
-      <ProgressBar progress={currentStep/lesson.length} />
-      <View className='flex-row items-center ml-2'>
-        <Text className='text-lg'>Show Translations: </Text>
+    <View className='bg-gray-50 p-4 rounded-lg'>
+      <ProgressBar progress={currentStep/lesson.length} color="#6366f1" />
+      <View className='flex-row items-center ml-2 mb-4'>
+        <Text className='text-lg font-medium'>Show Translations: </Text>
         <Checkbox
-          size={10}
           status={showTranslations ? 'checked' : 'unchecked'}
           onPress={() => setShowTranslations(!showTranslations)}
+          color="#6366f1"
         />
       </View>
       
@@ -86,8 +86,8 @@ const Conversation = ({lesson, advanceStage}) => {
        }}
       >
         {renderedContent}
-        <RaisedButton variant={'continue'} buttonStyles="p-4" onPress={handleNext}>
-          <Text>Next</Text>
+        <RaisedButton variant={'continue'} buttonStyles="p-4 mt-4" onPress={handleNext}>
+          <Text className='text-white font-bold'>Next</Text>
         </RaisedButton>
       </ScrollView>
     </View>
