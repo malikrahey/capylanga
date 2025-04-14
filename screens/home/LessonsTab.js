@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, ScrollView, SafeAreaView, Animated } from 'react-native'
+import { View, Text, TouchableOpacity, ScrollView, SafeAreaView, Animated, Dimensions } from 'react-native'
 import React, { lazy, useContext, useEffect, useLayoutEffect, useMemo, useState } from 'react'
 import useLanguage from '../../hooks/useLanguage'
 import { SimpleLineIcons } from '@expo/vector-icons';
@@ -13,6 +13,8 @@ import SideMenuContent from '../../components/home/SideMenuContent';
 import SideMenu from 'react-native-side-menu-updated';
 import * as lessonContent from '../../public/lessonContent.json'
 import { LanguageContext } from '../../providers/LanguageProvider';
+
+const { width } = Dimensions.get('window');
 
 const LessonsTab = ({navigation}) => {
 
@@ -77,7 +79,12 @@ const LessonsTab = ({navigation}) => {
             
               {lessons.map((lesson, index) => lesson !== undefined ? (
                 
-                <View key={lesson.rootPath} className={`items-center my-4 ${selectedBadge === index ? '' : ''}`}> 
+                <View key={lesson.rootPath} style={{
+                  alignItems: 'center',
+                  marginVertical: 20,
+                  marginLeft: index % 2 === 0 ? 0 : width * 0.2,
+                  marginRight: index % 2 === 0 ? width * 0.2 : 0
+                }}> 
                   <LessonSelectBadge  
                     {...lesson}
                     onSelect={() => setSelectedBadge(index)}
