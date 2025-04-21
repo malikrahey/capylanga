@@ -52,7 +52,7 @@ const SideMenuContent = () => {
   }, [])
 
   return (
-    <SafeAreaView className='bg-white p-4 border-gray-400 z-10' style={styles.AndroidSafeArea}>
+    <SafeAreaView className='bg-white p-4 border-gray-400 z-10' style={[styles.AndroidSafeArea, {height: '100%'}]}>
       <Text className='text-2xl font-bold m-2'>Select Language:</Text>
       
       <View className='space-y-4'>
