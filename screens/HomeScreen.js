@@ -24,7 +24,7 @@ const HomeScreen = ({navigation}) => {
 
 
   return (
-    <>
+    <View style={{flex: 1}}>
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
@@ -53,7 +53,7 @@ const HomeScreen = ({navigation}) => {
       {/* <Tab.Screen name="Conversations" component={ConversationsTab} /> */}
       <Tab.Screen name="Training" component={TrainingTab} />
     </Tab.Navigator>
-    </>
+    </View>
   )
 }
 
