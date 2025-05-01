@@ -1,9 +1,22 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./App.{js,jsx,ts,tsx}", "./screens/**/*.{js,jsx,ts,tsx}", "./screens/home/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}", "./screens/*.{js,jsx,ts,tsx}"],
+  purge: [],
+  darkMode: false, // or 'media' or 'class'
   theme: {
+    extend: {
+      colors: {
+        primary: '#4f46e5',
+        secondary: '#f59e0b',
+        background: '#f5f5f5',
+        text: '#333',
+        textSecondary: '#666',
+      },
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+      },
+    },
+  },
+  variants: {
     extend: {},
   },
   plugins: [],
-}
-
+};
