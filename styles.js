@@ -1,12 +1,17 @@
-import { StyleSheet, Platform, StatusBar } from 'react-native'
-import { DefaultTheme } from 'react-native-paper';
+import { StyleSheet } from 'react-native';
 
-const styles = StyleSheet.create({
-  AndroidSafeArea: {
+export const globalStyles = StyleSheet.create({
+  container: {
     flex: 1,
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
-  }
+    backgroundColor: '#f5f5f5',
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#333',
+  },
+  description: {
+    fontSize: 16,
+    color: '#666',
+  },
 });
-
-
-export default styles;
