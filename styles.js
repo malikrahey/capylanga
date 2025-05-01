@@ -1,12 +1,14 @@
-import { StyleSheet, Platform, StatusBar } from 'react-native'
-import { DefaultTheme } from 'react-native-paper';
+import { StyleSheet } from 'react-native';
 
-const styles = StyleSheet.create({
-  AndroidSafeArea: {
-    flex: 1,
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
-  }
+export const styles = StyleSheet.create({
+  shadow: {
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
 });
-
-
-export default styles;
