@@ -1,18 +1,10 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { View, Text } from 'react-native';
 
-export const Card = ({cardStyle, children}) => {
+export const Card = ({ children, style }) => {
   return (
-    <View className={`bg-white p-4 rounded-lg shadow-md ${cardStyle}`}>
-      {children}
-    </View>
-  )
-}
-
-export const CardHeader = ({styles, children}) => {
-  return (
-    <View className={`flex flex-row items-center p-2 text-xl font-bold ${styles}`}>
+    <View className={`p-4 bg-white rounded-lg shadow-md ${style}`}>
       {children}
     </View>
   );
-}
+};
