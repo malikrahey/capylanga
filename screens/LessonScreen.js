@@ -1,77 +1,27 @@
-import { View, Text, TouchableOpacity } from 'react-native';
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React from 'react';
+import { View, Text, ScrollView } from 'react-native';
 import Conversation from '../components/lesson/Conversation';
 import Test from '../components/lesson/Test';
-import useLanguage from '../hooks/useLanguage';
-import { Button } from 'react-native-paper';
-import { getLesson } from '../api/lessons';
-import * as lessonContent from "../public/lessonContent.json"
-import RaisedButton from '../components/ui/RaisedButton';
 
-const LessonScreen = ({ route, navigation, lessonPath }) => {
-  const { selectedLanguage } = useLanguage();
-  const { rootPath, lessonIndex } = route.params;
-  const [lesson, setLesson] = useState([]);
-  const [intro, setIntro] = useState('');
-  const [title, setTitle] = useState('');
-  const [lessonType, setLessonType] = useState(null);
-  const [test, setTest] = useState([]);
-  const [currentStage, setCurrentStage] = useState('introduction');
-  const [shouldShowTranslation, setShouldShowTranslation] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        console.log(lessonContent)
-        // const lessonData = await getLesson(selectedLanguage, rootPath, lessonIndex);
-        const lessonData = lessonContent[selectedLanguage][rootPath][lessonIndex]["lesson"]
-
-        setLessonType(lessonData.type);
-        setLesson(lessonData.story);
-        setTest(lessonData.tests);
-        setIntro(lessonData.introduction);
-        setTitle(lessonData.title);
-      } catch (e) {
-        console.error(e);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      title: title
-    })
-  }, [title])
-
-  const advanceStage = () => {
-    setCurrentStage('test');
-  }
-
+export default function LessonScreen({ route }) {
+  const { lesson } = route.params;
+  
   return (
-    <View className='p-4'>
-      {currentStage === 'introduction' ? (
-        <View className='flex flex-col h-full p-4 justify-between'>
-          <View className='p-2 bg-white border shadow-md rounded-lg'>
-            <Text className='text-lg m-2'>{intro}</Text>
-          </View>
-          
-          <RaisedButton variant="continue" buttonStyles="p-4" onPress={() => setCurrentStage('story')}>
-            <Text>Continue</Text>
-          </RaisedButton>
-        </View>
-      ) : currentStage === 'story' ? (
-        <View>
-          <Conversation lesson={lesson} advanceStage={advanceStage} />
-        </View>
-      ) : (
-          <Test test={test}/>
-      )
-      }
+    <ScrollView className="flex-1 bg-gray-100 p-4">
+      <View className="mb-6 bg-white p-5 rounded-xl shadow-lg">
+        <Text className="text-2xl font-bold text-gray-800 mb-2">{lesson.title}</Text>
+        <Text className="text-gray-600 mb-4">{lesson.description}</Text>
+      </View>
       
-    </View>
-  )
+      <View className="mb-6">
+        <Text className="text-xl font-semibold text-gray-700 mb-3">Conversation</Text>
+        <Conversation messages={lesson.conversation} />
+      </View>
+      
+      <View className="mb-6">
+        <Text className="text-xl font-semibold text-gray-700 mb-3">Test Your Knowledge</Text>
+        <Test questions={lesson.questions} onAnswer={() => {}} />
+      </View>
+    </ScrollView>
+  );
 }
-
-export default LessonScreen
