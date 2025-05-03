@@ -1,19 +1,17 @@
-import { View, Text, TouchableOpacity } from 'react-native'
-import React from 'react'
-import CountryFlag from 'react-native-country-flag'
-import useLanguage from '../../hooks/useLanguage'
+import React from 'react';
+import { View, Text, TouchableOpacity } from 'react-native';
+import { useLanguage } from '../../hooks/useLanguage';
 
-const Header = ({setIsMenuOpen}) => {
-
-  const {selectedLanguage} = useLanguage();
+export const Header = ({ title, onMenuPress }) => {
+  const { t } = useLanguage();
 
   return (
-    <View className='w-full bg-white flex-row h-16 align-middle'>
-      <TouchableOpacity className='items-center justify-center' onPress={() => setIsMenuOpen(true)}>
-        <CountryFlag className='rounded-lg justify-center self-center mx-4' isoCode={selectedLanguage.toLowerCase()} size={40} />
+    <View className="flex-row items-center justify-between p-4 bg-blue-500">
+      <TouchableOpacity onPress={onMenuPress}>
+        <Text className="text-white text-xl">☰</Text>
       </TouchableOpacity>
+      <Text className="text-white text-xl font-bold">{t(title)}</Text>
+      <View className="w-8" />
     </View>
-  )
-}
-
-export default Header
+  );
+};
