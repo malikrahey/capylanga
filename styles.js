@@ -1,12 +1,5 @@
-import { StyleSheet, Platform, StatusBar } from 'react-native'
-import { DefaultTheme } from 'react-native-paper';
+import { StyleSheet } from 'react-native';
 
-const styles = StyleSheet.create({
-  AndroidSafeArea: {
-    flex: 1,
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0
-  }
+export default StyleSheet.create({
+  // This file is intentionally left empty to ensure all styles are defined using Tailwind CSS
 });
-
-
-export default styles;
