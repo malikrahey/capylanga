@@ -1,9 +1,15 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./App.{js,jsx,ts,tsx}", "./screens/**/*.{js,jsx,ts,tsx}", "./screens/home/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}", "./screens/*.{js,jsx,ts,tsx}"],
+  content: ['./App.js', './screens/**/*.js', './components/**/*.js'],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'gray-800': '#1f2937',
+        'gray-700': '#374151',
+        'gray-100': '#f3f4f6',
+        'blue-500': '#3b82f6',
+        'blue-100': '#dbeafe',
+      },
+    },
   },
   plugins: [],
-}
-
+};
