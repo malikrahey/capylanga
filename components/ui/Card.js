@@ -1,18 +1,12 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { View, TouchableOpacity } from 'react-native';
 
-export const Card = ({cardStyle, children}) => {
+export default function Card({ children, className = '', ...props }) {
   return (
-    <View className={`bg-white p-4 rounded-lg shadow-md ${cardStyle}`}>
-      {children}
-    </View>
-  )
-}
-
-export const CardHeader = ({styles, children}) => {
-  return (
-    <View className={`flex flex-row items-center p-2 text-xl font-bold ${styles}`}>
-      {children}
-    </View>
+    <TouchableOpacity activeOpacity={0.8} {...props}>
+      <View className={`bg-white rounded-lg shadow-md p-4 ${className}`}>
+        {children}
+      </View>
+    </TouchableOpacity>
   );
 }
