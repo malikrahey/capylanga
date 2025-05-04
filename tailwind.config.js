@@ -1,9 +1,16 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./App.{js,jsx,ts,tsx}", "./screens/**/*.{js,jsx,ts,tsx}", "./screens/home/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}", "./screens/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: '#1a365d',
+        secondary: '#2d3748',
+        background: '#f8f9fa',
+        card: '#ffffff',
+        text: '#2d3748',
+        button: '#4299e1',
+      },
+    },
   },
+  variants: {},
   plugins: [],
-}
-
+};
