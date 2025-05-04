@@ -1,29 +1,12 @@
-import { View, Text, TouchableOpacity } from 'react-native'
-import React from 'react'
-import { Button } from 'react-native-paper'
+import { TouchableOpacity, Text } from 'react-native';
 
-const variants = {
-  "default": "bg-blue-200",
-  "continue": "bg-purple-200",
-  "primary": "bg-blue-200",
-  "secondary": "bg-blue-200",
-  "tertiary": "bg-blue-200",
-  "destructive": "bg-red-200",
-  "buy": "bg-green-200",
-}
-
-const RaisedButton = ({onPress, variant, children, buttonStyles}) => {
-
-  const variantClass = variants[variant] || variants["default"];
-
+export default function RaisedButton({ title, onPress }) {
   return (
-    <TouchableOpacity
-      className={`items-center flex border border-b-4 shadow-md rounded-lg font-bold ${variantClass} ${buttonStyles}`}
+    <TouchableOpacity 
+      className="bg-blue-500 px-4 py-2 rounded-full shadow-md"
       onPress={onPress}
     >
-      {children}
+      <Text className="text-white font-bold text-center">{title}</Text>
     </TouchableOpacity>
-  )
+  );
 }
-
-export default RaisedButton
