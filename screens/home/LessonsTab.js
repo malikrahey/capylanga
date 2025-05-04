@@ -1,97 +1,31 @@
-import { View, Text, TouchableOpacity, ScrollView, SafeAreaView, Animated } from 'react-native'
-import React, { lazy, useContext, useEffect, useLayoutEffect, useMemo, useState } from 'react'
-import useLanguage from '../../hooks/useLanguage'
-import { SimpleLineIcons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import React from 'react';
+import { View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { useLanguage } from '../../hooks/useLanguage';
 import LessonSelectBadge from '../../components/home/LessonSelectBadge';
-import * as manifest from '../../public/lessons/es/manifest.json'
-import { ActivityIndicator } from 'react-native-paper';
-import CountryFlag from 'react-native-country-flag';
-import Header from '../../components/home/Header';
-import styles from '../../styles';
-import SideMenuContent from '../../components/home/SideMenuContent';
-import SideMenu from 'react-native-side-menu-updated';
-import * as lessonContent from '../../public/lessonContent.json'
-import { LanguageContext } from '../../providers/LanguageProvider';
+import Card from '../../components/ui/Card';
 
-const LessonsTab = ({navigation}) => {
+export default function LessonsTab() {
+  const { t } = useLanguage();
 
-  const {selectedLanguage} = useLanguage();
-
-  const [lessons, setLessons] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [selectedBadge, setSelectedBadge] = useState(null);
-  const menu = <SideMenuContent />
-
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerShown: false,
-      tabBarIcon: ({ color, size }) => (
-        <SimpleLineIcons name="book-open" color={color} size={size} />
-      )
-    })
-  }, [])
-
-  useEffect(() => {
-    setLoading(true);
-    try {
-      const manifest = lessonContent[selectedLanguage]['manifest'];
-      setLessons(manifest.lessonModules);
-    } catch (error) {
-      console.error('Error in useEffect:', error);
-    } finally {
-      setLoading(false);
-    }
-  });
-
-  const animationFunction = (prop, value) =>
-  Animated.spring(prop, {
-    toValue: value,
-    friction: 8,
-    useNativeDriver: true,
-  })
-  
   return (
-    <SideMenu
-      menu={menu}
-      isOpen={isMenuOpen}
-      onChange={setIsMenuOpen}
-      menuPosition='left'
-      animationFunction={animationFunction}
-      
-    >
-      <SafeAreaView style={styles.AndroidSafeArea} className='items-center h-full justify-center w-full bg-neutral-100'>
-        {loading ? (
-          <ActivityIndicator />
-        ) : (
-          <>
-          
-            <Header setIsMenuOpen={setIsMenuOpen} />
-
-            <ScrollView className='w-full p-4' contentContainerStyle={{
-              alignContent: 'center',
-              justifyContent: 'center'
-            }}>  
-              <Text className='text-2xl font-bold'>Module 1: Essentials</Text>
-            
-              {lessons.map((lesson, index) => lesson !== undefined ? (
-                
-                <View key={lesson.rootPath} className={`items-center my-4 ${selectedBadge === index ? '' : ''}`}> 
-                  <LessonSelectBadge  
-                    {...lesson}
-                    onSelect={() => setSelectedBadge(index)}
-                    onDeselect={() => setSelectedBadge(null)}
-                  />
-                </View> 
-              ) : null)}
-            </ScrollView>
-          </>
-        )}
-        
-      </SafeAreaView>
-    </SideMenu>
-  )
+    <View className="flex-1 bg-gray-100">
+      <ScrollView className="p-4">
+        <Text className="text-2xl font-bold text-gray-800 mb-4">{t('lessons')}</Text>
+        <Card className="mb-4">
+          <Text className="text-lg font-semibold text-gray-700 mb-2">{t('beginner')}</Text>
+          <View className="flex-row flex-wrap">
+            <LessonSelectBadge title={t('introductions')} level="1.0" />
+            <LessonSelectBadge title={t('ordering_food')} level="1.1" />
+          </View>
+        </Card>
+        <Card className="mb-4">
+          <Text className="text-lg font-semibold text-gray-700 mb-2">{t('intermediate')}</Text>
+          <View className="flex-row flex-wrap">
+            <LessonSelectBadge title={t('asking_for_help')} level="2.0" />
+            <LessonSelectBadge title={t('making_connections')} level="2.1" />
+          </View>
+        </Card>
+      </ScrollView>
+    </View>
+  );
 }
-
-export default LessonsTab
