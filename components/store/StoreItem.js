@@ -1,26 +1,14 @@
-import { View, Text, Image } from 'react-native'
-import React from 'react'
-import { Card, CardHeader } from '../ui/Card'
-import RaisedButton from '../ui/RaisedButton'
+import { View, Text, TouchableOpacity, Image } from 'react-native';
 
-const StoreItem = ({
-  name,
-  price,
-  image,
-}) => {
+export default function StoreItem({ item }) {
   return (
-    <Card cardStyle="w-64 items-center justify-between space-y-4">
-          <CardHeader styles="flex-col">
-            <Text className='text-2xl font-bold'>{name}</Text>
-            <Text className='text-md font-bold'>{price} Coins</Text>
-          </CardHeader>
-
-          <Image source={image} className='w-32 h-32' />
-          <RaisedButton buttonStyles={"w-16 h-8"} variant="buy" onPress={() => {}}>
-            <Text className='text-lg font-bold'>Buy</Text>
-          </RaisedButton>
-    </Card>
-  )
+    <View className="bg-white p-4 rounded-lg shadow-sm mb-4">
+      <Image source={{ uri: item.image }} className="w-full h-40 rounded-lg mb-2" />
+      <Text className="text-lg font-bold text-gray-800">{item.name}</Text>
+      <Text className="text-gray-600 mb-2">{item.description}</Text>
+      <TouchableOpacity className="bg-green-500 px-4 py-2 rounded-full">
+        <Text className="text-white font-bold text-center">Buy for {item.price}</Text>
+      </TouchableOpacity>
+    </View>
+  );
 }
-
-export default StoreItem
