@@ -14,6 +14,8 @@ import SideMenu from 'react-native-side-menu-updated';
 import * as lessonContent from '../../public/lessonContent.json'
 import { LanguageContext } from '../../providers/LanguageProvider';
 import RaisedButton from '../../components/ui/RaisedButton';
+import DrawerSideMenu from '../../components/home/DrawerSideMenu';
+import { Drawer } from 'react-native-drawer-layout';
 
 const LessonsTab = ({navigation}) => {
 
@@ -23,7 +25,6 @@ const LessonsTab = ({navigation}) => {
   const [loading, setLoading] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedBadge, setSelectedBadge] = useState(null);
-  const menu = <SideMenuContent />
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -44,30 +45,27 @@ const LessonsTab = ({navigation}) => {
     } finally {
       setLoading(false);
     }
-  });
+  }, [selectedLanguage]);
 
   const animationFunction = (prop, value) =>
   Animated.spring(prop, {
     toValue: value,
     friction: 8,
     useNativeDriver: true,
-  })
+  });
   
   return (
-    <SideMenu
-      menu={menu}
-      isOpen={isMenuOpen}
-      onChange={setIsMenuOpen}
-      menuPosition='left'
-      animationFunction={animationFunction}
-      
+    <Drawer
+      open={isMenuOpen}
+      onOpen={() => setIsMenuOpen(true)}
+      onClose={() => setIsMenuOpen(false)}
+      renderDrawerContent={() => <DrawerSideMenu setIsDrawerOpen={setIsMenuOpen} />}
     >
       <SafeAreaView style={styles.AndroidSafeArea} className='items-center h-full justify-center w-full bg-neutral-100'>
         {loading ? (
           <ActivityIndicator />
         ) : (
           <>
-          
             <Header setIsMenuOpen={setIsMenuOpen} />
 
             <ScrollView className='w-full p-4' contentContainerStyle={{
@@ -87,7 +85,11 @@ const LessonsTab = ({navigation}) => {
                 </View> 
               ) : null)}
 
-              <RaisedButton variant={'continue'} buttonStyles="p-4" onPress={() => navigation.navigate('Lesson')}>
+              <RaisedButton 
+                variant={'continue'} 
+                buttonStyles="p-4" 
+                onPress={() => navigation.navigate('OnDemandLesson', { language: selectedLanguage })}
+              >
                 <Text>Lesson On Demand</Text>
               </RaisedButton>
             </ScrollView>
@@ -95,7 +97,7 @@ const LessonsTab = ({navigation}) => {
         )}
         
       </SafeAreaView>
-    </SideMenu>
+      </Drawer>
   )
 }
 

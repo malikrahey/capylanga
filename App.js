@@ -8,6 +8,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import LessonScreen from './screens/LessonScreen';
 import AIConversationScreen from './screens/AIConversationScreen';
 import TrainingScreen from './screens/TrainingScreen';
+import OnDemandLessonScreen from './screens/OnDemandLessonScreen';
 
 export default function App() {
 
@@ -22,6 +23,7 @@ export default function App() {
           <Stack.Screen name="Lesson" component={LessonScreen} />
           <Stack.Screen name="AIConversation" component={AIConversationScreen} />
           <Stack.Screen name="TrainingScreen" component={TrainingScreen} />
+          <Stack.Screen name="OnDemandLesson" component={OnDemandLessonScreen} />
         </Stack.Navigator>
       </LanguageProvider>
     </NavigationContainer>
