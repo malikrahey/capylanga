@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, TextInput, TouchableOpacity, Alert } from 'react-native';
+import { View, Text, SafeAreaView, TextInput, TouchableOpacity } from 'react-native';
 import React, { useState, useLayoutEffect } from 'react';
 import useLanguage from '../hooks/useLanguage';
 import { generateOnDemandLesson } from '../api/lessons';
@@ -21,24 +21,24 @@ const OnDemandLessonScreen = ({ route, navigation }) => {
     
     setIsLoading(true);
     try {
-      const lesson = await generateOnDemandLesson(selectedLanguage, lessonDescription);
+      const generatedLesson = await generateOnDemandLesson(selectedLanguage, lessonDescription);
+      
       // Navigate to the lesson screen with the generated content
       navigation.navigate('Lesson', {
-        isOnDemand: true,
-        lessonContent: lesson,
+        rootPath: 'onDemand',
+        lessonIndex: generatedLesson.id,
+        lessonContent: {
+          lesson: {
+            title: generatedLesson.title,
+            type: generatedLesson.type,
+            introduction: generatedLesson.introduction,
+            story: generatedLesson.story,
+            tests: generatedLesson.tests
+          }
+        }
       });
-      // Show success message
-      Alert.alert(
-        'Success',
-        'Lesson has been generated and saved locally.',
-        [{ text: 'OK' }]
-      );
     } catch (error) {
-      Alert.alert(
-        'Error',
-        'Failed to generate lesson. Please try again.',
-        [{ text: 'OK' }]
-      );
+      console.error('Error generating lesson:', error);
     } finally {
       setIsLoading(false);
     }
@@ -68,6 +68,7 @@ const OnDemandLessonScreen = ({ route, navigation }) => {
             textAlignVertical="top"
             value={lessonDescription}
             onChangeText={setLessonDescription}
+            editable={!isLoading}
           />
           
           <TouchableOpacity
