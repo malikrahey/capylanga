@@ -32,6 +32,9 @@
         "projectId": "0a596f25-ab8e-4b04-846d-3e540f52f36a"
       }
     },
-    "owner": "malikrahey"
+    "owner": "malikrahey",
+    "plugins": [
+      "expo-asset"
+    ]
   }
 }

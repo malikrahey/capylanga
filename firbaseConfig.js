@@ -2,6 +2,8 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
+import { getFunctions } from "firebase/functions";
+import { getVertexAI } from "firebase/vertexai";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -19,5 +21,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const functions = getFunctions(app);
+const vertexai = getVertexAI(app);
 
-export { db };
+export { db, functions, vertexai };

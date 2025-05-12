@@ -8,9 +8,9 @@ import { getLesson } from '../api/lessons';
 import * as lessonContent from "../public/lessonContent.json"
 import RaisedButton from '../components/ui/RaisedButton';
 
-const LessonScreen = ({ route, navigation, lessonPath }) => {
+const LessonScreen = ({ route, navigation }) => {
   const { selectedLanguage } = useLanguage();
-  const { rootPath, lessonIndex } = route.params;
+  const { rootPath, lessonIndex, lessonContent: onDemandContent } = route.params;
   const [lesson, setLesson] = useState([]);
   const [intro, setIntro] = useState('');
   const [title, setTitle] = useState('');
@@ -22,9 +22,15 @@ const LessonScreen = ({ route, navigation, lessonPath }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log(lessonContent)
-        // const lessonData = await getLesson(selectedLanguage, rootPath, lessonIndex);
-        const lessonData = lessonContent[selectedLanguage][rootPath][lessonIndex]["lesson"]
+        let lessonData;
+        
+        if (onDemandContent) {
+          // Use the on-demand lesson content
+          lessonData = onDemandContent.lesson;
+        } else {
+          // Fetch from regular lesson content
+          lessonData = lessonContent[selectedLanguage][rootPath][lessonIndex]["lesson"];
+        }
 
         setLessonType(lessonData.type);
         setLesson(lessonData.story);
@@ -37,7 +43,7 @@ const LessonScreen = ({ route, navigation, lessonPath }) => {
     };
 
     fetchData();
-  }, []);
+  }, [onDemandContent, selectedLanguage, rootPath, lessonIndex]);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -67,11 +73,9 @@ const LessonScreen = ({ route, navigation, lessonPath }) => {
         </View>
       ) : (
           <Test test={test}/>
-      )
-      }
-      
+      )}
     </View>
   )
 }
 
-export default LessonScreen
+export default LessonScreen;
