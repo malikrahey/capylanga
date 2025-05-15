@@ -3,6 +3,7 @@ import React, { useState, useLayoutEffect } from 'react';
 import useLanguage from '../hooks/useLanguage';
 import { generateOnDemandLesson } from '../api/lessons';
 import { MaterialIcons } from '@expo/vector-icons';
+import { LANGUAGE_MAP } from '../utils/constants';
 
 const OnDemandLessonScreen = ({ route, navigation }) => {
   const { language } = route.params;
@@ -45,8 +46,8 @@ const OnDemandLessonScreen = ({ route, navigation }) => {
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-neutral-100">
-      <View className="p-4">
+    <SafeAreaView className="flex-1 bg-neutral-100 py-4">
+      <View className="flex-1 px-4 pt-4">
         <View className="flex-row items-center mb-6">
           <TouchableOpacity 
             onPress={() => navigation.goBack()}
@@ -57,9 +58,9 @@ const OnDemandLessonScreen = ({ route, navigation }) => {
           <Text className="text-2xl font-bold">On Demand Lesson</Text>
         </View>
         
-        <Text className="text-lg mb-6">Selected Language: {selectedLanguage}</Text>
+        <Text className="text-lg mb-6">Selected Language: {LANGUAGE_MAP[language.toLowerCase()]}</Text>
         
-        <View className="bg-white rounded-xl p-4 shadow-sm">
+        <View className="flex-1 bg-white rounded-xl p-4 shadow-sm">
           <TextInput
             className="w-full h-32 text-lg p-2 border border-gray-200 rounded-lg"
             placeholder="Describe the lesson to practice..."

@@ -9,6 +9,7 @@ import LessonScreen from './screens/LessonScreen';
 import AIConversationScreen from './screens/AIConversationScreen';
 import TrainingScreen from './screens/TrainingScreen';
 import OnDemandLessonScreen from './screens/OnDemandLessonScreen';
+import LessonCompleteScreen from './screens/LessonCompleteScreen';
 
 export default function App() {
 
@@ -24,6 +25,13 @@ export default function App() {
           <Stack.Screen name="AIConversation" component={AIConversationScreen} />
           <Stack.Screen name="TrainingScreen" component={TrainingScreen} />
           <Stack.Screen name="OnDemandLesson" component={OnDemandLessonScreen} />
+          <Stack.Screen 
+            name="LessonComplete" 
+            component={LessonCompleteScreen}
+            options={{
+              headerShown: false
+            }}
+          />
         </Stack.Navigator>
       </LanguageProvider>
     </NavigationContainer>

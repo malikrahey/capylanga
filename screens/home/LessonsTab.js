@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, ScrollView, SafeAreaView, Animated } from
 import React, { lazy, useContext, useEffect, useLayoutEffect, useMemo, useState } from 'react'
 import useLanguage from '../../hooks/useLanguage'
 import { SimpleLineIcons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import LessonSelectBadge from '../../components/home/LessonSelectBadge';
 import * as manifest from '../../public/lessons/es/manifest.json'
 import { ActivityIndicator } from 'react-native-paper';
@@ -25,6 +25,7 @@ const LessonsTab = ({navigation}) => {
   const [loading, setLoading] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedBadge, setSelectedBadge] = useState(null);
+  const [refreshKey, setRefreshKey] = useState(0);
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -34,6 +35,12 @@ const LessonsTab = ({navigation}) => {
       )
     })
   }, [])
+
+  useFocusEffect(
+    React.useCallback(() => {
+      setRefreshKey(prev => prev + 1);
+    }, [])
+  );
 
   useEffect(() => {
     setLoading(true);
@@ -45,7 +52,7 @@ const LessonsTab = ({navigation}) => {
     } finally {
       setLoading(false);
     }
-  }, [selectedLanguage]);
+  }, [selectedLanguage, refreshKey]);
 
   const animationFunction = (prop, value) =>
   Animated.spring(prop, {
@@ -68,15 +75,19 @@ const LessonsTab = ({navigation}) => {
           <>
             <Header setIsMenuOpen={setIsMenuOpen} />
 
-            <ScrollView className='w-full p-4' contentContainerStyle={{
-              alignContent: 'center',
-              justifyContent: 'center'
-            }}>  
+            <ScrollView 
+              className='w-full p-4' 
+              contentContainerStyle={{
+                alignContent: 'center',
+                justifyContent: 'center',
+                paddingBottom: 40
+              }}
+            >  
               <Text className='text-2xl font-bold'>Module 1: Essentials</Text>
             
               {lessons.map((lesson, index) => lesson !== undefined ? (
                 
-                <View key={lesson.rootPath} className={`items-center my-4 ${selectedBadge === index ? '' : ''}`}> 
+                <View key={`${lesson.rootPath}-${refreshKey}`} className={`items-center my-4 ${selectedBadge === index ? '' : ''}`}> 
                   <LessonSelectBadge  
                     {...lesson}
                     onSelect={() => setSelectedBadge(index)}
