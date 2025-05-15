@@ -1,42 +1,55 @@
 import { View, Text, TouchableOpacity, NativeModules } from 'react-native';
-import React, { createRef, useState } from 'react';
+import React, { createRef, useState, useEffect, useCallback } from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import * as lessonContent from '../../public/lessonContent.json';
 import useLanguage from '../../hooks/useLanguage';
 import RaisedButton from '../ui/RaisedButton';
+import { isLessonComplete } from '../../utils/completedLessons';
 
 const LessonSelectBadge = ({ rootPath, onSelect, onDeselect }) => {
   const navigation = useNavigation();
   const [isSelected, setIsSelected] = useState(false);
   const { selectedLanguage } = useLanguage();
+  const [completedLessons, setCompletedLessons] = useState({});
   const ref = createRef();
-  console.log('selected > ', selectedLanguage);
-  console.log('root > ', rootPath);
-  console.log('content selected root > ', lessonContent[selectedLanguage][rootPath]);
 
-  // THIS SHOULD NOT BE NECESSARY FIX LATER
-  if (!lessonContent[selectedLanguage][rootPath]) {
-    return null;
-  }
+  const lessons = lessonContent[selectedLanguage]?.[rootPath] 
+    ? Object.keys(lessonContent[selectedLanguage][rootPath]).filter(key => !isNaN(Number(key)))
+    : [];
+  const icon = lessonContent[selectedLanguage]?.[rootPath]?.['config']?.['icon'];
 
-  const lessons = lessonContent[selectedLanguage][rootPath] && Object.keys(lessonContent[selectedLanguage][rootPath]).filter(key => !isNaN(Number(key)));
-  const icon = lessonContent[selectedLanguage][rootPath]['config']['icon'];
+  const loadCompletionStatus = useCallback(async () => {
+    const completed = {};
+    for (const lesson of lessons) {
+      completed[lesson] = await isLessonComplete(selectedLanguage, rootPath, lesson);
+    }
+    setCompletedLessons(completed);
+  }, [selectedLanguage, rootPath, lessons]);
 
-  const handleSelect = (lesson) => {
+  useEffect(() => {
+    loadCompletionStatus();
+  }, [loadCompletionStatus]);
+
+  const handleSelect = useCallback((lesson) => {
     navigation.navigate('Lesson', {
       rootPath: rootPath,
       lessonIndex: String(lesson)
     });
-  };
+  }, [navigation, rootPath]);
 
-  const handlePress = () => {
+  const handlePress = useCallback(() => {
     setIsSelected(!isSelected);
     if (isSelected) {
       onDeselect();
     } else {
       onSelect();
     }
+  }, [isSelected, onSelect, onDeselect]);
+
+  // Return null if no content exists for this language/path combination
+  if (!lessonContent[selectedLanguage]?.[rootPath]) {
+    return null;
   }
 
   return (
@@ -88,9 +101,22 @@ const LessonSelectBadge = ({ rootPath, onSelect, onDeselect }) => {
               <TouchableOpacity
                 key={`${rootPath} ${lesson}`}
                 onPress={() => handleSelect(lesson)}
-                className="bg-blue-500 rounded-xl px-4 py-2"
+                className="bg-blue-500 rounded-xl px-4 py-2 flex-row items-center relative"
               >
                 <Text className="text-white font-bold text-lg [text-shadow:_0_1px_0_rgb(0_0_0_/_40%)]">{lesson}</Text>
+                {completedLessons[lesson] && (
+                  <MaterialIcons 
+                    name="check-circle" 
+                    size={20} 
+                    color="white" 
+                    style={{ 
+                      position: 'absolute',
+                      right: -10,
+                      top: -10,
+                      zIndex: 1
+                    }}
+                  />
+                )}
               </TouchableOpacity>
             ))}
           </View>
@@ -99,6 +125,5 @@ const LessonSelectBadge = ({ rootPath, onSelect, onDeselect }) => {
     </View>
   );
 };
-
 
 export default LessonSelectBadge;

@@ -7,6 +7,7 @@ import { Button } from 'react-native-paper';
 import { getLesson } from '../api/lessons';
 import * as lessonContent from "../public/lessonContent.json"
 import RaisedButton from '../components/ui/RaisedButton';
+import { markLessonAsComplete } from '../utils/completedLessons';
 
 const LessonScreen = ({ route, navigation }) => {
   const { selectedLanguage } = useLanguage();
@@ -52,7 +53,13 @@ const LessonScreen = ({ route, navigation }) => {
   }, [title])
 
   const advanceStage = () => {
-    setCurrentStage('test');
+    if (currentStage === 'story') {
+      setCurrentStage('test');
+    } else if (currentStage === 'test') {
+      // Mark lesson as complete when test is finished
+      markLessonAsComplete(selectedLanguage, rootPath, lessonIndex);
+      navigation.navigate('LessonComplete');
+    }
   }
 
   return (
@@ -72,7 +79,7 @@ const LessonScreen = ({ route, navigation }) => {
           <Conversation lesson={lesson} advanceStage={advanceStage} />
         </View>
       ) : (
-          <Test test={test}/>
+          <Test test={test} onComplete={advanceStage}/>
       )}
     </View>
   )

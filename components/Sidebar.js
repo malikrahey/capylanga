@@ -9,16 +9,10 @@ const Sidebar = ({ isOpen, onClose }) => {
   const navigation = useNavigation();
 
   const languages = [
-    { id: 'english', name: 'English' },
     { id: 'spanish', name: 'Spanish' },
     { id: 'french', name: 'French' },
-    { id: 'german', name: 'German' },
     { id: 'italian', name: 'Italian' },
     { id: 'portuguese', name: 'Portuguese' },
-    { id: 'russian', name: 'Russian' },
-    { id: 'japanese', name: 'Japanese' },
-    { id: 'korean', name: 'Korean' },
-    { id: 'chinese', name: 'Chinese' },
   ];
 
   if (!isOpen) return null;
