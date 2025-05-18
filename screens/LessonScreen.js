@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import Conversation from '../components/lesson/Conversation';
 import Test from '../components/lesson/Test';
@@ -8,6 +8,7 @@ import { getLesson } from '../api/lessons';
 import * as lessonContent from "../public/lessonContent.json"
 import RaisedButton from '../components/ui/RaisedButton';
 import { markLessonAsComplete } from '../utils/completedLessons';
+import { AdMobBanner } from 'expo';
 
 const LessonScreen = ({ route, navigation }) => {
   const { selectedLanguage } = useLanguage();
@@ -63,24 +64,33 @@ const LessonScreen = ({ route, navigation }) => {
   }
 
   return (
-    <View className='p-4'>
-      {currentStage === 'introduction' ? (
-        <View className='flex flex-col h-full p-4 justify-between'>
-          <View className='p-2 bg-white border shadow-md rounded-lg'>
-            <Text className='text-lg m-2'>{intro}</Text>
+    <View className='flex-1'>
+      <ScrollView className='p-4'>
+        {currentStage === 'introduction' ? (
+          <View className='flex flex-col h-full p-4 justify-between'>
+            <View className='p-2 bg-white border shadow-md rounded-lg'>
+              <Text className='text-lg m-2'>{intro}</Text>
+            </View>
+            
+            <RaisedButton variant="continue" buttonStyles="p-4" onPress={() => setCurrentStage('story')}>
+              <Text>Continue</Text>
+            </RaisedButton>
           </View>
-          
-          <RaisedButton variant="continue" buttonStyles="p-4" onPress={() => setCurrentStage('story')}>
-            <Text>Continue</Text>
-          </RaisedButton>
-        </View>
-      ) : currentStage === 'story' ? (
-        <View>
-          <Conversation lesson={lesson} advanceStage={advanceStage} />
-        </View>
-      ) : (
-          <Test test={test} onComplete={advanceStage}/>
-      )}
+        ) : currentStage === 'story' ? (
+          <View>
+            <Conversation lesson={lesson} advanceStage={advanceStage} />
+          </View>
+        ) : (
+            <Test test={test} onComplete={advanceStage}/>
+        )}
+      </ScrollView>
+
+      {/* <AdMobBanner
+        bannerSize="fullBanner"
+        adUnitID="ca-app-pub-3940256099942554/6300978111" // Test ID, replace with your own on production
+        testDeviuceId="EMULATOR"
+        didFailToReceiveAdWithError={this?.bannerError}
+      /> */}
     </View>
   )
 }

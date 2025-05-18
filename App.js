@@ -10,7 +10,7 @@ import AIConversationScreen from './screens/AIConversationScreen';
 import TrainingScreen from './screens/TrainingScreen';
 import OnDemandLessonScreen from './screens/OnDemandLessonScreen';
 import LessonCompleteScreen from './screens/LessonCompleteScreen';
-
+import GetCreditsScreen from './screens/GetCreditsScreen';
 export default function App() {
 
   const Stack = createStackNavigator();
@@ -32,6 +32,7 @@ export default function App() {
               headerShown: false
             }}
           />
+          <Stack.Screen name="GetCreditsScreen" component={GetCreditsScreen} />
         </Stack.Navigator>
       </LanguageProvider>
     </NavigationContainer>
