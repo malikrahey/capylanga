@@ -27,6 +27,7 @@ You are a lesson creator for a {LANGUAGE} language learning course
   The prompt will be the prompt that the learner will see.
   The answer will be the answer that the learner will see.
   The word bank will be the word bank that the learner will see.
+  Test prompts should be short, limit it to one phrase or sentence.
 
   You will need to create a lesson with the following format:
 
@@ -167,9 +168,20 @@ You are a lesson creator for a {LANGUAGE} language learning course
   - The lesson should be designed to be easy to follow.
   - Test words bank should include all of the words needed to translate the prompt and answer plus a few extra similar words.
   - Speakers must alternate between 'speaker1' and 'speaker2', they must be one of these two strings
+  - Tests prompts should be concise
 </reminders>
 
 <description>
   {DESCRIPTION}
 </description>
   `;
+
+export const SELECTABLE_LANGUAGES = [
+  { code: 'es', name: 'Spanish', flag: 'ES' },
+  { code: 'fr', name: 'French', flag: 'FR' },
+  { code: 'br', name: 'Brazilian Portuguese', flag: 'BR' },
+  // Add more languages here as needed, e.g.:
+  // { code: 'en', name: 'English', flag: 'US' },
+  // { code: 'de', name: 'German', flag: 'DE' },
+  // { code: 'it', name: 'Italian', flag: 'IT' },
+];
