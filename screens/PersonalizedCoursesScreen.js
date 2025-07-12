@@ -87,26 +87,28 @@ const PersonalizedCoursesScreen = () => {
 
   return (
     <SafeAreaView style={styles.AndroidSafeArea} className="flex-1 p-4">
-      <Text className="text-2xl font-bold mb-4">My Personalized Courses</Text>
-      {courses.length === 0 ? (
-        <View className="flex-1 justify-center items-center">
-          <Text className="text-lg mb-4">You haven't created any personalized courses yet.</Text>
-        </View>
-      ) : (
-        <FlatList
-          data={courses}
-          renderItem={renderCourseItem}
-          keyExtractor={item => item.id}
-          className="flex-1"
-        />
-      )}
-      <RaisedButton 
-        variant="success" 
-        buttonStyles="p-4 mt-4" 
-        onPress={() => navigation.navigate('CreatePersonalizedCourse')}
-      >
-        <Text>Create New Course</Text>
-      </RaisedButton>
+      <View className="flex-1 p-4">
+        <Text className="text-2xl font-bold mb-4">My Personalized Courses</Text>
+        {courses.length === 0 ? (
+          <View className="flex-1 justify-center items-center">
+            <Text className="text-lg mb-4">You haven't created any personalized courses yet.</Text>
+          </View>
+        ) : (
+          <FlatList
+            data={courses}
+            renderItem={renderCourseItem}
+            keyExtractor={item => item.id}
+            className="flex-1"
+          />
+        )}
+        <RaisedButton 
+          variant="success" 
+          buttonStyles="p-4 mt-4" 
+          onPress={() => navigation.navigate('CreatePersonalizedCourse')}
+        >
+          <Text>Create New Course</Text>
+        </RaisedButton>
+      </View>
     </SafeAreaView>
   );
 };
