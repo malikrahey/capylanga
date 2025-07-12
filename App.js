@@ -10,6 +10,10 @@ import AIConversationScreen from './screens/AIConversationScreen';
 import TrainingScreen from './screens/TrainingScreen';
 import OnDemandLessonScreen from './screens/OnDemandLessonScreen';
 import LessonCompleteScreen from './screens/LessonCompleteScreen';
+import GetCreditsScreen from './screens/GetCreditsScreen';
+import PersonalizedCoursesScreen from './screens/PersonalizedCoursesScreen';
+import CreatePersonalizedCourseScreen from './screens/CreatePersonalizedCourseScreen';
+import ViewPersonalizedCourseScreen from './screens/ViewPersonalizedCourseScreen';
 
 export default function App() {
 
@@ -32,6 +36,10 @@ export default function App() {
               headerShown: false
             }}
           />
+          <Stack.Screen name="GetCreditsScreen" component={GetCreditsScreen} />
+          <Stack.Screen name="PersonalizedCourses" component={PersonalizedCoursesScreen} options={{ title: 'My Courses' }} />
+          <Stack.Screen name="CreatePersonalizedCourse" component={CreatePersonalizedCourseScreen} options={{ title: 'Create Course' }} />
+          <Stack.Screen name="ViewPersonalizedCourse" component={ViewPersonalizedCourseScreen} />
         </Stack.Navigator>
       </LanguageProvider>
     </NavigationContainer>

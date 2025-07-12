@@ -11,6 +11,7 @@ import ConversationsTab from './home/ConversationsTab';
 import TrainingTab from './home/TrainingTab';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import PersonalizedCoursesScreen from './PersonalizedCoursesScreen';
 
 const HomeScreen = ({navigation}) => {
 
@@ -37,9 +38,11 @@ const HomeScreen = ({navigation}) => {
           } else if (route.name === 'Conversations') {
             return <SimpleLineIcons name="bubble" color={color} size={size} />;
           } else if (route.name === 'Farm') {
-            return <MaterialIcons name="house" size={24} color="black" />;
+            return <MaterialIcons name="house" size={24} color={color} />;
           } else if (route.name === 'Training') {
-            return <MaterialIcons name="on-device-training" size={24} color="black" />;
+            return <MaterialIcons name="on-device-training" size={24} color={color} />;
+          } else if (route.name === 'My Courses') {
+            return <MaterialCommunityIcons name="brain" size={size} color={color} />;
           }
           // You can return any component that you like here!
           return <SimpleLineIcons name="book-open" color={color} size={size} />;
@@ -48,6 +51,7 @@ const HomeScreen = ({navigation}) => {
         tabBarInactiveTintColor: 'gray',
       })}> 
       <Tab.Screen name="Lessons" component={LessonsTab} key={selectedLanguage}/>
+      <Tab.Screen name="My Courses" component={PersonalizedCoursesScreen} />
       <Tab.Screen name="Store" component={StoreTab} />
       <Tab.Screen name="Farm" component={FarmTab} />
       {/* <Tab.Screen name="Conversations" component={ConversationsTab} /> */}

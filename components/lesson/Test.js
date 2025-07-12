@@ -26,7 +26,7 @@ const WordBank = ({words, addSelectedWord}) => {
       {displayWords.map((word, index) => (
         <TouchableOpacity
           className='bg-white p-3 rounded-xl shadow-lg m-2 border border-gray-100 active:bg-gray-50'
-          key={word}
+          key={index}
           onPress={() => addSelectedWord(word)}
         >
           <Text className='text-lg text-gray-800 font-medium'>{word}</Text>  

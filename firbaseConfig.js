@@ -22,6 +22,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const functions = getFunctions(app);
-const vertexai = getVertexAI(app);
+const vertexai = getVertexAI(app, {
+  project: firebaseConfig.projectId,
+});
 
 export { db, functions, vertexai };
