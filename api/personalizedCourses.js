@@ -1,7 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { generateOnDemandLesson } from './lessons';
+import { STORAGE_KEYS } from '../utils/constants';
 
-const PERSONALIZED_COURSES_KEY = '@personalized_courses';
+const {PERSONALIZED_COURSES} = STORAGE_KEYS;
 const PERSONALIZED_LESSON_CONTENT_KEY_PREFIX = '@personalized_lesson_content_';
 
 /**
@@ -28,7 +29,7 @@ const PERSONALIZED_LESSON_CONTENT_KEY_PREFIX = '@personalized_lesson_content_';
 // Helper function to get all courses
 const getPersonalizedCourses = async () => {
   try {
-    const jsonValue = await AsyncStorage.getItem(PERSONALIZED_COURSES_KEY);
+    const jsonValue = await AsyncStorage.getItem(PERSONALIZED_COURSES);
     return jsonValue != null ? JSON.parse(jsonValue) : [];
   } catch (e) {
     console.error('Failed to fetch personalized courses.', e);
@@ -52,7 +53,7 @@ const savePersonalizedCourse = async (course) => {
   try {
     const courses = await getPersonalizedCourses();
     courses.push(course);
-    await AsyncStorage.setItem(PERSONALIZED_COURSES_KEY, JSON.stringify(courses));
+    await AsyncStorage.setItem(PERSONALIZED_COURSES, JSON.stringify(courses));
     return course;
   } catch (e) {
     console.error('Failed to save course.', e);

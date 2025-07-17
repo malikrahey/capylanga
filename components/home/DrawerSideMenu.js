@@ -6,7 +6,9 @@ import { Drawer } from 'react-native-paper'
 import CountryFlag from 'react-native-country-flag'
 import { MaterialIcons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
+import { STORAGE_KEYS } from '../../utils/constants';
+
 const languages = [
   {
     title: 'Spanish',
@@ -25,8 +27,7 @@ const languages = [
   }
 ]
 
-const COINS_KEY = '@coins';
-const CREDITS_KEY = '@credits';
+const {COINS, CREDITS} = STORAGE_KEYS;
 
 const DrawerSideMenu = ({ setIsDrawerOpen }) => {
   const { selectedLanguage, setSelectedLanguage } = useLanguage();
@@ -34,13 +35,15 @@ const DrawerSideMenu = ({ setIsDrawerOpen }) => {
   const [credits, setCredits] = useState(0);
   const navigation = useNavigation();
 
-  useEffect(() => {
-    loadData();
-  }, []);
+  useFocusEffect(
+    React.useCallback(() => {
+      loadData();
+    }, [])
+  );
 
   const loadData = async () => {
     try {
-      const [coinsData, creditsData] = await AsyncStorage.multiGet([COINS_KEY, CREDITS_KEY]);
+      const [coinsData, creditsData] = await AsyncStorage.multiGet([COINS, CREDITS]);
 
       const currentCoins = coinsData[1] ? Number(coinsData[1]) : 0;
       const currentCredits = creditsData[1] ? Number(creditsData[1]) : 0;
@@ -49,10 +52,10 @@ const DrawerSideMenu = ({ setIsDrawerOpen }) => {
       setCredits(currentCredits);
 
       if (!coinsData[1]) {
-        await AsyncStorage.setItem(COINS_KEY, String(0));
+        await AsyncStorage.setItem(COINS, String(0));
       }
       if (!creditsData[1]) {
-        await AsyncStorage.setItem(CREDITS_KEY, String(0));
+        await AsyncStorage.setItem(CREDITS, String(0));
       }
 
     } catch (error) {

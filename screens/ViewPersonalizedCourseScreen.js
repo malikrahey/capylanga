@@ -137,16 +137,17 @@ const ViewPersonalizedCourseScreen = () => {
 
   return (
     <SafeAreaView style={styles.AndroidSafeArea} className="flex-1 p-4">
-      {/* Header already set by navigation.setOptions */}
-      <Text className="text-base text-gray-600 mb-4">Language: {LANGUAGE_MAP[course.language]}</Text>
-      
-      <FlatList
-        data={course.lessonModules}
-        renderItem={renderModuleItem}
-        keyExtractor={item => item.moduleId}
-        ListHeaderComponent={() => <Text className="text-lg font-bold mb-3">Modules:</Text>}
-        ListEmptyComponent={() => <Text>No modules found for this course.</Text>}
-      />
+      <View className="flex-1 p-4">
+        <Text className="text-base text-gray-600 mb-4">Language: {LANGUAGE_MAP[course.language]}</Text>
+        
+        <FlatList
+          data={course.lessonModules}
+          renderItem={renderModuleItem}
+          keyExtractor={item => item.moduleId}
+          ListHeaderComponent={() => <Text className="text-lg font-bold mb-3">Modules:</Text>}
+          ListEmptyComponent={() => <Text>No modules found for this course.</Text>}
+        />
+      </View>
     </SafeAreaView>
   );
 };

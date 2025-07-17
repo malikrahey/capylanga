@@ -9,10 +9,9 @@ const StoreItem = ({
   image,
   coins,
   onPurchase,
-  isPurchased
 }) => {
   const canAfford = coins >= price;
-  const isDisabled = !canAfford || isPurchased;
+  const isDisabled = !canAfford;
 
   const handlePress = () => {
     if (!canAfford) {
@@ -35,12 +34,12 @@ const StoreItem = ({
           <Image source={image} className='w-32 h-32' />
           <RaisedButton 
             buttonStyles={`w-16 h-8 ${isDisabled ? 'opacity-50' : ''}`} 
-            variant={isPurchased ? "success" : "buy"} 
+            variant={"buy"} 
             onPress={handlePress}
             disabled={isDisabled}
           >
             <Text className='text-lg font-bold'>
-              {isPurchased ? 'Owned' : 'Buy'}
+              {'Buy'}
             </Text>
           </RaisedButton>
     </Card>

@@ -4,11 +4,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { httpsCallable } from 'firebase/functions';
 import { functions } from '../firbaseConfig';
 import { getVertexAI, getGenerativeModel, Schema } from 'firebase/vertexai';
-import { LANGUAGE_MAP, ONDEMAND_LESSON_PROMPT } from '../utils/constants';
+import { LANGUAGE_MAP, ONDEMAND_LESSON_PROMPT, STORAGE_KEYS } from '../utils/constants';
 
+const {ON_DEMAND_LESSONS} = STORAGE_KEYS;
 
 const lessonsCollection = collection(db, 'lessons');
-const ON_DEMAND_LESSONS_KEY = '@on_demand_lessons';
 
 const getLesson = async (selectedLanguage, rootPath, lessonIndex) => {
   const path = `${selectedLanguage}/${rootPath}/${lessonIndex}`
@@ -26,7 +26,7 @@ const getLesson = async (selectedLanguage, rootPath, lessonIndex) => {
 const storeOnDemandLesson = async (lesson) => {
   try {
     // Get existing lessons
-    const existingLessonsJson = await AsyncStorage.getItem(ON_DEMAND_LESSONS_KEY);
+    const existingLessonsJson = await AsyncStorage.getItem(ON_DEMAND_LESSONS);
     const existingLessons = existingLessonsJson ? JSON.parse(existingLessonsJson) : [];
     
     // Add new lesson with timestamp
@@ -38,7 +38,7 @@ const storeOnDemandLesson = async (lesson) => {
     
     // Store updated lessons array
     await AsyncStorage.setItem(
-      ON_DEMAND_LESSONS_KEY,
+      ON_DEMAND_LESSONS,
       JSON.stringify([newLesson, ...existingLessons])
     );
      
@@ -51,7 +51,7 @@ const storeOnDemandLesson = async (lesson) => {
 
 const getOnDemandLessons = async () => {
   try {
-    const lessonsJson = await AsyncStorage.getItem(ON_DEMAND_LESSONS_KEY);
+    const lessonsJson = await AsyncStorage.getItem(ON_DEMAND_LESSONS);
     return lessonsJson ? JSON.parse(lessonsJson) : [];
   } catch (error) {
     console.error('Error getting lessons:', error);

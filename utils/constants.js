@@ -185,3 +185,15 @@ export const SELECTABLE_LANGUAGES = [
   // { code: 'de', name: 'German', flag: 'DE' },
   // { code: 'it', name: 'Italian', flag: 'IT' },
 ];
+
+export const STORAGE_KEYS = {
+  COINS: '@coins',
+  CREDITS: '@credits',
+  STORE_ITEMS: '@store_items',
+  FOOD_COUNT: '@food_count',
+  PERSONALIZED_COURSES: '@personalized_courses',
+  ON_DEMAND_LESSONS: '@on_demand_lessons',
+  TRAINING_BANK: '@trainingBank',
+  COMPLETED_LESSONS: '@completed_lessons',
+  LAST_FED: '@last_fed',
+};

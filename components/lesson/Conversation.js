@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity, ScrollView, FlatList } from 'react-native'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { MaterialIcons } from '@expo/vector-icons';
 import { Checkbox, ProgressBar } from 'react-native-paper';
 import * as Speech from 'expo-speech';
@@ -60,6 +60,21 @@ const Conversation = ({lesson, advanceStage}) => {
     setCurrentStep(nextStep);
   };
 
+  // Simple scroll to bottom after new message appears
+  const scrollToBottom = () => {
+    setTimeout(() => {
+      scrollViewRef.current?.scrollToEnd({ animated: true });
+    }, 50); // Give time for new content to render
+  };
+
+  // Trigger scroll when new message appears
+  useEffect(() => {
+    if (currentStep > 0) {
+      scrollToBottom();
+    }
+  }, [currentStep]);
+
+
   const renderedContent = lesson.slice(0, currentStep + 1).map((item, index) => {
     return item.type === 'dialogue' ?
       <ConversationBubble key={index} showTranslations={showTranslations} {...item} /> :
@@ -67,29 +82,43 @@ const Conversation = ({lesson, advanceStage}) => {
   });
 
   return (
-    <View>
-      <ProgressBar progress={currentStep/lesson.length} />
-      <View className='flex-row items-center ml-2'>
-        <Text className='text-lg'>Show Translations: </Text>
-        <Checkbox
-          size={10}
-          status={showTranslations ? 'checked' : 'unchecked'}
-          onPress={() => setShowTranslations(!showTranslations)}
-        />
+    <View className='flex-1 relative'>
+      
+      <View className='absolute top-0 z-[5] bg-white w-full'>
+        <View className=''>
+          <ProgressBar  animatedValue={currentStep/lesson.length} />
+        </View>
+        <View className='flex-row items-center ml-2'>
+          <Text className='text-lg'>Show Translations: </Text>
+          <Checkbox
+            borderColor='black'
+            size={10}
+            status={showTranslations ? 'checked' : 'unchecked'}
+            onPress={() => setShowTranslations(!showTranslations)}
+          />
+        </View>
       </View>
       
-      <ScrollView className='w-full'
-       ref={scrollViewRef}
-       onContentSizeChange={() => scrollViewRef.current.scrollToEnd({animated: true})}
-       contentContainerStyle={{
-        paddingBottom: 200
-       }}
+      <ScrollView 
+        className='w-full h-[80vh] mt-4'
+        ref={scrollViewRef}
+        contentContainerStyle={{
+          paddingBottom: 150
+        }}
+        showsVerticalScrollIndicator={false}
       >
         {renderedContent}
-        <RaisedButton variant={'continue'} buttonStyles="p-4" onPress={handleNext}>
-          <Text>Next</Text>
-        </RaisedButton>
+        
       </ScrollView>
+      <View className='mt-6 items-center absolute bottom-10 left-0 right-0 z-100'>
+          <RaisedButton 
+            variant={'continue'} 
+            buttonStyles="px-8 py-4 min-w-[200px]"
+            onPress={handleNext}
+          >
+            <Text className='text-lg font-bold text-gray-800'>Next</Text>
+          </RaisedButton>
+      </View>
     </View>
   );
 };

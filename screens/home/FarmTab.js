@@ -1,103 +1,64 @@
 import React, { useEffect, useState } from 'react';
-import { View, Image, Text, TouchableOpacity, Alert } from 'react-native';
+import { View, Image, Text, Alert } from 'react-native';
 import capyai from '../../assets/capyai.png';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import RaisedButton from '../../components/ui/RaisedButton';
 import ProgressBar from '../../components/ui/ProgressBar';
 
-const FOOD_COUNT_KEY = '@food_count';
+import { loadPetStatus, feedPet } from '../../utils/petStatus';
+
 const DEFAULT_FOOD_COUNT = 5;
 
 const FarmTab = () => {
-  const [hunger, setHunger] = useState(100);
-  const [food, setFood] = useState(100);
-  const [energy, setEnergy] = useState(100);
+  const [hunger, setHunger] = useState(0);
+  const [energy, setEnergy] = useState(0);
   const [foodCount, setFoodCount] = useState(DEFAULT_FOOD_COUNT);
 
+  // Initial load & when component regains focus
   useEffect(() => {
-    const loadData = async () => {
+    const init = async () => {
       try {
-        const [
-          storedHunger,
-          storedFood,
-          storedEnergy,
-          storedFoodCount
-        ] = await AsyncStorage.multiGet(['hunger', 'food', 'energy', FOOD_COUNT_KEY]);
-        
-        if (storedHunger[1] && storedFood[1] && storedEnergy[1]) {
-          setHunger(Number(storedHunger[1]));
-          setFood(Number(storedFood[1]));
-          setEnergy(Number(storedEnergy[1]));
-        } else {
-          await AsyncStorage.multiSet([
-            ['hunger', "100"],
-            ['food', "100"],
-            ['energy', "100"]
-          ]);
-        }
-
-        if (storedFoodCount[1]) {
-          setFoodCount(Number(storedFoodCount[1]));
-        } else {
-          await AsyncStorage.setItem(FOOD_COUNT_KEY, String(DEFAULT_FOOD_COUNT));
-        }
+        const { hunger, energy, foodCount } = await loadPetStatus(DEFAULT_FOOD_COUNT);
+        setHunger(hunger);
+        setEnergy(energy);
+        setFoodCount(foodCount);
       } catch (error) {
-        console.error('Error loading farm data:', error);
-        Alert.alert('Error', 'Failed to load farm data');
+        console.error('Error loading pet status:', error);
+        Alert.alert('Error', 'Failed to load pet status');
       }
     };
 
-    loadData();
+    init();
   }, []);
 
-  const handlefeed = async () => {
+  const handleFeed = async () => {
     if (foodCount <= 0) {
       Alert.alert('No Food', 'You need to buy more food from the store!');
       return;
     }
 
     try {
-      const newFoodCount = foodCount - 1;
-      const newHunger = Math.max(0, hunger - 10);
-      const newFood = Math.max(0, food - 10);
-
-      await AsyncStorage.multiSet([
-        [FOOD_COUNT_KEY, String(newFoodCount)],
-        ['hunger', String(newHunger)],
-        ['food', String(newFood)]
-      ]);
-
-      setFoodCount(newFoodCount);
+      const { hunger: newHunger, energy: newEnergy, foodCount: newFoodCount } = await feedPet(foodCount);
       setHunger(newHunger);
-      setFood(newFood);
+      setEnergy(newEnergy);
+      setFoodCount(newFoodCount);
     } catch (error) {
-      console.error('Error updating farm data:', error);
-      Alert.alert('Error', 'Failed to update farm data');
+      console.error('Error feeding pet:', error);
+      Alert.alert('Error', 'Failed to feed pet');
     }
   };
-
-  const handleBuyFood = () => {
-    setFood(food + 10);
-  }
 
   return (
     <View className='items-center h-full w-full'>
       <View className='flex w-full justify-end items-end p-4'>
-        <ProgressBar 
-          value={hunger} 
-          label="Hunger" 
+        <ProgressBar
+          value={hunger}
+          label="Hunger"
           color="#FF6B6B"
           width={200}
         />
-        <ProgressBar 
-          value={food} 
-          label="Food" 
-          color="#4CAF50"
-          width={200}
-        />
-        <ProgressBar 
-          value={energy} 
-          label="Energy" 
+        <ProgressBar
+          value={energy}
+          label="Energy"
           color="#2196F3"
           width={200}
         />
@@ -107,9 +68,9 @@ const FarmTab = () => {
       <Image source={capyai} className='w-64 h-64' />
 
       <View className='flex flex-row w-full justify-evenly p-4'>
-        <RaisedButton 
-          variant="buy" 
-          onPress={handlefeed} 
+        <RaisedButton
+          variant="buy"
+          onPress={handleFeed}
           buttonStyles={`w-24 h-8 items-center ${foodCount <= 0 ? 'opacity-50' : ''}`}
           disabled={foodCount <= 0}
         >

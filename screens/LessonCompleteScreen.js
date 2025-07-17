@@ -4,6 +4,7 @@ import { Card } from '../components/ui/Card'
 import RaisedButton from '../components/ui/RaisedButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { MaterialIcons } from '@expo/vector-icons';
+import { STORAGE_KEYS } from '../utils/constants';
 
 const LessonCompleteScreen = ({navigation}) => {
 
@@ -17,32 +18,21 @@ const LessonCompleteScreen = ({navigation}) => {
 
   useEffect(() => {
 
-    const getCoins = async () => {
+    const updateCoins = async () => {
       try {
-        const coins = await AsyncStorage.getItem('coins');
-        if (coins) {
-          setCoins(JSON.parse(coins));
-        }
+        const coinsJSON = await AsyncStorage.getItem(STORAGE_KEYS.COINS);
+        const currentCoins = coinsJSON ? JSON.parse(coinsJSON) : 0;
+        const newCoins = currentCoins + 5;
+        await AsyncStorage.setItem(STORAGE_KEYS.COINS, JSON.stringify(newCoins));
+        setCoins(newCoins);
       } catch (error) {
         console.error(error);
       }
     };
 
-    getCoins();
-
-    setTimeout(addCoins, 1000);
+    updateCoins();
 
   }, []);
-
-  const addCoins = async () => {
-    try {
-      const newCoins = coins + 5;
-      await AsyncStorage.setItem('coins', JSON.stringify(newCoins));
-      setCoins(newCoins);
-    } catch (error) {
-      console.error(error);
-    }
-  }
 
   const handleContinue = () => {
     navigation.navigate('Home')
