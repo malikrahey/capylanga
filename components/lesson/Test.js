@@ -181,7 +181,7 @@ const Test = ({test, isTraining = false, onComplete}) => {
               variant="continue" 
               buttonStyles="flex w-40 h-14 items-center rounded-xl shadow-lg"
             >
-              <Text className='m-auto justify-center text-xl font-bold text-white'>Submit</Text>
+              <Text className='m-auto justify-center text-xl font-bold text-black'>Submit</Text>
             </RaisedButton>
           )}
 

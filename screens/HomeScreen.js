@@ -12,6 +12,7 @@ import TrainingTab from './home/TrainingTab';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import PersonalizedCoursesScreen from './PersonalizedCoursesScreen';
+import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads';
 
 const HomeScreen = ({navigation}) => {
 
@@ -57,6 +58,16 @@ const HomeScreen = ({navigation}) => {
       {/* <Tab.Screen name="Conversations" component={ConversationsTab} /> */}
       <Tab.Screen name="Training" component={TrainingTab} />
     </Tab.Navigator>
+    <BannerAd
+      unitId={TestIds.BANNER}
+      size={BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
+      requestOptions={{
+        requestNonPersonalizedAdsOnly: true,
+        networkExtras: {
+          collapsible: true,
+        }
+      }}
+    />
     </>
   )
 }

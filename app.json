@@ -15,7 +15,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.malikrahey.capylanga"
     },
     "android": {
       "adaptiveIcon": {
@@ -34,7 +35,14 @@
     },
     "owner": "malikrahey",
     "plugins": [
-      "expo-asset"
+      "expo-asset",
+      [
+        "react-native-google-mobile-ads",
+        {
+          "androidAppId": "ca-app-pub-3120864722662787~2852378057",
+          "iosAppId": ""
+        }
+      ]
     ]
   }
 }

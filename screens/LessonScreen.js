@@ -8,7 +8,6 @@ import { getLesson } from '../api/lessons';
 import * as lessonContent from "../public/lessonContent.json"
 import RaisedButton from '../components/ui/RaisedButton';
 import { markLessonAsComplete } from '../utils/completedLessons';
-import { AdMobBanner } from 'expo';
 
 const LessonScreen = ({ route, navigation }) => {
   const { selectedLanguage } = useLanguage();
@@ -84,13 +83,6 @@ const LessonScreen = ({ route, navigation }) => {
             <Test test={test} onComplete={advanceStage}/>
         )}
       </ScrollView>
-
-      {/* <AdMobBanner
-        bannerSize="fullBanner"
-        adUnitID="ca-app-pub-3940256099942554/6300978111" // Test ID, replace with your own on production
-        testDeviuceId="EMULATOR"
-        didFailToReceiveAdWithError={this?.bannerError}
-      /> */}
     </View>
   )
 }

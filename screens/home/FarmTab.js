@@ -10,16 +10,14 @@ const DEFAULT_FOOD_COUNT = 5;
 
 const FarmTab = () => {
   const [hunger, setHunger] = useState(0);
-  const [energy, setEnergy] = useState(0);
   const [foodCount, setFoodCount] = useState(DEFAULT_FOOD_COUNT);
 
   // Initial load & when component regains focus
   useEffect(() => {
     const init = async () => {
       try {
-        const { hunger, energy, foodCount } = await loadPetStatus(DEFAULT_FOOD_COUNT);
+        const { hunger, foodCount } = await loadPetStatus(DEFAULT_FOOD_COUNT);
         setHunger(hunger);
-        setEnergy(energy);
         setFoodCount(foodCount);
       } catch (error) {
         console.error('Error loading pet status:', error);
@@ -37,9 +35,8 @@ const FarmTab = () => {
     }
 
     try {
-      const { hunger: newHunger, energy: newEnergy, foodCount: newFoodCount } = await feedPet(foodCount);
+      const { hunger: newHunger, foodCount: newFoodCount } = await feedPet(foodCount);
       setHunger(newHunger);
-      setEnergy(newEnergy);
       setFoodCount(newFoodCount);
     } catch (error) {
       console.error('Error feeding pet:', error);
@@ -54,12 +51,6 @@ const FarmTab = () => {
           value={hunger}
           label="Hunger"
           color="#FF6B6B"
-          width={200}
-        />
-        <ProgressBar
-          value={energy}
-          label="Energy"
-          color="#2196F3"
           width={200}
         />
         <Text className="text-lg font-bold mt-2">Food Items: {foodCount}</Text>

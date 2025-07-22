@@ -88,7 +88,7 @@ const Conversation = ({lesson, advanceStage}) => {
         <View className=''>
           <ProgressBar  animatedValue={currentStep/lesson.length} />
         </View>
-        <View className='flex-row items-center ml-2'>
+        <View className='flex-row items-center'>
           <Text className='text-lg'>Show Translations: </Text>
           <Checkbox
             borderColor='black'
@@ -100,7 +100,7 @@ const Conversation = ({lesson, advanceStage}) => {
       </View>
       
       <ScrollView 
-        className='w-full h-[80vh] mt-4'
+        className='w-full h-[80vh] mt-8 pt-8'
         ref={scrollViewRef}
         contentContainerStyle={{
           paddingBottom: 150
