@@ -1,3 +1,5 @@
+import { Platform } from "react-native";
+
 export const LANGUAGE_MAP = {
   es: 'Spanish',
   br: 'Brazilian Portuguese',
@@ -196,4 +198,9 @@ export const STORAGE_KEYS = {
   TRAINING_BANK: '@trainingBank',
   COMPLETED_LESSONS: '@completed_lessons',
   LAST_FED: '@last_fed',
+};
+
+export const AD_UNITS = {
+  INTERSTITIAL: (Platform.OS === 'ios') ? 'ca-app-pub-3120864722662787/6120864722' : 'ca-app-pub-3120864722662787/6120864722',
+  REWARDED: (Platform.OS === 'ios') ? 'ca-app-pub-3120864722662787/6120864722' : 'ca-app-pub-3120864722662787/6120864722',
 };

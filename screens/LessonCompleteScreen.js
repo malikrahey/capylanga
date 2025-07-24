@@ -1,14 +1,26 @@
-import { View, Text } from 'react-native'
+import { View, Text, Platform } from 'react-native'
 import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { Card } from '../components/ui/Card'
 import RaisedButton from '../components/ui/RaisedButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { MaterialIcons } from '@expo/vector-icons';
 import { STORAGE_KEYS } from '../utils/constants';
+import { AdEventType, InterstitialAd, TestIds } from 'react-native-google-mobile-ads';
+import { StatusBar } from 'expo-status-bar';
+import { useNavigation } from '@react-navigation/native';
 
-const LessonCompleteScreen = ({navigation}) => {
+const interstitial = InterstitialAd.createForAdRequest(TestIds.INTERSTITIAL, {
+  keywords: ['fashion']
+});
+
+const LessonCompleteScreen = () => {
 
   const [coins, setCoins] = useState(0);
+  const [loaded, setLoaded] = useState(false);
+  const [canContinue, setCanContinue] = useState(false);
+  const navigation = useNavigation();
+
+  
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -18,6 +30,24 @@ const LessonCompleteScreen = ({navigation}) => {
 
   useEffect(() => {
 
+    const unsubscribeLoaded = interstitial.addAdEventListener(AdEventType.LOADED, () => {
+      setLoaded(true);
+    });
+
+    const unsubscribeOpened = interstitial.addAdEventListener(AdEventType.OPENED, () => {
+     if (Platform.OS === 'ios') {
+      StatusBar.setHidden(true);
+     }
+    });
+
+    const unsubscribeClosed = interstitial.addAdEventListener(AdEventType.CLOSED, () => {
+      if (Platform.OS === 'ios') {
+        StatusBar.setHidden(false);
+      }
+    });
+
+    interstitial.load();
+
     const updateCoins = async () => {
       try {
         const coinsJSON = await AsyncStorage.getItem(STORAGE_KEYS.COINS);
@@ -25,6 +55,7 @@ const LessonCompleteScreen = ({navigation}) => {
         const newCoins = currentCoins + 5;
         await AsyncStorage.setItem(STORAGE_KEYS.COINS, JSON.stringify(newCoins));
         setCoins(newCoins);
+        setCanContinue(true);
       } catch (error) {
         console.error(error);
       }
@@ -32,9 +63,18 @@ const LessonCompleteScreen = ({navigation}) => {
 
     updateCoins();
 
+    return () => {
+      unsubscribeLoaded();
+      unsubscribeClosed();
+      unsubscribeOpened();
+    }
+
   }, []);
 
   const handleContinue = () => {
+    if (loaded) {
+      interstitial.show();
+    }
     navigation.navigate('Home')
   }
 
@@ -48,7 +88,7 @@ const LessonCompleteScreen = ({navigation}) => {
       </Card>
 
       <View className="mt-8">
-        <RaisedButton onPress={handleContinue} variant="continue" buttonStyles="p-4">
+        <RaisedButton onPress={handleContinue} variant="continue" buttonStyles="p-4" disabled={!canContinue}>
           <Text className="text-white font-bold">Continue</Text>
         </RaisedButton>
       </View>

@@ -12,7 +12,7 @@ const variants = {
   "buy": "bg-green-200",
 }
 
-const RaisedButton = ({onPress, variant, children, buttonStyles}) => {
+const RaisedButton = ({onPress, variant, children, buttonStyles, disabled}) => {
 
   const variantClass = variants[variant] || variants["default"];
 
@@ -20,6 +20,7 @@ const RaisedButton = ({onPress, variant, children, buttonStyles}) => {
     <TouchableOpacity
       className={`items-center flex border border-b-4 shadow-md rounded-lg font-bold ${variantClass} ${buttonStyles}`}
       onPress={onPress}
+      disabled={disabled}
     >
       {children}
     </TouchableOpacity>
