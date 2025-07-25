@@ -201,6 +201,6 @@ export const STORAGE_KEYS = {
 };
 
 export const AD_UNITS = {
-  INTERSTITIAL: (Platform.OS === 'ios') ? 'ca-app-pub-3120864722662787/6120864722' : 'ca-app-pub-3120864722662787/6120864722',
-  REWARDED: (Platform.OS === 'ios') ? 'ca-app-pub-3120864722662787/6120864722' : 'ca-app-pub-3120864722662787/6120864722',
+  INTERSTITIAL: (Platform.OS === 'ios') ? 'ca-app-pub-3120864722662787/7222867901' : 'ca-app-pub-3120864722662787/5716368631',
+  REWARDED: (Platform.OS === 'ios') ? 'ca-app-pub-3120864722662787/4623359376' : 'ca-app-pub-3120864722662787/8538553653',
 };
