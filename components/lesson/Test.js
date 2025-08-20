@@ -4,6 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Button, ProgressBar } from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import RaisedButton from '../ui/RaisedButton';
+import { STORAGE_KEYS } from '../../utils/constants';
 
 const WordBank = ({words, addSelectedWord}) => {
 
@@ -79,9 +80,9 @@ const Test = ({test, isTraining = false, onComplete}) => {
     if (isTraining) return;
 
     try {
-      const trainingBank = await AsyncStorage.getItem('trainingBank');
+      const trainingBank = await AsyncStorage.getItem(STORAGE_KEYS.TRAINING_BANK);
       if (!trainingBank) {
-          await AsyncStorage.setItem('trainingBank', JSON.stringify([test[step]]));
+          await AsyncStorage.setItem(STORAGE_KEYS.TRAINING_BANK, JSON.stringify([test[step]]));
         } else {
 
           const parsedTrainingBank = JSON.parse(trainingBank);
@@ -92,7 +93,7 @@ const Test = ({test, isTraining = false, onComplete}) => {
           });
 
           parsedTrainingBank.push(test[step]);
-          await AsyncStorage.setItem('trainingBank', JSON.stringify(parsedTrainingBank));
+          await AsyncStorage.setItem(STORAGE_KEYS.TRAINING_BANK, JSON.stringify(parsedTrainingBank));
       }
     }
     catch (error) {
@@ -142,7 +143,7 @@ const Test = ({test, isTraining = false, onComplete}) => {
     <View className='h-screen bg-white'>
       <View className='px-4 pt-4'>
         <ProgressBar 
-          progress={step/test.length} 
+          animatedValue={step/test.length} 
           color="#4F46E5"
           className='h-2 rounded-full'
         />
@@ -180,7 +181,7 @@ const Test = ({test, isTraining = false, onComplete}) => {
               variant="continue" 
               buttonStyles="flex w-40 h-14 items-center rounded-xl shadow-lg"
             >
-              <Text className='m-auto justify-center text-xl font-bold text-white'>Submit</Text>
+              <Text className='m-auto justify-center text-xl font-bold text-black'>Submit</Text>
             </RaisedButton>
           )}
 

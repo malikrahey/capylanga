@@ -1,3 +1,6 @@
+import { Platform } from "react-native";
+import { TestIds } from "react-native-google-mobile-ads";
+
 export const LANGUAGE_MAP = {
   es: 'Spanish',
   br: 'Brazilian Portuguese',
@@ -185,3 +188,22 @@ export const SELECTABLE_LANGUAGES = [
   // { code: 'de', name: 'German', flag: 'DE' },
   // { code: 'it', name: 'Italian', flag: 'IT' },
 ];
+
+export const STORAGE_KEYS = {
+  COINS: '@coins',
+  CREDITS: '@credits',
+  STORE_ITEMS: '@store_items',
+  FOOD_COUNT: '@food_count',
+  PERSONALIZED_COURSES: '@personalized_courses',
+  ON_DEMAND_LESSONS: '@on_demand_lessons',
+  TRAINING_BANK: '@trainingBank',
+  COMPLETED_LESSONS: '@completed_lessons',
+  LAST_FED: '@last_fed',
+};
+
+export const AD_UNITS = {
+  // INTERSTITIAL: (Platform.OS === 'ios') ? 'ca-app-pub-3120864722662787/7222867901' : 'ca-app-pub-3120864722662787/5716368631',
+  // REWARDED: (Platform.OS === 'ios') ? 'ca-app-pub-3120864722662787/4623359376' : 'ca-app-pub-3120864722662787/8538553653',
+  INTERSTITIAL: TestIds.INTERSTITIAL,
+  REWARDED: TestIds.REWARDED,
+};

@@ -6,10 +6,10 @@ import capyImage from '../../assets/capyai.png';
 import RaisedButton from '../../components/ui/RaisedButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import StoreItem from '../../components/store/StoreItem';
+import { useFocusEffect } from '@react-navigation/native';
+import { STORAGE_KEYS } from '../../utils/constants';
 
-const STORE_ITEMS_KEY = '@store_items';
-const COINS_KEY = '@coins';
-const FOOD_COUNT_KEY = '@food_count';
+const {COINS, FOOD_COUNT} = STORAGE_KEYS;
 
 const storeItems = [
   {
@@ -22,7 +22,6 @@ const storeItems = [
 
 const StoreTab = ({navigation}) => {
   const [coins, setCoins] = useState(0);
-  const [purchasedItems, setPurchasedItems] = useState([]);
   const [foodCount, setFoodCount] = useState(0);
 
   useLayoutEffect(() => {
@@ -34,28 +33,23 @@ const StoreTab = ({navigation}) => {
     })
   }, []);
 
-  useEffect(() => {
-    loadData();
-  }, []);
+  useFocusEffect(
+    React.useCallback(() => {
+      loadData();
+    }, [])
+  );
 
   const loadData = async () => {
     try {
-      const [coinsData, purchasedData, foodCountData] = await Promise.all([
-        AsyncStorage.getItem(COINS_KEY),
-        AsyncStorage.getItem(STORE_ITEMS_KEY),
-        AsyncStorage.getItem(FOOD_COUNT_KEY)
+      const [coinsData, foodCountData] = await Promise.all([
+        AsyncStorage.getItem(COINS),
+        AsyncStorage.getItem(FOOD_COUNT)
       ]);
 
       if (coinsData) {
         setCoins(JSON.parse(coinsData));
       } else {
-        await AsyncStorage.setItem(COINS_KEY, JSON.stringify(0));
-      }
-
-      if (purchasedData) {
-        setPurchasedItems(JSON.parse(purchasedData));
-      } else {
-        await AsyncStorage.setItem(STORE_ITEMS_KEY, JSON.stringify([]));
+        await AsyncStorage.setItem(COINS, JSON.stringify(0));
       }
 
       if (foodCountData) {
@@ -75,17 +69,14 @@ const StoreTab = ({navigation}) => {
       }
 
       const newCoins = coins - price;
-      const newPurchasedItems = [...purchasedItems, itemId];
       const newFoodCount = foodCount + 1;
 
       await Promise.all([
-        AsyncStorage.setItem(COINS_KEY, JSON.stringify(newCoins)),
-        AsyncStorage.setItem(STORE_ITEMS_KEY, JSON.stringify(newPurchasedItems)),
-        AsyncStorage.setItem(FOOD_COUNT_KEY, String(newFoodCount))
+        AsyncStorage.setItem(COINS, JSON.stringify(newCoins)),
+        AsyncStorage.setItem(FOOD_COUNT, String(newFoodCount))
       ]);
 
       setCoins(newCoins);
-      setPurchasedItems(newPurchasedItems);
       setFoodCount(newFoodCount);
       
       Alert.alert('Success', 'Food purchased successfully!');
@@ -97,10 +88,10 @@ const StoreTab = ({navigation}) => {
 
   return (
     <View className='items-center h-full justify-center w-full p-4'>
-      <View className='w-full items-end py-8'>
+      <View className='w-full items-start py-8'>
         <Card cardStyle="">
           <Text className="text-lg font-bold">Coins: {coins}</Text>
-          <Text className="text-lg font-bold">Food Items: {foodCount}</Text>
+          <Text className="text-lg font-bold">Food: {foodCount}</Text>
         </Card>
       </View>
       
@@ -117,7 +108,6 @@ const StoreTab = ({navigation}) => {
             {...item} 
             coins={coins}
             onPurchase={(price) => handlePurchase(item.id, price)}
-            isPurchased={purchasedItems.includes(item.id)}
           />
         ))}
       </ScrollView>

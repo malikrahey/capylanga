@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, SafeAreaView, Alert, ActivityIndicator, FlatList, TouchableOpacity } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import RaisedButton from '../components/ui/RaisedButton';
 import styles from '../styles';
 import { savePersonalizedCourse } from '../api/personalizedCourses';
@@ -8,6 +8,8 @@ import CountryFlag from 'react-native-country-flag';
 import { SELECTABLE_LANGUAGES } from '../utils/constants';
 import { generateCourseOutline } from '../api/aiCourseService';
 import { Picker } from '@react-native-picker/picker';
+import { getCredits, deductCredits, hasEnoughCredits, CREDIT_COSTS } from '../api/credits';
+import { MaterialIcons } from '@expo/vector-icons';
 
 const STEPS = {
   NAME: 1,
@@ -26,9 +28,28 @@ const CreatePersonalizedCourseScreen = () => {
   const [skillLevel, setSkillLevel] = useState('');
   const [topics, setTopics] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [credits, setCredits] = useState(0);
+  const [canAffordCourse, setCanAffordCourse] = useState(false);
 
   // Pre-defined skill level options for the dropdown
   const SKILL_LEVEL_OPTIONS = ['Beginner', 'Intermediate', 'Advanced'];
+
+  // Load credits when screen is focused
+  useFocusEffect(
+    React.useCallback(() => {
+      const loadCredits = async () => {
+        try {
+          const currentCredits = await getCredits();
+          setCredits(currentCredits);
+          const canAfford = await hasEnoughCredits(CREDIT_COSTS.CREATE_COURSE);
+          setCanAffordCourse(canAfford);
+        } catch (error) {
+          console.error('Error loading credits:', error);
+        }
+      };
+      loadCredits();
+    }, [])
+  );
 
   const handleNext = () => {
     if (currentStep === STEPS.NAME && !courseName.trim()) {
@@ -62,11 +83,27 @@ const CreatePersonalizedCourseScreen = () => {
   };
 
   const handleGenerateCourse = async () => {
+    // Check credits before proceeding
+    if (!canAffordCourse) {
+      Alert.alert(
+        'Insufficient Credits', 
+        `You need ${CREDIT_COSTS.CREATE_COURSE} credits to create a course, but you only have ${credits}. Watch a video to earn more credits!`,
+        [
+          { text: 'Cancel', style: 'cancel' },
+          { text: 'Get Credits', onPress: () => navigation.navigate('GetCreditsScreen') }
+        ]
+      );
+      return;
+    }
+
     setIsLoading(true);
     setCurrentStep(STEPS.GENERATING);
     console.log('Starting course generation with:', { courseName, language, skillLevel, topics });
 
     try {
+      // Deduct credits first
+      await deductCredits(CREDIT_COSTS.CREATE_COURSE);
+      
       const topicsArray = topics.split(',').map(topic => topic.trim()).filter(topic => topic);
       const courseOutline = await generateCourseOutline(language, skillLevel, topicsArray);
       console.log('Generated course outline:', courseOutline);
@@ -88,6 +125,11 @@ const CreatePersonalizedCourseScreen = () => {
       const savedCourse = await savePersonalizedCourse(newCourse);
       console.log('Course saved:', savedCourse);
       setIsLoading(false);
+      
+      // Update credits display
+      const newCredits = await getCredits();
+      setCredits(newCredits);
+      
       Alert.alert('Course Created!', `Your course "${savedCourse.name}" has been created.`, [
         { text: 'OK', onPress: () => navigation.replace('ViewPersonalizedCourse', { courseId: savedCourse.id }) }
       ]);
@@ -96,7 +138,15 @@ const CreatePersonalizedCourseScreen = () => {
       setIsLoading(false);
       setCurrentStep(STEPS.TOPICS);
       console.error('Failed to generate or save course:', error);
-      Alert.alert('Error', 'Could not create the course. Please try again.');
+      
+      if (error.message.includes('Insufficient credits')) {
+        Alert.alert('Insufficient Credits', error.message, [
+          { text: 'Cancel', style: 'cancel' },
+          { text: 'Get Credits', onPress: () => navigation.navigate('GetCreditsScreen') }
+        ]);
+      } else {
+        Alert.alert('Error', 'Could not create the course. Please try again.');
+      }
     }
   };
 
@@ -185,6 +235,30 @@ const CreatePersonalizedCourseScreen = () => {
               multiline
               textAlignVertical="top"
             />
+
+            {/* Credits info for course creation */}
+            <View className="bg-gray-50 p-4 rounded-lg mt-4">
+              <View className="flex-row items-center justify-between">
+                <View className="flex-row items-center">
+                  <MaterialIcons name="stars" size={20} color="#f59e0b" />
+                  <Text className="text-lg font-semibold ml-2">Credits: {credits}</Text>
+                </View>
+                <Text className="text-lg font-semibold">Cost: {CREDIT_COSTS.CREATE_COURSE}</Text>
+              </View>
+              {!canAffordCourse && (
+                <View className="mt-2">
+                  <Text className="text-red-600 text-sm">
+                    ⚠️ You need {CREDIT_COSTS.CREATE_COURSE - credits} more credits to create this course.
+                  </Text>
+                  <TouchableOpacity 
+                    onPress={() => navigation.navigate('GetCreditsScreen')}
+                    className="mt-1"
+                  >
+                    <Text className="text-blue-600 text-sm underline">Get more credits</Text>
+                  </TouchableOpacity>
+                </View>
+              )}
+            </View>
           </View>
         );
       default:
@@ -212,6 +286,7 @@ const CreatePersonalizedCourseScreen = () => {
                 variant="continue"
                 onPress={handleNext} 
                 buttonStyles={currentStep === STEPS.NAME ? "flex-1 p-4" : "flex-1 ml-2 p-4"}
+                disabled={currentStep === STEPS.TOPICS && !canAffordCourse}
               >
                 <Text>{currentStep === STEPS.TOPICS ? 'Generate Course' : 'Next'}</Text>
               </RaisedButton>

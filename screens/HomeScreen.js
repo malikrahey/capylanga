@@ -12,6 +12,8 @@ import TrainingTab from './home/TrainingTab';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import PersonalizedCoursesScreen from './PersonalizedCoursesScreen';
+import { BannerAd, BannerAdSize, TestIds } from 'react-native-google-mobile-ads';
+import CreditsDisplay from '../components/ui/CreditsDisplay';
 
 const HomeScreen = ({navigation}) => {
 
@@ -26,6 +28,20 @@ const HomeScreen = ({navigation}) => {
 
   return (
     <>
+    {/* Floating Credits Display */}
+    <View style={{
+      position: 'absolute',
+      top: 50,
+      right: 16,
+      zIndex: 1000,
+    }}>
+      <CreditsDisplay 
+        size="small" 
+        variant="compact"
+        showGetMore={true}
+      />
+    </View>
+
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
