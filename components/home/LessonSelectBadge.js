@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity, NativeModules } from 'react-native';
-import React, { createRef, useState, useEffect, useCallback } from 'react';
+import React, { useRef, useState, useEffect, useCallback, useMemo } from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import * as lessonContent from '../../public/lessonContent.json';
@@ -12,24 +12,43 @@ const LessonSelectBadge = ({ rootPath, onSelect, onDeselect }) => {
   const [isSelected, setIsSelected] = useState(false);
   const { selectedLanguage } = useLanguage();
   const [completedLessons, setCompletedLessons] = useState({});
-  const ref = createRef();
+  const ref = useRef();
 
-  const lessons = lessonContent[selectedLanguage]?.[rootPath] 
-    ? Object.keys(lessonContent[selectedLanguage][rootPath]).filter(key => !isNaN(Number(key)))
-    : [];
+  // Memoize the lessons array to prevent unnecessary re-computations
+  const lessons = useMemo(() => {
+    return lessonContent[selectedLanguage]?.[rootPath] 
+      ? Object.keys(lessonContent[selectedLanguage][rootPath]).filter(key => !isNaN(Number(key)))
+      : [];
+  }, [selectedLanguage, rootPath]);
+
   const icon = lessonContent[selectedLanguage]?.[rootPath]?.['config']?.['icon'];
 
   const loadCompletionStatus = useCallback(async () => {
-    const completed = {};
-    for (const lesson of lessons) {
-      completed[lesson] = await isLessonComplete(selectedLanguage, rootPath, lesson);
+    if (!lessons || lessons.length === 0) {
+      setCompletedLessons({});
+      return;
     }
-    setCompletedLessons(completed);
+    
+    try {
+      const completed = {};
+      for (const lesson of lessons) {
+        completed[lesson] = await isLessonComplete(selectedLanguage, rootPath, lesson);
+      }
+      setCompletedLessons(completed);
+    } catch (error) {
+      console.warn(`Error loading completion status for ${selectedLanguage}/${rootPath}:`, error);
+      setCompletedLessons({});
+    }
   }, [selectedLanguage, rootPath, lessons]);
 
   useEffect(() => {
     loadCompletionStatus();
   }, [loadCompletionStatus]);
+
+  // Reset selection state when language changes
+  useEffect(() => {
+    setIsSelected(false);
+  }, [selectedLanguage]);
 
   const handleSelect = useCallback((lesson) => {
     navigation.navigate('Lesson', {

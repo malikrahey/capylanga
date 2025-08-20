@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity, ScrollView, SafeAreaView, Animated } from 'react-native'
-import React, { lazy, useContext, useEffect, useLayoutEffect, useMemo, useState } from 'react'
+import React, { lazy, useContext, useEffect, useLayoutEffect, useMemo, useState, useCallback } from 'react'
 import useLanguage from '../../hooks/useLanguage'
 import { SimpleLineIcons } from '@expo/vector-icons';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
@@ -27,6 +27,28 @@ const LessonsTab = ({navigation}) => {
   const [selectedBadge, setSelectedBadge] = useState(null);
   const [refreshKey, setRefreshKey] = useState(0);
 
+  const handleSelect = useCallback((index) => {
+    setSelectedBadge(index);
+  }, []);
+
+  const handleDeselect = useCallback(() => {
+    setSelectedBadge(null);
+  }, []);
+
+  const renderLessonBadge = useCallback((lesson, index) => {
+    const onSelectForIndex = () => handleSelect(index);
+    
+    return (
+      <View key={`${lesson.rootPath}-${refreshKey}`} className={`items-center my-4 ${selectedBadge === index ? '' : ''}`}> 
+        <LessonSelectBadge  
+          {...lesson}
+          onSelect={onSelectForIndex}
+          onDeselect={handleDeselect}
+        />
+      </View>
+    );
+  }, [handleSelect, handleDeselect, selectedBadge, refreshKey]);
+
   useLayoutEffect(() => {
     navigation.setOptions({
       headerShown: false,
@@ -45,6 +67,7 @@ const LessonsTab = ({navigation}) => {
   useEffect(() => {
     setLoading(true);
     try {
+
       const manifest = lessonContent[selectedLanguage]['manifest'];
       setLessons(manifest.lessonModules);
     } catch (error) {
@@ -85,16 +108,9 @@ const LessonsTab = ({navigation}) => {
             >  
               <Text className='text-2xl font-bold'>Module 1: Essentials</Text>
             
-              {lessons.map((lesson, index) => lesson !== undefined ? (
-                
-                <View key={`${lesson.rootPath}-${refreshKey}`} className={`items-center my-4 ${selectedBadge === index ? '' : ''}`}> 
-                  <LessonSelectBadge  
-                    {...lesson}
-                    onSelect={() => setSelectedBadge(index)}
-                    onDeselect={() => setSelectedBadge(null)}
-                  />
-                </View> 
-              ) : null)}
+              {lessons.map((lesson, index) => lesson !== undefined ? 
+                renderLessonBadge(lesson, index) : null
+              )}
 
               <RaisedButton 
                 variant={'continue'} 

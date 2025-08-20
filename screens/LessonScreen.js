@@ -1,5 +1,6 @@
 import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
 import React, { useEffect, useLayoutEffect, useState } from 'react';
+import { MaterialIcons } from '@expo/vector-icons';
 import Conversation from '../components/lesson/Conversation';
 import Test from '../components/lesson/Test';
 import useLanguage from '../hooks/useLanguage';
@@ -63,26 +64,58 @@ const LessonScreen = ({ route, navigation }) => {
   }
 
   return (
-    <View className='flex-1'>
-      <ScrollView className='p-4'>
-        {currentStage === 'introduction' ? (
-          <View className='flex flex-col h-full p-4 justify-between'>
-            <View className='p-2 bg-white border shadow-md rounded-lg'>
-              <Text className='text-lg m-2'>{intro}</Text>
+    <View className='flex-1 bg-gray-50'>
+      {currentStage === 'introduction' ? (
+        <View className='flex-1 px-6 py-8 justify-between'>
+          {/* Header Section */}
+          <View className='flex-1 justify-center'>
+            <View className='items-center mb-8'>
+              <View className='bg-purple-500 rounded-full p-6 mb-6 shadow-lg'>
+                <MaterialIcons name="school" size={48} color="white" />
+              </View>
+              <Text className='text-2xl font-bold text-gray-800 text-center mb-2'>
+                {title}
+              </Text>
+              <View className='w-16 h-1 bg-purple-500 rounded-full'></View>
             </View>
             
-            <RaisedButton variant="continue" buttonStyles="p-4" onPress={() => setCurrentStage('story')}>
-              <Text>Continue</Text>
+            {/* Introduction Content */}
+            <View className='bg-white rounded-3xl p-6 mx-2 shadow-lg border border-gray-100'>
+              <View className='flex-row items-center mb-4'>
+                <View className='bg-purple-100 rounded-full p-2 mr-3'>
+                  <MaterialIcons name="info" size={20} color="#7c3aed" />
+                </View>
+                <Text className='text-sm font-semibold text-purple-600 uppercase tracking-wide'>
+                  Lesson Overview
+                </Text>
+              </View>
+              <Text className='text-lg text-gray-700 leading-relaxed'>
+                {intro}
+              </Text>
+            </View>
+          </View>
+          
+          {/* Action Section */}
+          <View className='pt-6'>
+            <RaisedButton 
+              variant="continue" 
+              buttonStyles="mx-4 rounded-2xl shadow-lg" 
+              onPress={() => setCurrentStage('story')}
+            >
+              <View className='flex-row items-center'>
+                <Text className='text-lg font-bold text-white mr-2'>Start Lesson</Text>
+                <MaterialIcons name="arrow-forward" size={20} color="white" />
+              </View>
             </RaisedButton>
           </View>
-        ) : currentStage === 'story' ? (
-          <View>
-            <Conversation lesson={lesson} advanceStage={advanceStage} />
-          </View>
-        ) : (
-            <Test test={test} onComplete={advanceStage}/>
-        )}
-      </ScrollView>
+        </View>
+      ) : currentStage === 'story' ? (
+        <Conversation lesson={lesson} advanceStage={advanceStage} />
+      ) : (
+        <ScrollView className='p-4'>
+          <Test test={test} onComplete={advanceStage}/>
+        </ScrollView>
+      )}
     </View>
   )
 }

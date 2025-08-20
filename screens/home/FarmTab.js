@@ -53,7 +53,7 @@ const FarmTab = () => {
           color="#FF6B6B"
           width={200}
         />
-        <Text className="text-lg font-bold mt-2">Food Items: {foodCount}</Text>
+        <Text className="text-lg font-bold mt-2">Food: {foodCount}</Text>
       </View>
 
       <Image source={capyai} className='w-64 h-64' />
@@ -62,10 +62,10 @@ const FarmTab = () => {
         <RaisedButton
           variant="buy"
           onPress={handleFeed}
-          buttonStyles={`w-24 h-8 items-center ${foodCount <= 0 ? 'opacity-50' : ''}`}
+          buttonStyles={`w-24 h-8 items-center text-white ${foodCount <= 0 ? 'opacity-50' : ''}`}
           disabled={foodCount <= 0}
         >
-          <Text className="text-lg font-bold">Feed</Text>
+          <Text className="text-lg font-bold text-white">Feed</Text>
         </RaisedButton>
       </View>
     </View>

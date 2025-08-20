@@ -1,5 +1,5 @@
 {
-    "Br": {
+    "br": {
         "1.0 Introductions": {
             "1": {
                 "lesson": {
@@ -438,7 +438,7 @@
             ]
         }
     },
-    "Es": {
+    "es": {
         "1.0 Introductions": {
             "1": {
                 "lesson": {
@@ -1934,7 +1934,7 @@
             ]
         }
     },
-    "Fr": {
+    "fr": {
         "1.0 Introductions": {
             "1": {
                 "lesson": {
@@ -9051,7 +9051,22 @@
                         ]
                     }
                 },
-                "Fr": {},
+                "Fr": {
+                    "manifest": {
+                        "lessonModules": [
+                            {
+                                "rootPath": "1.0 Introductions",
+                                "length": 3,
+                                "level": 1
+                            },
+                            {
+                                "rootPath": "1.1 Asking For Help",
+                                "length": 2,
+                                "level": 1
+                            }
+                        ]
+                    }
+                },
                 "lessonContent": {
                     "Es": {
                         "1.0 Introductions": {
@@ -11667,7 +11682,7 @@
                                             "level": 1
                                         },
                                         {
-                                            "rootPath": "1.0_asking_for_help",
+                                            "rootPath": "1.1_asking_for_help",
                                             "length": 1,
                                             "level": 1
                                         }

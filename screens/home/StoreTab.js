@@ -88,10 +88,10 @@ const StoreTab = ({navigation}) => {
 
   return (
     <View className='items-center h-full justify-center w-full p-4'>
-      <View className='w-full items-end py-8'>
+      <View className='w-full items-start py-8'>
         <Card cardStyle="">
           <Text className="text-lg font-bold">Coins: {coins}</Text>
-          <Text className="text-lg font-bold">Food Items: {foodCount}</Text>
+          <Text className="text-lg font-bold">Food: {foodCount}</Text>
         </Card>
       </View>
       
