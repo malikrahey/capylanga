@@ -67,7 +67,11 @@ const LessonsTab = ({navigation}) => {
   useEffect(() => {
     setLoading(true);
     try {
-
+      console.log('selectedLanguage', selectedLanguage);
+      const languageContent = lessonContent[selectedLanguage];
+      if (!languageContent) {
+        return;
+      }
       const manifest = lessonContent[selectedLanguage]['manifest'];
       setLessons(manifest.lessonModules);
     } catch (error) {
@@ -108,7 +112,7 @@ const LessonsTab = ({navigation}) => {
             >  
               <Text className='text-2xl font-bold'>Module 1: Essentials</Text>
             
-              {lessons.map((lesson, index) => lesson !== undefined ? 
+              {lessons?.map((lesson, index) => lesson !== undefined ? 
                 renderLessonBadge(lesson, index) : null
               )}
 
@@ -117,7 +121,7 @@ const LessonsTab = ({navigation}) => {
                 buttonStyles="p-4" 
                 onPress={() => navigation.navigate('OnDemandLesson', { language: selectedLanguage })}
               >
-                <Text>Lesson On Demand</Text>
+                <Text className=' font-bold text-white z-10'>Lesson On Demand</Text>
               </RaisedButton>
             </ScrollView>
           </>

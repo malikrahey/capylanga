@@ -33,13 +33,13 @@ const StoreItem = ({
 
           <Image source={image} className='w-32 h-32' />
           <RaisedButton 
-            buttonStyles={`w-16 h-8 ${isDisabled ? 'opacity-50' : ''}`} 
+            buttonStyles={`w-32 h-16 ${isDisabled ? 'opacity-50' : ''}`} 
             variant={"buy"} 
             onPress={handlePress}
             disabled={isDisabled}
           >
-            <Text className='text-lg font-bold'>
-              {'Buy'}
+            <Text className='text-lg font-bold text-white'>
+              Buy
             </Text>
           </RaisedButton>
     </Card>

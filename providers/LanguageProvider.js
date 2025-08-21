@@ -2,7 +2,7 @@ const { createContext, useState, useReducer } = require("react");
 
 
 const initialState = {
-  selectedLanguage: "Es"
+  selectedLanguage: "es"
 }
 
 export const LanguageContext = createContext();

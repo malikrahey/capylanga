@@ -67,7 +67,11 @@ const GetCreditsScreen = ({navigation}) => {
 
   const handleWatchVideo = () => {
     if (loaded) {
-      rewarded.show();
+      try {
+        rewarded.show();  
+      } catch (error) {
+        Alert.alert('Error', 'Failed to show video. Please try again.');
+      }
     }
   };
 

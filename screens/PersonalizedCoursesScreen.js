@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useLayoutEffect } from 'react';
 import { View, Text, FlatList, SafeAreaView, TouchableOpacity, ActivityIndicator } from 'react-native';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import RaisedButton from '../components/ui/RaisedButton';
@@ -13,6 +13,12 @@ const PersonalizedCoursesScreen = () => {
   const [loading, setLoading] = React.useState(true);
   // Track which courses already have lesson content stored locally (all modules generated)
   const [generatedStatusMap, setGeneratedStatusMap] = React.useState({});
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerShown: false,
+    });
+  }, [navigation]);
 
   const fetchCourses = useCallback(async () => {
     try {
@@ -106,7 +112,7 @@ const PersonalizedCoursesScreen = () => {
           buttonStyles="p-4 mt-4" 
           onPress={() => navigation.navigate('CreatePersonalizedCourse')}
         >
-          <Text>Create New Course</Text>
+          <Text className='text-white font-bold'>Create New Course</Text>
         </RaisedButton>
       </View>
     </SafeAreaView>
