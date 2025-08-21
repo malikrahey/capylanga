@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { View, Image, Text, Alert } from 'react-native';
 import capyai from '../../assets/capyai.png';
+import capysad from '../../assets/capysad.png';
+import capynormal from '../../assets/capynormal.png';
+import capyhungry from '../../assets/capyhungry.png';
 import RaisedButton from '../../components/ui/RaisedButton';
 import ProgressBar from '../../components/ui/ProgressBar';
 
@@ -44,6 +47,10 @@ const FarmTab = () => {
     }
   };
 
+  let imgSource = capynormal;
+  if (hunger > 50) imgSource = capysad;
+  if (hunger > 75) imgSource = capyhungry;
+
   return (
     <View className='items-center h-full w-full'>
       <View className='flex w-full justify-end items-end p-4'>
@@ -56,7 +63,7 @@ const FarmTab = () => {
         <Text className="text-lg font-bold mt-2">Food: {foodCount}</Text>
       </View>
 
-      <Image source={capyai} className='w-64 h-64' />
+      <Image source={imgSource} className='w-64 h-64' />
 
       <View className='flex flex-row w-full justify-evenly p-4'>
         <RaisedButton
