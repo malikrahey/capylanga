@@ -69,10 +69,10 @@ const FarmTab = () => {
         <RaisedButton
           variant="buy"
           onPress={handleFeed}
-          buttonStyles={`w-24 h-8 items-center text-white ${foodCount <= 0 ? 'opacity-50' : ''}`}
+          buttonStyles={`w-32 h-18 items-center ${foodCount <= 0 ? 'opacity-50' : ''}`}
           disabled={foodCount <= 0}
         >
-          <Text className="text-lg font-bold text-white">Feed</Text>
+          <Text className="font-bold text-white z-10">Feed</Text>
         </RaisedButton>
       </View>
     </View>
