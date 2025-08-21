@@ -2,7 +2,7 @@ import { View, Image, Text, ScrollView, Alert } from 'react-native'
 import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { FontAwesome } from '@expo/vector-icons';
 import { Card, CardHeader } from '../../components/ui/Card';
-import capyImage from '../../assets/capyai.png';
+import food from '../../assets/food.png';
 import RaisedButton from '../../components/ui/RaisedButton';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import StoreItem from '../../components/store/StoreItem';
@@ -16,7 +16,7 @@ const storeItems = [
     id: 1,
     name: 'Food',
     price: 5,
-    image: capyImage,
+    image: food,
   },
 ]
 
