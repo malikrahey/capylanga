@@ -112,9 +112,7 @@ const LessonScreen = ({ route, navigation }) => {
       ) : currentStage === 'story' ? (
         <Conversation lesson={lesson} advanceStage={advanceStage} />
       ) : (
-        <ScrollView className='p-4'>
-          <Test test={test} onComplete={advanceStage}/>
-        </ScrollView>
+        <Test test={test} onComplete={advanceStage}/>
       )}
     </View>
   )

@@ -140,7 +140,7 @@ const Test = ({test, isTraining = false, onComplete}) => {
   
 
   return (
-    <View className='h-screen bg-white'>
+    <View className='h-screen bg-white flex-1'>
       <View className='px-4 pt-4'>
         <ProgressBar 
           animatedValue={step/test.length} 
@@ -152,11 +152,10 @@ const Test = ({test, isTraining = false, onComplete}) => {
       <ScrollView 
         className='flex-1'
         contentContainerStyle={{
-          flexGrow: 1,
-          paddingBottom: 40
+          paddingBottom: 20
         }}
       >
-        <View className='flex-1 justify-start items-center p-6'>
+        <View className='justify-start items-center p-6'>
           <Text className="text-xl text-gray-800 mb-8 font-semibold text-center leading-relaxed">
             {test[step].prompt}
           </Text>
@@ -172,45 +171,46 @@ const Test = ({test, isTraining = false, onComplete}) => {
             words={test[step].wordBank} 
             addSelectedWord={addSelectedWord}
           />
-
-          <View className='h-12'></View>
-
-          {!isCorrect && !isWrong && (
-            <RaisedButton 
-              onPress={handleSubmit} 
-              variant="continue" 
-              buttonStyles="flex w-40 h-14 items-center rounded-xl shadow-lg"
-            >
-              <Text className='m-auto justify-center text-xl font-bold text-black'>Submit</Text>
-            </RaisedButton>
-          )}
-
-          {isCorrect && (
-            <View className='bg-green-500 py-6 px-12 rounded-2xl shadow-xl'>
-              <Text className='text-2xl text-white text-center font-bold mb-4'>Correct!</Text>
-              <TouchableOpacity 
-                className='bg-white py-3 px-6 rounded-xl items-center' 
-                onPress={handleNext}
-              >
-                <Text className='text-lg text-green-600 font-bold'>Next Question</Text>
-              </TouchableOpacity>
-            </View>
-          )}
-
-          {isWrong && (
-            <View className='bg-red-500 py-6 px-12 rounded-2xl shadow-xl'>
-              <Text className='text-2xl text-white text-center font-bold mb-2'>Incorrect</Text>
-              <Text className='text-lg text-white text-center mb-4'>Answer: {test[step].answer}</Text>
-              <TouchableOpacity 
-                className='bg-white py-3 px-6 rounded-xl items-center' 
-                onPress={handleNext}
-              >
-                <Text className='text-lg text-red-600 font-bold'>Next Question</Text>
-              </TouchableOpacity>
-            </View>
-          )}
         </View>
       </ScrollView>
+
+      {/* Fixed bottom button area */}
+      <View className='px-6 pb-8 pt-4 bg-white border-t border-gray-100'>
+        {!isCorrect && !isWrong && (
+          <RaisedButton 
+            onPress={handleSubmit} 
+            variant="continue" 
+            buttonStyles="flex w-full h-14 items-center rounded-xl shadow-lg"
+          >
+            <Text className='m-auto justify-center text-xl font-bold text-black'>Submit</Text>
+          </RaisedButton>
+        )}
+
+        {isCorrect && (
+          <View className='bg-green-500 py-6 px-6 rounded-2xl shadow-xl'>
+            <Text className='text-2xl text-white text-center font-bold mb-4'>Correct!</Text>
+            <TouchableOpacity 
+              className='bg-white py-3 px-6 rounded-xl items-center' 
+              onPress={handleNext}
+            >
+              <Text className='text-lg text-green-600 font-bold'>Next Question</Text>
+            </TouchableOpacity>
+          </View>
+        )}
+
+        {isWrong && (
+          <View className='bg-red-500 py-6 px-6 rounded-2xl shadow-xl'>
+            <Text className='text-2xl text-white text-center font-bold mb-2'>Incorrect</Text>
+            <Text className='text-lg text-white text-center mb-4'>Answer: {test[step].answer}</Text>
+            <TouchableOpacity 
+              className='bg-white py-3 px-6 rounded-xl items-center' 
+              onPress={handleNext}
+            >
+              <Text className='text-lg text-red-600 font-bold'>Next Question</Text>
+            </TouchableOpacity>
+          </View>
+        )}
+      </View>
     </View>
   )
 }

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TextInput, SafeAreaView, Alert, ActivityIndicator, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, SafeAreaView, Alert, ActivityIndicator, FlatList, TouchableOpacity, Modal } from 'react-native';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import RaisedButton from '../components/ui/RaisedButton';
 import styles from '../styles';
@@ -7,7 +7,6 @@ import { savePersonalizedCourse } from '../api/personalizedCourses';
 import CountryFlag from 'react-native-country-flag';
 import { SELECTABLE_LANGUAGES } from '../utils/constants';
 import { generateCourseOutline } from '../api/aiCourseService';
-import { Picker } from '@react-native-picker/picker';
 import { getCredits, deductCredits, hasEnoughCredits, CREDIT_COSTS } from '../api/credits';
 import { MaterialIcons } from '@expo/vector-icons';
 
@@ -30,6 +29,7 @@ const CreatePersonalizedCourseScreen = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [credits, setCredits] = useState(0);
   const [canAffordCourse, setCanAffordCourse] = useState(false);
+  const [showSkillLevelModal, setShowSkillLevelModal] = useState(false);
 
   // Pre-defined skill level options for the dropdown
   const SKILL_LEVEL_OPTIONS = ['Beginner', 'Intermediate', 'Advanced'];
@@ -208,18 +208,15 @@ const CreatePersonalizedCourseScreen = () => {
         return (
           <View className="flex-1">
             <Text className="text-xl font-semibold mb-2">What is your current skill level?</Text>
-            <View className="border border-gray-300 rounded-lg bg-white">
-              <Picker
-                selectedValue={skillLevel}
-                onValueChange={(value) => setSkillLevel(value)}
-                style={{ width: '100%' }}
-              >
-                <Picker.Item label="Select skill level..." value="" />
-                {SKILL_LEVEL_OPTIONS.map((level) => (
-                  <Picker.Item key={level} label={level} value={level} />
-                ))}
-              </Picker>
-            </View>
+            <TouchableOpacity
+              className="border border-gray-300 rounded-lg bg-white p-4 flex-row justify-between items-center"
+              onPress={() => setShowSkillLevelModal(true)}
+            >
+              <Text className={`text-lg ${skillLevel ? 'text-gray-800' : 'text-gray-500'}`}>
+                {skillLevel || 'Select skill level...'}
+              </Text>
+              <MaterialIcons name="keyboard-arrow-down" size={24} color="#6b7280" />
+            </TouchableOpacity>
           </View>
         );
       case STEPS.TOPICS:
@@ -294,6 +291,54 @@ const CreatePersonalizedCourseScreen = () => {
           </View>
         )}
       </View>
+
+      {/* Skill Level Selection Modal */}
+      <Modal
+        visible={showSkillLevelModal}
+        transparent={true}
+        animationType="fade"
+        onRequestClose={() => setShowSkillLevelModal(false)}
+      >
+        <TouchableOpacity 
+          className="flex-1 bg-black bg-opacity-50 justify-center items-center"
+          activeOpacity={1}
+          onPress={() => setShowSkillLevelModal(false)}
+        >
+          <View className="bg-white rounded-2xl mx-6 w-80 max-w-full shadow-xl">
+            <View className="p-6">
+              <Text className="text-xl font-bold text-center mb-4">Select Skill Level</Text>
+              {SKILL_LEVEL_OPTIONS.map((level) => (
+                <TouchableOpacity
+                  key={level}
+                  className={`py-4 px-4 rounded-lg mb-2 ${
+                    skillLevel === level 
+                      ? 'bg-purple-100 border border-purple-300' 
+                      : 'bg-gray-50 border border-gray-200'
+                  }`}
+                  onPress={() => {
+                    setSkillLevel(level);
+                    setShowSkillLevelModal(false);
+                  }}
+                >
+                  <Text className={`text-lg text-center ${
+                    skillLevel === level 
+                      ? 'text-purple-700 font-semibold' 
+                      : 'text-gray-700'
+                  }`}>
+                    {level}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+              <TouchableOpacity 
+                className="mt-4 py-3 px-4 bg-gray-200 rounded-lg"
+                onPress={() => setShowSkillLevelModal(false)}
+              >
+                <Text className="text-gray-700 text-center font-medium">Cancel</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </TouchableOpacity>
+      </Modal>
     </SafeAreaView>
   );
 };
