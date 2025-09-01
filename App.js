@@ -21,28 +21,31 @@ export default function App() {
 
 
   return (
-    <NavigationContainer>
-      <LanguageProvider>
-        <Stack.Navigator>
-          <Stack.Screen name="Home" component={HomeScreen} />
-          <Stack.Screen name="Lesson" component={LessonScreen} />
-          <Stack.Screen name="AIConversation" component={AIConversationScreen} />
-          <Stack.Screen name="TrainingScreen" component={TrainingScreen} />
-          <Stack.Screen name="OnDemandLesson" component={OnDemandLessonScreen} />
-          <Stack.Screen 
-            name="LessonComplete" 
-            component={LessonCompleteScreen}
-            options={{
-              headerShown: false
-            }}
-          />
-          <Stack.Screen name="GetCreditsScreen" component={GetCreditsScreen} />
-          <Stack.Screen name="PersonalizedCourses" component={PersonalizedCoursesScreen} options={{ title: 'My Courses' }} />
-          <Stack.Screen name="CreatePersonalizedCourse" component={CreatePersonalizedCourseScreen} options={{ title: 'Create Course' }} />
-          <Stack.Screen name="ViewPersonalizedCourse" component={ViewPersonalizedCourseScreen} />
-        </Stack.Navigator>
-      </LanguageProvider>
-    </NavigationContainer>
+    <View style={{ flex: 1, backgroundColor: 'white' }}>
+      <StatusBar style="dark" backgroundColor="white" />
+      <NavigationContainer>
+        <LanguageProvider>
+          <Stack.Navigator>
+            <Stack.Screen name="Home" component={HomeScreen} />
+            <Stack.Screen name="Lesson" component={LessonScreen} />
+            <Stack.Screen name="AIConversation" component={AIConversationScreen} />
+            <Stack.Screen name="TrainingScreen" component={TrainingScreen} />
+            <Stack.Screen name="OnDemandLesson" component={OnDemandLessonScreen} />
+            <Stack.Screen 
+              name="LessonComplete" 
+              component={LessonCompleteScreen}
+              options={{
+                headerShown: false
+              }}
+            />
+            <Stack.Screen name="GetCreditsScreen" component={GetCreditsScreen} />
+            <Stack.Screen name="PersonalizedCourses" component={PersonalizedCoursesScreen} options={{ title: 'My Courses' }} />
+            <Stack.Screen name="CreatePersonalizedCourse" component={CreatePersonalizedCourseScreen} options={{ title: 'Create Course' }} />
+            <Stack.Screen name="ViewPersonalizedCourse" component={ViewPersonalizedCourseScreen} />
+          </Stack.Navigator>
+        </LanguageProvider>
+      </NavigationContainer>
+    </View>
   );
 }
 
