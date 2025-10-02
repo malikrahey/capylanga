@@ -33,3 +33,10 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+
+.env
+
+serviceWorker.json
+
+service-worker.json
