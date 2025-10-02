@@ -1,6 +1,7 @@
 {
   "cli": {
-    "version": ">= 7.2.0"
+    "version": ">= 7.2.0",
+    "appVersionSource": "remote"
   },
   "build": {
     "development": {
@@ -15,7 +16,9 @@
         "gradleCommand": ":app:assembleRelease"
       }
     },
-    "production": {}
+    "production": {
+      "autoIncrement": true
+    }
   },
   "submit": {
     "production": {}
